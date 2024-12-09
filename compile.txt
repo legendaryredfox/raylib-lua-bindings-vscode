@@ -1,0 +1,46 @@
+yarn run v1.22.22
+$ tsc -p ./
+src/completionItems.ts(377,323): error TS1005: ',' expected.
+src/completionItems.ts(377,325): error TS1005: ',' expected.
+src/completionItems.ts(377,331): error TS1005: ',' expected.
+src/completionItems.ts(377,335): error TS1127: Invalid character.
+src/completionItems.ts(377,337): error TS1127: Invalid character.
+src/completionItems.ts(377,347): error TS1005: ',' expected.
+src/completionItems.ts(377,354): error TS1005: ',' expected.
+src/completionItems.ts(377,355): error TS1109: Expression expected.
+src/completionItems.ts(377,357): error TS1127: Invalid character.
+src/completionItems.ts(377,399): error TS1005: ',' expected.
+src/completionItems.ts(377,400): error TS1002: Unterminated string literal.
+src/completionItems.ts(1115,507): error TS1005: ',' expected.
+src/completionItems.ts(1115,509): error TS1005: ',' expected.
+src/completionItems.ts(1115,524): error TS1005: ',' expected.
+src/completionItems.ts(1115,532): error TS1005: ',' expected.
+src/completionItems.ts(1115,536): error TS1005: ',' expected.
+src/completionItems.ts(1115,540): error TS1005: ',' expected.
+src/completionItems.ts(1115,545): error TS1127: Invalid character.
+src/completionItems.ts(1115,565): error TS1005: ',' expected.
+src/completionItems.ts(1115,574): error TS1005: ',' expected.
+src/completionItems.ts(1115,577): error TS1005: ',' expected.
+src/completionItems.ts(1115,586): error TS1005: ',' expected.
+src/completionItems.ts(1115,591): error TS1005: ',' expected.
+src/completionItems.ts(1115,594): error TS1005: ',' expected.
+src/completionItems.ts(1115,599): error TS1005: ',' expected.
+src/completionItems.ts(1115,603): error TS1005: ',' expected.
+src/completionItems.ts(1115,611): error TS1005: ',' expected.
+src/completionItems.ts(1115,619): error TS1127: Invalid character.
+src/completionItems.ts(1115,638): error TS1005: ',' expected.
+src/completionItems.ts(1115,646): error TS1005: ',' expected.
+src/completionItems.ts(1115,652): error TS1005: ',' expected.
+src/completionItems.ts(1115,657): error TS1005: '(' expected.
+src/completionItems.ts(1115,676): error TS1005: ')' expected.
+src/completionItems.ts(1115,685): error TS1443: Module declaration names may only use ' or " quoted strings.
+src/completionItems.ts(1115,707): error TS1005: ';' expected.
+src/completionItems.ts(1115,722): error TS1127: Invalid character.
+src/completionItems.ts(1115,724): error TS1127: Invalid character.
+src/completionItems.ts(1115,734): error TS1005: ';' expected.
+src/completionItems.ts(1115,742): error TS1109: Expression expected.
+src/completionItems.ts(1115,744): error TS1127: Invalid character.
+src/completionItems.ts(1115,784): error TS1443: Module declaration names may only use ' or " quoted strings.
+src/completionItems.ts(1115,787): error TS1002: Unterminated string literal.
+src/completionItems.ts(1116,9): error TS1128: Declaration or statement expected.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.

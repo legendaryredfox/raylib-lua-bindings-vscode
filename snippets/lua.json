@@ -1,0 +1,2203 @@
+{
+  "raylib.SetShapesTexture": {
+    "prefix": "raylib.SetShapesTexture",
+    "body": ["raylib.SetShapesTexture()"],
+    "description": "Sets the texture to be used for shapes. ()"
+  },
+  "raylib.GetShapesTexture": {
+    "prefix": "raylib.GetShapesTexture",
+    "body": ["raylib.GetShapesTexture()"],
+    "description": "Gets the current texture used for shapes. ()"
+  },
+  "raylib.GetShapesTextureRectangle": {
+    "prefix": "raylib.GetShapesTextureRectangle",
+    "body": ["raylib.GetShapesTextureRectangle()"],
+    "description": "Gets the source rectangle of the current shapes texture. ()"
+  },
+  "raylib.DrawPixel": {
+    "prefix": "raylib.DrawPixel",
+    "body": ["raylib.DrawPixel()"],
+    "description": "Draws a pixel at the specified position with the specified color. ()"
+  },
+  "raylib.DrawPixelV": {
+    "prefix": "raylib.DrawPixelV",
+    "body": ["raylib.DrawPixelV()"],
+    "description": "Draws a pixel at the specified position (Vector2) with the specified color. ()"
+  },
+  "raylib.DrawLineV": {
+    "prefix": "raylib.DrawLineV",
+    "body": ["raylib.DrawLineV()"],
+    "description": "Draws a line between two points (Vector2). ()"
+  },
+  "raylib.DrawCircleV": {
+    "prefix": "raylib.DrawCircleV",
+    "body": ["raylib.DrawCircleV()"],
+    "description": "Draws a circle at the specified position (Vector2) with the specified radius and color. ()"
+  },
+  "raylib.DrawCircleLines": {
+    "prefix": "raylib.DrawCircleLines",
+    "body": ["raylib.DrawCircleLines()"],
+    "description": "Draws the outline of a circle at the specified position with the specified radius and color. ()"
+  },
+  "raylib.DrawCircleLinesV": {
+    "prefix": "raylib.DrawCircleLinesV",
+    "body": ["raylib.DrawCircleLinesV()"],
+    "description": "Draws the outline of a circle at the specified position (Vector2) with the specified radius and color. ()"
+  },
+  "raylib.DrawEllipseLines": {
+    "prefix": "raylib.DrawEllipseLines",
+    "body": ["raylib.DrawEllipseLines()"],
+    "description": "Draws the outline of an ellipse at the specified position with the specified radii and color. ()"
+  },
+  "raylib.DrawRectangleV": {
+    "prefix": "raylib.DrawRectangleV",
+    "body": ["raylib.DrawRectangleV()"],
+    "description": "Draws a rectangle at the specified position (Vector2) with the specified width, height, and color. ()"
+  },
+  "raylib.DrawRectangleRec": {
+    "prefix": "raylib.DrawRectangleRec",
+    "body": ["raylib.DrawRectangleRec()"],
+    "description": "Draws a rectangle using a Rectangle struct. ()"
+  },
+  "raylib.DrawRectanglePro": {
+    "prefix": "raylib.DrawRectanglePro",
+    "body": ["raylib.DrawRectanglePro()"],
+    "description": "Draws a rectangle with the specified position, size, and rotation. ()"
+  },
+  "raylib.DrawRectangleGradientH": {
+    "prefix": "raylib.DrawRectangleGradientH",
+    "body": ["raylib.DrawRectangleGradientH()"],
+    "description": "Draws a rectangle with a horizontal gradient. ()"
+  },
+  "raylib.DrawRectangleLinesEx": {
+    "prefix": "raylib.DrawRectangleLinesEx",
+    "body": ["raylib.DrawRectangleLinesEx()"],
+    "description": "Draws the outline of a rectangle with extended parameters. ()"
+  },
+  "raylib.DrawSplineLinear": {
+    "prefix": "raylib.DrawSplineLinear",
+    "body": ["raylib.DrawSplineLinear()"],
+    "description": "Draws a linear spline. ()"
+  },
+  "raylib.DrawSplineBasis": {
+    "prefix": "raylib.DrawSplineBasis",
+    "body": ["raylib.DrawSplineBasis()"],
+    "description": "Draws a basis spline. ()"
+  },
+  "raylib.DrawSplineCatmullRom": {
+    "prefix": "raylib.DrawSplineCatmullRom",
+    "body": ["raylib.DrawSplineCatmullRom()"],
+    "description": "Draws a Catmull-Rom spline. ()"
+  },
+  "raylib.DrawSplineBezierQuadratic": {
+    "prefix": "raylib.DrawSplineBezierQuadratic",
+    "body": ["raylib.DrawSplineBezierQuadratic()"],
+    "description": "Draws a quadratic Bezier spline. ()"
+  },
+  "raylib.DrawSplineBezierCubic": {
+    "prefix": "raylib.DrawSplineBezierCubic",
+    "body": ["raylib.DrawSplineBezierCubic()"],
+    "description": "Draws a cubic Bezier spline. ()"
+  },
+  "raylib.DrawSplineSegmentLinear": {
+    "prefix": "raylib.DrawSplineSegmentLinear",
+    "body": ["raylib.DrawSplineSegmentLinear()"],
+    "description": "Draws a segment of a linear spline between two points. ()"
+  },
+  "raylib.DrawSplineSegmentBasis": {
+    "prefix": "raylib.DrawSplineSegmentBasis",
+    "body": ["raylib.DrawSplineSegmentBasis()"],
+    "description": "Draws a segment of a basis spline. ()"
+  },
+  "raylib.DrawSplineSegmentCatmullRom": {
+    "prefix": "raylib.DrawSplineSegmentCatmullRom",
+    "body": ["raylib.DrawSplineSegmentCatmullRom()"],
+    "description": "Draws a segment of a Catmull-Rom spline. ()"
+  },
+  "raylib.DrawSplineSegmentBezierQuadratic": {
+    "prefix": "raylib.DrawSplineSegmentBezierQuadratic",
+    "body": ["raylib.DrawSplineSegmentBezierQuadratic()"],
+    "description": "Draws a segment of a quadratic Bezier spline. ()"
+  },
+  "raylib.DrawSplineSegmentBezierCubic": {
+    "prefix": "raylib.DrawSplineSegmentBezierCubic",
+    "body": ["raylib.DrawSplineSegmentBezierCubic()"],
+    "description": "Draws a segment of a cubic Bezier spline. ()"
+  },
+  "raylib.GetSplinePointLinear": {
+    "prefix": "raylib.GetSplinePointLinear",
+    "body": ["raylib.GetSplinePointLinear()"],
+    "description": "Gets a point on a linear spline. ()"
+  },
+  "raylib.GetSplinePointBasis": {
+    "prefix": "raylib.GetSplinePointBasis",
+    "body": ["raylib.GetSplinePointBasis()"],
+    "description": "Gets a point on a basis spline. ()"
+  },
+  "raylib.GetSplinePointCatmullRom": {
+    "prefix": "raylib.GetSplinePointCatmullRom",
+    "body": ["raylib.GetSplinePointCatmullRom()"],
+    "description": "Gets a point on a Catmull-Rom spline. ()"
+  },
+  "raylib.GetSplinePointBezierQuad": {
+    "prefix": "raylib.GetSplinePointBezierQuad",
+    "body": ["raylib.GetSplinePointBezierQuad()"],
+    "description": "Gets a point on a quadratic Bezier spline. ()"
+  },
+  "raylib.GetSplinePointBezierCubic": {
+    "prefix": "raylib.GetSplinePointBezierCubic",
+    "body": ["raylib.GetSplinePointBezierCubic()"],
+    "description": "Gets a point on a cubic Bezier spline. ()"
+  },
+  "raylib.CheckCollisionRecs": {
+    "prefix": "raylib.CheckCollisionRecs",
+    "body": ["raylib.CheckCollisionRecs()"],
+    "description": "Checks collision between two rectangles. ()"
+  },
+  "raylib.CheckCollisionCircles": {
+    "prefix": "raylib.CheckCollisionCircles",
+    "body": ["raylib.CheckCollisionCircles()"],
+    "description": "Checks collision between two circles. ()"
+  },
+  "raylib.CheckCollisionCircleRec": {
+    "prefix": "raylib.CheckCollisionCircleRec",
+    "body": ["raylib.CheckCollisionCircleRec()"],
+    "description": "Checks collision between a circle and a rectangle. ()"
+  },
+  "raylib.CheckCollisionCircleLine": {
+    "prefix": "raylib.CheckCollisionCircleLine",
+    "body": ["raylib.CheckCollisionCircleLine()"],
+    "description": "Checks collision between a circle and a line. ()"
+  },
+  "raylib.CheckCollisionPointRec": {
+    "prefix": "raylib.CheckCollisionPointRec",
+    "body": ["raylib.CheckCollisionPointRec()"],
+    "description": "Checks collision between a point and a rectangle. ()"
+  },
+  "raylib.CheckCollisionPointCircle": {
+    "prefix": "raylib.CheckCollisionPointCircle",
+    "body": ["raylib.CheckCollisionPointCircle()"],
+    "description": "Checks collision between a point and a circle. ()"
+  },
+  "raylib.CheckCollisionPointTriangle": {
+    "prefix": "raylib.CheckCollisionPointTriangle",
+    "body": ["raylib.CheckCollisionPointTriangle()"],
+    "description": "Checks collision between a point and a triangle. ()"
+  },
+  "raylib.CheckCollisionPointLine": {
+    "prefix": "raylib.CheckCollisionPointLine",
+    "body": ["raylib.CheckCollisionPointLine()"],
+    "description": "Checks collision between a point and a line. ()"
+  },
+  "raylib.CheckCollisionPointPoly": {
+    "prefix": "raylib.CheckCollisionPointPoly",
+    "body": ["raylib.CheckCollisionPointPoly()"],
+    "description": "Checks collision between a point and a polygon. ()"
+  },
+  "raylib.CheckCollisionLines": {
+    "prefix": "raylib.CheckCollisionLines",
+    "body": ["raylib.CheckCollisionLines()"],
+    "description": "Checks collision between two lines. ()"
+  },
+  "raylib.GetCollisionRec": {
+    "prefix": "raylib.GetCollisionRec",
+    "body": ["raylib.GetCollisionRec()"],
+    "description": "Gets the collision rectangle between two rectangles. ()"
+  },
+  "raylib.InitWindow": {
+    "prefix": "raylib.InitWindow",
+    "body": ["raylib.InitWindow(${1:width}, ${2:height}, ${3:title})"],
+    "description": "Initializes a window with specified width, height, and title. (width: int, height: int, title: string)"
+  },
+  "raylib.CloseWindow": {
+    "prefix": "raylib.CloseWindow",
+    "body": ["raylib.CloseWindow()"],
+    "description": "Closes the current window and releases all associated resources. ()"
+  },
+  "raylib.WindowShouldClose": {
+    "prefix": "raylib.WindowShouldClose",
+    "body": ["raylib.WindowShouldClose()"],
+    "description": "Checks if the window should close. ()"
+  },
+  "raylib.GetClipboardImage": {
+    "prefix": "raylib.GetClipboardImage",
+    "body": ["raylib.GetClipboardImage()"],
+    "description": "Retrieves an image from the system clipboard. ()"
+  },
+  "raylib.SetWindowIcon": {
+    "prefix": "raylib.SetWindowIcon",
+    "body": ["raylib.SetWindowIcon()"],
+    "description": "Sets the window icon using an image. ()"
+  },
+  "raylib.TakeScreenshot": {
+    "prefix": "raylib.TakeScreenshot",
+    "body": ["raylib.TakeScreenshot()"],
+    "description": "Captures a screenshot of the current window. ()"
+  },
+  "raylib.GetFPS": {
+    "prefix": "raylib.GetFPS",
+    "body": ["raylib.GetFPS()"],
+    "description": "Retrieves the current frames per second (FPS) of the application. ()"
+  },
+  "raylib.IsWindowMinimized": {
+    "prefix": "raylib.IsWindowMinimized",
+    "body": ["raylib.IsWindowMinimized()"],
+    "description": "Checks if the current window is minimized. ()"
+  },
+  "raylib.IsWindowMaximized": {
+    "prefix": "raylib.IsWindowMaximized",
+    "body": ["raylib.IsWindowMaximized()"],
+    "description": "Checks if the current window is maximized. ()"
+  },
+  "raylib.RestoreWindow": {
+    "prefix": "raylib.RestoreWindow",
+    "body": ["raylib.RestoreWindow()"],
+    "description": "Restores the window if it is minimized or maximized. ()"
+  },
+  "raylib.ToggleFullscreen": {
+    "prefix": "raylib.ToggleFullscreen",
+    "body": ["raylib.ToggleFullscreen()"],
+    "description": "Toggles fullscreen mode for the window. ()"
+  },
+  "raylib.SetClipboardText": {
+    "prefix": "raylib.SetClipboardText",
+    "body": ["raylib.SetClipboardText()"],
+    "description": "Sets the clipboard text to the specified value. ()"
+  },
+  "raylib.GetClipboardText": {
+    "prefix": "raylib.GetClipboardText",
+    "body": ["raylib.GetClipboardText()"],
+    "description": "Gets the text currently stored in the system clipboard. ()"
+  },
+  "raylib.GetMouseX": {
+    "prefix": "raylib.GetMouseX",
+    "body": ["raylib.GetMouseX()"],
+    "description": "Gets the X coordinate of the current mouse position. ()"
+  },
+  "raylib.GetMouseY": {
+    "prefix": "raylib.GetMouseY",
+    "body": ["raylib.GetMouseY()"],
+    "description": "Gets the Y coordinate of the current mouse position. ()"
+  },
+  "raylib.GetMousePosition": {
+    "prefix": "raylib.GetMousePosition",
+    "body": ["raylib.GetMousePosition()"],
+    "description": "Gets the current position of the mouse as a Vector2. ()"
+  },
+  "raylib.GetMouseWheelMove": {
+    "prefix": "raylib.GetMouseWheelMove",
+    "body": ["raylib.GetMouseWheelMove()"],
+    "description": "Gets the movement of the mouse wheel. ()"
+  },
+  "raylib.GetFrameTime": {
+    "prefix": "raylib.GetFrameTime",
+    "body": ["raylib.GetFrameTime()"],
+    "description": "Gets the frame time (time to process one frame) in seconds. ()"
+  },
+  "raylib.IsKeyReleased": {
+    "prefix": "raylib.IsKeyReleased",
+    "body": ["raylib.IsKeyReleased()"],
+    "description": "Checks if a specific key was released during the current frame. ()"
+  },
+  "raylib.GetMonitorWidth": {
+    "prefix": "raylib.GetMonitorWidth",
+    "body": ["raylib.GetMonitorWidth()"],
+    "description": "Gets the width of the specified monitor. ()"
+  },
+  "raylib.GetMonitorHeight": {
+    "prefix": "raylib.GetMonitorHeight",
+    "body": ["raylib.GetMonitorHeight()"],
+    "description": "Gets the height of the specified monitor. ()"
+  },
+  "raylib.MaximizeWindow": {
+    "prefix": "raylib.MaximizeWindow",
+    "body": ["raylib.MaximizeWindow()"],
+    "description": "Maximizes the application window. ()"
+  },
+  "raylib.MinimizeWindow": {
+    "prefix": "raylib.MinimizeWindow",
+    "body": ["raylib.MinimizeWindow()"],
+    "description": "Minimizes the application window. ()"
+  },
+  "raylib.SetWindowTitle": {
+    "prefix": "raylib.SetWindowTitle",
+    "body": ["raylib.SetWindowTitle()"],
+    "description": "Sets the title of the application window. ()"
+  },
+  "raylib.SetWindowPosition": {
+    "prefix": "raylib.SetWindowPosition",
+    "body": ["raylib.SetWindowPosition()"],
+    "description": "Sets the position of the application window. ()"
+  },
+  "raylib.SetWindowMonitor": {
+    "prefix": "raylib.SetWindowMonitor",
+    "body": ["raylib.SetWindowMonitor()"],
+    "description": "Sets the monitor on which the window is displayed. ()"
+  },
+  "raylib.SetWindowSize": {
+    "prefix": "raylib.SetWindowSize",
+    "body": ["raylib.SetWindowSize()"],
+    "description": "Sets the size of the application window. ()"
+  },
+  "raylib.SetConfigFlags": {
+    "prefix": "raylib.SetConfigFlags",
+    "body": ["raylib.SetConfigFlags()"],
+    "description": "Sets configuration flags for the application window. ()"
+  },
+  "raylib.GetScreenWidth": {
+    "prefix": "raylib.GetScreenWidth",
+    "body": ["raylib.GetScreenWidth()"],
+    "description": "Gets the width of the screen. ()"
+  },
+  "raylib.GetScreenHeight": {
+    "prefix": "raylib.GetScreenHeight",
+    "body": ["raylib.GetScreenHeight()"],
+    "description": "Gets the height of the screen. ()"
+  },
+  "raylib.GetMonitorCount": {
+    "prefix": "raylib.GetMonitorCount",
+    "body": ["raylib.GetMonitorCount()"],
+    "description": "Gets the number of connected monitors. ()"
+  },
+  "raylib.GetMonitorName": {
+    "prefix": "raylib.GetMonitorName",
+    "body": ["raylib.GetMonitorName()"],
+    "description": "Gets the name of a specific monitor. ()"
+  },
+  "raylib.GetMonitorPhysicalWidth": {
+    "prefix": "raylib.GetMonitorPhysicalWidth",
+    "body": ["raylib.GetMonitorPhysicalWidth()"],
+    "description": "Gets the physical width of a specific monitor in millimeters. ()"
+  },
+  "raylib.GetMonitorPhysicalHeight": {
+    "prefix": "raylib.GetMonitorPhysicalHeight",
+    "body": ["raylib.GetMonitorPhysicalHeight()"],
+    "description": "Gets the physical height of a specific monitor in millimeters. ()"
+  },
+  "raylib.GetMonitorRefreshRate": {
+    "prefix": "raylib.GetMonitorRefreshRate",
+    "body": ["raylib.GetMonitorRefreshRate()"],
+    "description": "Gets the refresh rate of a specific monitor. ()"
+  },
+  "raylib.GetMonitorPosition": {
+    "prefix": "raylib.GetMonitorPosition",
+    "body": ["raylib.GetMonitorPosition()"],
+    "description": "Gets the position of a specific monitor on the screen. ()"
+  },
+  "raylib.GetTime": {
+    "prefix": "raylib.GetTime",
+    "body": ["raylib.GetTime()"],
+    "description": "Gets the current time since the application started. ()"
+  },
+  "raylib.GetRandomValue": {
+    "prefix": "raylib.GetRandomValue",
+    "body": ["raylib.GetRandomValue()"],
+    "description": "Gets a random integer value between min and max (inclusive). ()"
+  },
+  "raylib.SetTargetFPS": {
+    "prefix": "raylib.SetTargetFPS",
+    "body": ["raylib.SetTargetFPS()"],
+    "description": "Sets the target frames per second (FPS) for the application. ()"
+  },
+  "raylib.GetTargetFPS": {
+    "prefix": "raylib.GetTargetFPS",
+    "body": ["raylib.GetTargetFPS()"],
+    "description": "Gets the currently set target frames per second (FPS). ()"
+  },
+  "raylib.IsKeyDown": {
+    "prefix": "raylib.IsKeyDown",
+    "body": ["raylib.IsKeyDown()"],
+    "description": "Checks if a specific key is currently being held down. ()"
+  },
+  "raylib.IsKeyUp": {
+    "prefix": "raylib.IsKeyUp",
+    "body": ["raylib.IsKeyUp()"],
+    "description": "Checks if a specific key is currently not being held down. ()"
+  },
+  "raylib.IsMouseButtonDown": {
+    "prefix": "raylib.IsMouseButtonDown",
+    "body": ["raylib.IsMouseButtonDown()"],
+    "description": "Checks if a specific mouse button is currently being held down. ()"
+  },
+  "raylib.IsMouseButtonUp": {
+    "prefix": "raylib.IsMouseButtonUp",
+    "body": ["raylib.IsMouseButtonUp()"],
+    "description": "Checks if a specific mouse button is currently up (not pressed). ()"
+  },
+  "raylib.SetMousePosition": {
+    "prefix": "raylib.SetMousePosition",
+    "body": ["raylib.SetMousePosition()"],
+    "description": "Sets the mouse position on the screen. ()"
+  },
+  "raylib.SetMouseOffset": {
+    "prefix": "raylib.SetMouseOffset",
+    "body": ["raylib.SetMouseOffset()"],
+    "description": "Sets the mouse offset relative to the window. ()"
+  },
+  "raylib.SetMouseScale": {
+    "prefix": "raylib.SetMouseScale",
+    "body": ["raylib.SetMouseScale()"],
+    "description": "Sets the scale for mouse input. ()"
+  },
+  "raylib.GetTouchPosition": {
+    "prefix": "raylib.GetTouchPosition",
+    "body": ["raylib.GetTouchPosition()"],
+    "description": "Gets the position of a touch input. ()"
+  },
+  "raylib.ShowCursor": {
+    "prefix": "raylib.ShowCursor",
+    "body": ["raylib.ShowCursor()"],
+    "description": "Shows the mouse cursor on the screen. ()"
+  },
+  "raylib.HideCursor": {
+    "prefix": "raylib.HideCursor",
+    "body": ["raylib.HideCursor()"],
+    "description": "Hides the mouse cursor on the screen. ()"
+  },
+  "raylib.IsCursorHidden": {
+    "prefix": "raylib.IsCursorHidden",
+    "body": ["raylib.IsCursorHidden()"],
+    "description": "Checks if the cursor is currently hidden. ()"
+  },
+  "raylib.EnableCursor": {
+    "prefix": "raylib.EnableCursor",
+    "body": ["raylib.EnableCursor()"],
+    "description": "Enables the mouse cursor. ()"
+  },
+  "raylib.DisableCursor": {
+    "prefix": "raylib.DisableCursor",
+    "body": ["raylib.DisableCursor()"],
+    "description": "Disables the mouse cursor. ()"
+  },
+  "raylib.GetClipboardTextLength": {
+    "prefix": "raylib.GetClipboardTextLength",
+    "body": ["raylib.GetClipboardTextLength()"],
+    "description": "Gets the length of the clipboard text. ()"
+  },
+  "raylib.IsWindowReady": {
+    "prefix": "raylib.IsWindowReady",
+    "body": ["raylib.IsWindowReady()"],
+    "description": "Checks if the window is ready. ()"
+  },
+  "raylib.IsWindowFocused": {
+    "prefix": "raylib.IsWindowFocused",
+    "body": ["raylib.IsWindowFocused()"],
+    "description": "Checks if the window is currently focused. ()"
+  },
+  "raylib.IsWindowFullscreen": {
+    "prefix": "raylib.IsWindowFullscreen",
+    "body": ["raylib.IsWindowFullscreen()"],
+    "description": "Checks if the window is in fullscreen mode. ()"
+  },
+  "raylib.IsWindowHidden": {
+    "prefix": "raylib.IsWindowHidden",
+    "body": ["raylib.IsWindowHidden()"],
+    "description": "Checks if the window is currently hidden. ()"
+  },
+  "raylib.IsWindowResized": {
+    "prefix": "raylib.IsWindowResized",
+    "body": ["raylib.IsWindowResized()"],
+    "description": "Checks if the window has been resized. ()"
+  },
+  "raylib.IsWindowState": {
+    "prefix": "raylib.IsWindowState",
+    "body": ["raylib.IsWindowState()"],
+    "description": "Checks if the window has a specific state. ()"
+  },
+  "raylib.SetWindowState": {
+    "prefix": "raylib.SetWindowState",
+    "body": ["raylib.SetWindowState()"],
+    "description": "Sets a specific state for the window. ()"
+  },
+  "raylib.ClearWindowState": {
+    "prefix": "raylib.ClearWindowState",
+    "body": ["raylib.ClearWindowState()"],
+    "description": "Clears a specific state for the window. ()"
+  },
+  "raylib.ToggleBorderlessWindowed": {
+    "prefix": "raylib.ToggleBorderlessWindowed",
+    "body": ["raylib.ToggleBorderlessWindowed()"],
+    "description": "Toggles borderless windowed mode. ()"
+  },
+  "raylib.SetWindowMinSize": {
+    "prefix": "raylib.SetWindowMinSize",
+    "body": ["raylib.SetWindowMinSize()"],
+    "description": "Sets the minimum size of the window. ()"
+  },
+  "raylib.SetWindowMaxSize": {
+    "prefix": "raylib.SetWindowMaxSize",
+    "body": ["raylib.SetWindowMaxSize()"],
+    "description": "Sets the maximum size of the window. ()"
+  },
+  "raylib.SetWindowOpacity": {
+    "prefix": "raylib.SetWindowOpacity",
+    "body": ["raylib.SetWindowOpacity()"],
+    "description": "Sets the opacity of the window. ()"
+  },
+  "raylib.SetWindowFocused": {
+    "prefix": "raylib.SetWindowFocused",
+    "body": ["raylib.SetWindowFocused()"],
+    "description": "Sets the window as focused. ()"
+  },
+  "raylib.GetWindowHandle": {
+    "prefix": "raylib.GetWindowHandle",
+    "body": ["raylib.GetWindowHandle()"],
+    "description": "Gets the window handle. ()"
+  },
+  "raylib.GetCurrentMonitor": {
+    "prefix": "raylib.GetCurrentMonitor",
+    "body": ["raylib.GetCurrentMonitor()"],
+    "description": "Gets the current monitor. ()"
+  },
+  "raylib.GetWindowScaleDPI": {
+    "prefix": "raylib.GetWindowScaleDPI",
+    "body": ["raylib.GetWindowScaleDPI()"],
+    "description": "Gets the window's DPI scale. ()"
+  },
+  "raylib.EnableEventWaiting": {
+    "prefix": "raylib.EnableEventWaiting",
+    "body": ["raylib.EnableEventWaiting()"],
+    "description": "Enables event waiting. ()"
+  },
+  "raylib.DisableEventWaiting": {
+    "prefix": "raylib.DisableEventWaiting",
+    "body": ["raylib.DisableEventWaiting()"],
+    "description": "Disables event waiting. ()"
+  },
+  "raylib.IsCursorOnScreen": {
+    "prefix": "raylib.IsCursorOnScreen",
+    "body": ["raylib.IsCursorOnScreen()"],
+    "description": "Checks if the cursor is on the screen. ()"
+  },
+  "raylib.BeginDrawing": {
+    "prefix": "raylib.BeginDrawing",
+    "body": ["raylib.BeginDrawing()"],
+    "description": "Starts a new frame for drawing on the screen. ()"
+  },
+  "raylib.EndDrawing": {
+    "prefix": "raylib.EndDrawing",
+    "body": ["raylib.EndDrawing()"],
+    "description": "Ends the current frame and presents the drawn content to the screen. ()"
+  },
+  "raylib.ClearBackground": {
+    "prefix": "raylib.ClearBackground",
+    "body": ["raylib.ClearBackground()"],
+    "description": "Clears the entire screen with the specified color. ()"
+  },
+  "raylib.DrawRectangle": {
+    "prefix": "raylib.DrawRectangle",
+    "body": [
+      "raylib.DrawRectangle(${1:posX}, ${2:posY}, ${3:width}, ${4:height}, ${5:color})"
+    ],
+    "description": "Draws a color-filled rectangle on the screen. (posX: int, posY: int, width: int, height: int, color: table)"
+  },
+  "raylib.DrawCircle": {
+    "prefix": "raylib.DrawCircle",
+    "body": [
+      "raylib.DrawCircle(${1:centerX}, ${2:centerY}, ${3:radius}, ${4:color})"
+    ],
+    "description": "Draws a color-filled circle on the screen. (centerX: int, centerY: int, radius: float, color: table)"
+  },
+  "raylib.DrawLineEx": {
+    "prefix": "raylib.DrawLineEx",
+    "body": [
+      "raylib.DrawLineEx(${1:startX}, ${2:startY}, ${3:endX}, ${4:endY}, ${5:thickness}, ${6:color})"
+    ],
+    "description": "Draws a thick line with customizable start and end points. (startX: float, startY: float, endX: float, endY: float, thickness: float, color: table)"
+  },
+  "raylib.DrawEllipse": {
+    "prefix": "raylib.DrawEllipse",
+    "body": [
+      "raylib.DrawEllipse(${1:centerX}, ${2:centerY}, ${3:radiusH}, ${4:radiusV}, ${5:color})"
+    ],
+    "description": "Draws a color-filled ellipse on the screen. (centerX: int, centerY: int, radiusH: float, radiusV: float, color: table)"
+  },
+  "raylib.DrawRectangleLines": {
+    "prefix": "raylib.DrawRectangleLines",
+    "body": [
+      "raylib.DrawRectangleLines(${1:posX}, ${2:posY}, ${3:width}, ${4:height}, ${5:color})"
+    ],
+    "description": "Draws the outline of a rectangle with specified parameters. (posX: int, posY: int, width: int, height: int, color: table)"
+  },
+  "raylib.DrawRectangleGradient": {
+    "prefix": "raylib.DrawRectangleGradient",
+    "body": [
+      "raylib.DrawRectangleGradient(${1:posX}, ${2:posY}, ${3:width}, ${4:height}, ${5:color1}, ${6:color2})"
+    ],
+    "description": "Draws a rectangle with a gradient fill. (posX: int, posY: int, width: int, height: int, color1: table, color2: table)"
+  },
+  "raylib.DrawRectangleRounded": {
+    "prefix": "raylib.DrawRectangleRounded",
+    "body": [
+      "raylib.DrawRectangleRounded(${1:posX}, ${2:posY}, ${3:width}, ${4:height}, ${5:roundness}, ${6:segments}, ${7:color})"
+    ],
+    "description": "Draws a rounded rectangle with specified parameters. (posX: int, posY: int, width: int, height: int, roundness: float, segments: int, color: table)"
+  },
+  "raylib.DrawLineStrip": {
+    "prefix": "raylib.DrawLineStrip",
+    "body": ["raylib.DrawLineStrip(${1:points}, ${2:color})"],
+    "description": "Draws a line strip with specified parameters. (points: table, color: table)"
+  },
+  "raylib.DrawPoly": {
+    "prefix": "raylib.DrawPoly",
+    "body": [
+      "raylib.DrawPoly(${1:center}, ${2:sides}, ${3:radius}, ${4:rotation}, ${5:color})"
+    ],
+    "description": "Draws a polygon with specified parameters. (center: table, sides: int, radius: float, rotation: float, color: table)"
+  },
+  "raylib.DrawPolyLines": {
+    "prefix": "raylib.DrawPolyLines",
+    "body": [
+      "raylib.DrawPolyLines(${1:center}, ${2:sides}, ${3:radius}, ${4:rotation}, ${5:color})"
+    ],
+    "description": "Draws the outline of a polygon with specified parameters. (center: table, sides: int, radius: float, rotation: float, color: table)"
+  },
+  "raylib.DrawPolyLinesEx": {
+    "prefix": "raylib.DrawPolyLinesEx",
+    "body": [
+      "raylib.DrawPolyLinesEx(${1:center}, ${2:sides}, ${3:radius}, ${4:rotation}, ${5:thickness}, ${6:color})"
+    ],
+    "description": "Draws the outline of a polygon with extended parameters. (center: table, sides: int, radius: float, rotation: float, thickness: float, color: table)"
+  },
+  "raylib.DrawGrid": {
+    "prefix": "raylib.DrawGrid",
+    "body": ["raylib.DrawGrid()"],
+    "description": "Draws a grid with specified parameters. ()"
+  },
+  "raylib.DrawCircleSector": {
+    "prefix": "raylib.DrawCircleSector",
+    "body": [
+      "raylib.DrawCircleSector(${1:center}, ${2:radius}, ${3:startAngle}, ${4:endAngle}, ${5:segments}, ${6:color})"
+    ],
+    "description": "Draws a sector of a circle with specified parameters. (center: table, radius: float, startAngle: float, endAngle: float, segments: int, color: table)"
+  },
+  "raylib.DrawCircleSectorLines": {
+    "prefix": "raylib.DrawCircleSectorLines",
+    "body": [
+      "raylib.DrawCircleSectorLines(${1:center}, ${2:radius}, ${3:startAngle}, ${4:endAngle}, ${5:segments}, ${6:color})"
+    ],
+    "description": "Draws the outline of a sector of a circle with specified parameters. (center: table, radius: float, startAngle: float, endAngle: float, segments: int, color: table)"
+  },
+  "raylib.DrawRectangleGradientV": {
+    "prefix": "raylib.DrawRectangleGradientV",
+    "body": [
+      "raylib.DrawRectangleGradientV(${1:posX}, ${2:posY}, ${3:width}, ${4:height}, ${5:top}, ${6:bottom})"
+    ],
+    "description": "Draws a rectangle with a vertical gradient fill. (posX: int, posY: int, width: int, height: int, top: table, bottom: table)"
+  },
+  "raylib.DrawRectangleGradientEx": {
+    "prefix": "raylib.DrawRectangleGradientEx",
+    "body": [
+      "raylib.DrawRectangleGradientEx(${1:rec}, ${2:topLeft}, ${3:topRight}, ${4:bottomLeft}, ${5:bottomRight})"
+    ],
+    "description": "Draws a rectangle with an extended gradient fill. (rec: table, topLeft: table, topRight: table, bottomLeft: table, bottomRight: table)"
+  },
+  "raylib.DrawCircleGradient": {
+    "prefix": "raylib.DrawCircleGradient",
+    "body": [
+      "raylib.DrawCircleGradient(${1:centerX}, ${2:centerY}, ${3:radius}, ${4:innerColor}, ${5:outerColor})"
+    ],
+    "description": "Draws a circle with a gradient fill. (centerX: int, centerY: int, radius: float, innerColor: table, outerColor: table)"
+  },
+  "raylib.DrawLine": {
+    "prefix": "raylib.DrawLine",
+    "body": [
+      "raylib.DrawLine(${1:startX}, ${2:startY}, ${3:endX}, ${4:endY}, ${5:color})"
+    ],
+    "description": "Draws a line between two points. (startX: int, startY: int, endX: int, endY: int, color: table)"
+  },
+  "raylib.DrawLineBezier": {
+    "prefix": "raylib.DrawLineBezier",
+    "body": [
+      "raylib.DrawLineBezier(${1:startPos}, ${2:endPos}, ${3:thick}, ${4:color})"
+    ],
+    "description": "Draws a Bezier line with specified parameters. (startPos: table, endPos: table, thick: float, color: table)"
+  },
+  "raylib.DrawTriangle": {
+    "prefix": "raylib.DrawTriangle",
+    "body": ["raylib.DrawTriangle(${1:v1}, ${2:v2}, ${3:v3}, ${4:color})"],
+    "description": "Draws a triangle with specified parameters. (v1: table, v2: table, v3: table, color: table)"
+  },
+  "raylib.DrawTriangleLines": {
+    "prefix": "raylib.DrawTriangleLines",
+    "body": ["raylib.DrawTriangleLines(${1:v1}, ${2:v2}, ${3:v3}, ${4:color})"],
+    "description": "Draws the outline of a triangle with specified parameters. (v1: table, v2: table, v3: table, color: table)"
+  },
+  "raylib.DrawTriangleStrip": {
+    "prefix": "raylib.DrawTriangleStrip",
+    "body": ["raylib.DrawTriangleStrip(${1:points}, ${2:color})"],
+    "description": "Draws a strip of connected triangles using a list of vertices. (points: table, color: table)"
+  },
+  "raylib.DrawRing": {
+    "prefix": "raylib.DrawRing",
+    "body": [
+      "raylib.DrawRing(${1:center}, ${2:innerRadius}, ${3:outerRadius}, ${4:startAngle}, ${5:endAngle}, ${6:segments}, ${7:color})"
+    ],
+    "description": "Draws a ring with specified parameters. (center: table, innerRadius: number, outerRadius: number, startAngle: number, endAngle: number, segments: number, color: table)"
+  },
+  "raylib.DrawRingLines": {
+    "prefix": "raylib.DrawRingLines",
+    "body": [
+      "raylib.DrawRingLines(${1:center}, ${2:innerRadius}, ${3:outerRadius}, ${4:startAngle}, ${5:endAngle}, ${6:segments}, ${7:color})"
+    ],
+    "description": "Draws the outline of a ring with specified parameters. (center: table, innerRadius: number, outerRadius: number, startAngle: number, endAngle: number, segments: number, color: table)"
+  },
+  "raylib.LoadSound": {
+    "prefix": "raylib.LoadSound",
+    "body": ["raylib.LoadSound(${1:fileName})"],
+    "description": "Loads a sound from a file into memory. (fileName: string)"
+  },
+  "raylib.PlaySound": {
+    "prefix": "raylib.PlaySound",
+    "body": ["raylib.PlaySound(${1:sound})"],
+    "description": "Plays a loaded sound. (sound: Sound)"
+  },
+  "raylib.StopSound": {
+    "prefix": "raylib.StopSound",
+    "body": ["raylib.StopSound(${1:sound})"],
+    "description": "Stops a currently playing sound. (sound: Sound)"
+  },
+  "raylib.UnloadSound": {
+    "prefix": "raylib.UnloadSound",
+    "body": ["raylib.UnloadSound(${1:sound})"],
+    "description": "Unloads a loaded sound from memory. (sound: Sound)"
+  },
+  "raylib.LoadMusicStream": {
+    "prefix": "raylib.LoadMusicStream",
+    "body": ["raylib.LoadMusicStream(${1:fileName})"],
+    "description": "Loads a music stream from a file into memory. (fileName: string)"
+  },
+  "raylib.PlayMusicStream": {
+    "prefix": "raylib.PlayMusicStream",
+    "body": ["raylib.PlayMusicStream(${1:music})"],
+    "description": "Plays a loaded music stream. (music: Music)"
+  },
+  "raylib.StopMusicStream": {
+    "prefix": "raylib.StopMusicStream",
+    "body": ["raylib.StopMusicStream(${1:music})"],
+    "description": "Stops a currently playing music stream. (music: Music)"
+  },
+  "raylib.UpdateMusicStream": {
+    "prefix": "raylib.UpdateMusicStream",
+    "body": ["raylib.UpdateMusicStream(${1:music})"],
+    "description": "Updates the buffers for a music stream. (music: Music)"
+  },
+  "raylib.SetMusicVolume": {
+    "prefix": "raylib.SetMusicVolume",
+    "body": ["raylib.SetMusicVolume(${1:music}, ${2:volume})"],
+    "description": "Sets the volume for a music stream. (music: Music, volume: number)"
+  },
+  "raylib.SetSoundVolume": {
+    "prefix": "raylib.SetSoundVolume",
+    "body": ["raylib.SetSoundVolume(${1:sound}, ${2:volume})"],
+    "description": "Sets the volume for a sound. (sound: Sound, volume: number)"
+  },
+  "raylib.IsSoundPlaying": {
+    "prefix": "raylib.IsSoundPlaying",
+    "body": ["raylib.IsSoundPlaying(${1:sound})"],
+    "description": "Checks if a sound is currently playing. (sound: Sound)"
+  },
+  "raylib.InitAudioDevice": {
+    "prefix": "raylib.InitAudioDevice",
+    "body": ["raylib.InitAudioDevice()"],
+    "description": "Initializes the audio device. ()"
+  },
+  "raylib.CloseAudioDevice": {
+    "prefix": "raylib.CloseAudioDevice",
+    "body": ["raylib.CloseAudioDevice()"],
+    "description": "Closes the audio device. ()"
+  },
+  "raylib.IsAudioDeviceReady": {
+    "prefix": "raylib.IsAudioDeviceReady",
+    "body": ["raylib.IsAudioDeviceReady()"],
+    "description": "Checks if the audio device is ready. ()"
+  },
+  "raylib.SetMasterVolume": {
+    "prefix": "raylib.SetMasterVolume",
+    "body": ["raylib.SetMasterVolume(${1:volume})"],
+    "description": "Sets the master volume for all audio. (volume: number)"
+  },
+  "raylib.GetMasterVolume": {
+    "prefix": "raylib.GetMasterVolume",
+    "body": ["raylib.GetMasterVolume()"],
+    "description": "Gets the master volume for all audio. ()"
+  },
+  "raylib.IsWaveValid": {
+    "prefix": "raylib.IsWaveValid",
+    "body": ["raylib.IsWaveValid(${1:wave})"],
+    "description": "Checks if a wave is valid. (wave: Wave)"
+  },
+  "raylib.LoadSoundFromWave": {
+    "prefix": "raylib.LoadSoundFromWave",
+    "body": ["raylib.LoadSoundFromWave(${1:wave})"],
+    "description": "Loads a sound from a wave. (wave: Wave)"
+  },
+  "raylib.LoadWave": {
+    "prefix": "raylib.LoadWave",
+    "body": ["raylib.LoadWave(${1:fileName})"],
+    "description": "Loads a wave from a file. (fileName: string)"
+  },
+  "raylib.LoadWaveFromMemory": {
+    "prefix": "raylib.LoadWaveFromMemory",
+    "body": [
+      "raylib.LoadWaveFromMemory(${1:fileType}, ${2:fileData}, ${3:dataSize})"
+    ],
+    "description": "Loads a wave from memory. (fileType: string, fileData: string, dataSize: integer)"
+  },
+  "raylib.LoadSoundAlias": {
+    "prefix": "raylib.LoadSoundAlias",
+    "body": ["raylib.LoadSoundAlias(${1:alias}, ${2:fileName})"],
+    "description": "Loads a sound alias. (alias: string, fileName: string)"
+  },
+  "raylib.IsSoundValid": {
+    "prefix": "raylib.IsSoundValid",
+    "body": ["raylib.IsSoundValid(${1:sound})"],
+    "description": "Checks if a sound is valid. (sound: Sound)"
+  },
+  "raylib.UpdateSound": {
+    "prefix": "raylib.UpdateSound",
+    "body": ["raylib.UpdateSound(${1:sound}, ${2:data}, ${3:dataSize})"],
+    "description": "Updates a sound buffer with new data. (sound: Sound, data: string, dataSize: integer)"
+  },
+  "raylib.UnloadWave": {
+    "prefix": "raylib.UnloadWave",
+    "body": ["raylib.UnloadWave(${1:wave})"],
+    "description": "Unloads a wave from memory. (wave: Wave)"
+  },
+  "raylib.UnloadSoundAlias": {
+    "prefix": "raylib.UnloadSoundAlias",
+    "body": ["raylib.UnloadSoundAlias(${1:alias})"],
+    "description": "Unloads a sound alias from memory. (alias: string)"
+  },
+  "raylib.ExportWave": {
+    "prefix": "raylib.ExportWave",
+    "body": ["raylib.ExportWave(${1:wave}, ${2:fileName})"],
+    "description": "Exports a wave to a file. (wave: Wave, fileName: string)"
+  },
+  "raylib.ExportWaveAsCode": {
+    "prefix": "raylib.ExportWaveAsCode",
+    "body": ["raylib.ExportWaveAsCode(${1:wave}, ${2:fileName})"],
+    "description": "Exports a wave as C code. (wave: Wave, fileName: string)"
+  },
+  "raylib.WaveCopy": {
+    "prefix": "raylib.WaveCopy",
+    "body": ["raylib.WaveCopy(${1:wave})"],
+    "description": "Copies a wave. (wave: Wave)"
+  },
+  "raylib.WaveCrop": {
+    "prefix": "raylib.WaveCrop",
+    "body": ["raylib.WaveCrop(${1:wave}, ${2:initSample}, ${3:finalSample})"],
+    "description": "Crops a wave. (wave: Wave, initSample: integer, finalSample: integer)"
+  },
+  "raylib.WaveFormat": {
+    "prefix": "raylib.WaveFormat",
+    "body": [
+      "raylib.WaveFormat(${1:wave}, ${2:sampleRate}, ${3:sampleSize}, ${4:channels})"
+    ],
+    "description": "Formats a wave. (wave: Wave, sampleRate: integer, sampleSize: integer, channels: integer)"
+  },
+  "raylib.LoadWaveSamples": {
+    "prefix": "raylib.LoadWaveSamples",
+    "body": ["raylib.LoadWaveSamples(${1:wave})"],
+    "description": "Loads wave samples. (wave: Wave)"
+  },
+  "raylib.UnloadWaveSamples": {
+    "prefix": "raylib.UnloadWaveSamples",
+    "body": ["raylib.UnloadWaveSamples(${1:samples})"],
+    "description": "Unloads wave samples from memory. (samples: table)"
+  },
+  "raylib.IsMusicValid": {
+    "prefix": "raylib.IsMusicValid",
+    "body": ["raylib.IsMusicValid(${1:music})"],
+    "description": "Checks if a music object is valid. (music: Music)"
+  },
+  "raylib.UnloadMusicStream": {
+    "prefix": "raylib.UnloadMusicStream",
+    "body": ["raylib.UnloadMusicStream(${1:music})"],
+    "description": "Unloads a music stream from memory. (music: Music)"
+  },
+  "raylib.IsMusicStreamPlaying": {
+    "prefix": "raylib.IsMusicStreamPlaying",
+    "body": ["raylib.IsMusicStreamPlaying(${1:music})"],
+    "description": "Checks if a music stream is currently playing. (music: Music)"
+  },
+  "raylib.PauseMusicStream": {
+    "prefix": "raylib.PauseMusicStream",
+    "body": ["raylib.PauseMusicStream(${1:music})"],
+    "description": "Pauses the currently playing music stream. (music: Music)"
+  },
+  "raylib.ResumeMusicStream": {
+    "prefix": "raylib.ResumeMusicStream",
+    "body": ["raylib.ResumeMusicStream(${1:music})"],
+    "description": "Resumes the paused music stream. (music: Music)"
+  },
+  "raylib.SeekMusicStream": {
+    "prefix": "raylib.SeekMusicStream",
+    "body": ["raylib.SeekMusicStream(${1:music}, ${2:position})"],
+    "description": "Seeks to a specific position in the music stream. (music: Music, position: float)"
+  },
+  "raylib.SetMusicPitch": {
+    "prefix": "raylib.SetMusicPitch",
+    "body": ["raylib.SetMusicPitch(${1:music}, ${2:pitch})"],
+    "description": "Sets the pitch for the music stream. (music: Music, pitch: float)"
+  },
+  "raylib.SetMusicPan": {
+    "prefix": "raylib.SetMusicPan",
+    "body": ["raylib.SetMusicPan(${1:music}, ${2:pan})"],
+    "description": "Sets the pan for the music stream. (music: Music, pan: float)"
+  },
+  "raylib.GetMusicTimeLength": {
+    "prefix": "raylib.GetMusicTimeLength",
+    "body": ["raylib.GetMusicTimeLength(${1:music})"],
+    "description": "Gets the total length of the music stream. (music: Music)"
+  },
+  "raylib.GetMusicTimePlayed": {
+    "prefix": "raylib.GetMusicTimePlayed",
+    "body": ["raylib.GetMusicTimePlayed(${1:music})"],
+    "description": "Gets the total time played of the music stream. (music: Music)"
+  },
+  "raylib.LoadAudioStream": {
+    "prefix": "raylib.LoadAudioStream",
+    "body": [
+      "raylib.LoadAudioStream(${1:sampleRate}, ${2:sampleSize}, ${3:channels})"
+    ],
+    "description": "Loads an audio stream with specified sample rate, sample size, and channel count. (sampleRate: int, sampleSize: int, channels: int)"
+  },
+  "raylib.IsAudioStreamValid": {
+    "prefix": "raylib.IsAudioStreamValid",
+    "body": ["raylib.IsAudioStreamValid(${1:stream})"],
+    "description": "Checks if an audio stream is valid. (stream: AudioStream)"
+  },
+  "raylib.UnloadAudioStream": {
+    "prefix": "raylib.UnloadAudioStream",
+    "body": ["raylib.UnloadAudioStream(${1:stream})"],
+    "description": "Unloads an audio stream from memory, freeing all associated resources. (stream: AudioStream)"
+  },
+  "raylib.UpdateAudioStream": {
+    "prefix": "raylib.UpdateAudioStream",
+    "body": [
+      "raylib.UpdateAudioStream(${1:stream}, ${2:data}, ${3:frameCount})"
+    ],
+    "description": "Updates an audio stream with new audio data. (stream: AudioStream, data: string, frameCount: int)"
+  },
+  "raylib.IsAudioStreamProcessed": {
+    "prefix": "raylib.IsAudioStreamProcessed",
+    "body": ["raylib.IsAudioStreamProcessed(${1:stream})"],
+    "description": "Checks if an audio stream is currently being processed. (stream: AudioStream)"
+  },
+  "raylib.PlayAudioStream": {
+    "prefix": "raylib.PlayAudioStream",
+    "body": ["raylib.PlayAudioStream(${1:stream})"],
+    "description": "Plays an audio stream, starting from the current buffer position. (stream: AudioStream)"
+  },
+  "raylib.PauseAudioStream": {
+    "prefix": "raylib.PauseAudioStream",
+    "body": ["raylib.PauseAudioStream(${1:stream})"],
+    "description": "Pauses the currently playing audio stream. (stream: AudioStream)"
+  },
+  "raylib.ResumeAudioStream": {
+    "prefix": "raylib.ResumeAudioStream",
+    "body": ["raylib.ResumeAudioStream(${1:stream})"],
+    "description": "Resumes a paused audio stream, continuing playback from its current position. (stream: AudioStream)"
+  },
+  "raylib.IsAudioStreamPlaying": {
+    "prefix": "raylib.IsAudioStreamPlaying",
+    "body": ["raylib.IsAudioStreamPlaying(${1:stream})"],
+    "description": "Checks if an audio stream is currently playing. (stream: AudioStream)"
+  },
+  "raylib.StopAudioStream": {
+    "prefix": "raylib.StopAudioStream",
+    "body": ["raylib.StopAudioStream(${1:stream})"],
+    "description": "Stops the currently playing audio stream and resets its playback position. (stream: AudioStream)"
+  },
+  "raylib.SetAudioStreamVolume": {
+    "prefix": "raylib.SetAudioStreamVolume",
+    "body": ["raylib.SetAudioStreamVolume(${1:stream}, ${2:volume})"],
+    "description": "Sets the volume for an audio stream. (stream: AudioStream, volume: float)"
+  },
+  "raylib.SetAudioStreamPitch": {
+    "prefix": "raylib.SetAudioStreamPitch",
+    "body": ["raylib.SetAudioStreamPitch(${1:stream}, ${2:pitch})"],
+    "description": "Sets the pitch for an audio stream. (stream: AudioStream, pitch: float)"
+  },
+  "raylib.SetAudioStreamPan": {
+    "prefix": "raylib.SetAudioStreamPan",
+    "body": ["raylib.SetAudioStreamPan(${1:stream}, ${2:pan})"],
+    "description": "Sets the pan for an audio stream. (stream: AudioStream, pan: float)"
+  },
+  "raylib.SetAudioStreamBufferSizeDefault": {
+    "prefix": "raylib.SetAudioStreamBufferSizeDefault",
+    "body": ["raylib.SetAudioStreamBufferSizeDefault(${1:bufferSize})"],
+    "description": "Sets the default buffer size for an audio stream. (bufferSize: int)"
+  },
+  "raylib.SetAudioStreamCallback": {
+    "prefix": "raylib.SetAudioStreamCallback",
+    "body": ["raylib.SetAudioStreamCallback(${1:stream}, ${2:callback})"],
+    "description": "Sets a callback function for an audio stream. (stream: AudioStream, callback: function)"
+  },
+  "raylib.AttachAudioStreamProcessor": {
+    "prefix": "raylib.AttachAudioStreamProcessor",
+    "body": ["raylib.AttachAudioStreamProcessor(${1:stream}, ${2:processor})"],
+    "description": "Attaches a processor to an audio stream. (stream: AudioStream, processor: function)"
+  },
+  "raylib.DetachAudioStreamProcessor": {
+    "prefix": "raylib.DetachAudioStreamProcessor",
+    "body": ["raylib.DetachAudioStreamProcessor(${1:stream}, ${2:processor})"],
+    "description": "Detaches a processor from an audio stream. (stream: AudioStream, processor: function)"
+  },
+  "raylib.AttachAudioMixedProcessor": {
+    "prefix": "raylib.AttachAudioMixedProcessor",
+    "body": ["raylib.AttachAudioMixedProcessor(${1:processor})"],
+    "description": "Attaches a processor to the mixed audio. (processor: function)"
+  },
+  "raylib.DetachAudioMixedProcessor": {
+    "prefix": "raylib.DetachAudioMixedProcessor",
+    "body": ["raylib.DetachAudioMixedProcessor(${1:processor})"],
+    "description": "Detaches a processor from the mixed audio. (processor: function)"
+  },
+  "raylib.GetFontDefault": {
+    "prefix": "raylib.GetFontDefault",
+    "body": ["raylib.GetFontDefault()"],
+    "description": "Gets the default font. ()"
+  },
+  "raylib.LoadFont": {
+    "prefix": "raylib.LoadFont",
+    "body": ["raylib.LoadFont()"],
+    "description": "Loads a font from a file. ()"
+  },
+  "raylib.LoadFontEx": {
+    "prefix": "raylib.LoadFontEx",
+    "body": ["raylib.LoadFontEx()"],
+    "description": "Loads a font from a file with extended parameters. ()"
+  },
+  "raylib.LoadFontFromImage": {
+    "prefix": "raylib.LoadFontFromImage",
+    "body": ["raylib.LoadFontFromImage()"],
+    "description": "Loads a font from an image. ()"
+  },
+  "raylib.LoadFontFromMemory": {
+    "prefix": "raylib.LoadFontFromMemory",
+    "body": ["raylib.LoadFontFromMemory()"],
+    "description": "Loads a font from memory. ()"
+  },
+  "raylib.IsFontValid": {
+    "prefix": "raylib.IsFontValid",
+    "body": ["raylib.IsFontValid()"],
+    "description": "Checks if a font is valid. ()"
+  },
+  "raylib.UnloadFont": {
+    "prefix": "raylib.UnloadFont",
+    "body": ["raylib.UnloadFont()"],
+    "description": "Unloads a font from memory. ()"
+  },
+  "raylib.ExportFontAsCode": {
+    "prefix": "raylib.ExportFontAsCode",
+    "body": ["raylib.ExportFontAsCode()"],
+    "description": "Exports a font as C code. ()"
+  },
+  "raylib.DrawFPS": {
+    "prefix": "raylib.DrawFPS",
+    "body": ["raylib.DrawFPS()"],
+    "description": "Draws the current FPS on the screen. ()"
+  },
+  "raylib.DrawText": {
+    "prefix": "raylib.DrawText",
+    "body": ["raylib.DrawText()"],
+    "description": "Draws text on the screen. ()"
+  },
+  "raylib.DrawTextEx": {
+    "prefix": "raylib.DrawTextEx",
+    "body": ["raylib.DrawTextEx()"],
+    "description": "Draws text on the screen with extended parameters. ()"
+  },
+  "raylib.DrawTextPro": {
+    "prefix": "raylib.DrawTextPro",
+    "body": ["raylib.DrawTextPro()"],
+    "description": "Draws text on the screen with additional options. ()"
+  },
+  "raylib.DrawTextCodepoint": {
+    "prefix": "raylib.DrawTextCodepoint",
+    "body": ["raylib.DrawTextCodepoint()"],
+    "description": "Draws a single codepoint as text on the screen. ()"
+  },
+  "raylib.DrawTextCodepoints": {
+    "prefix": "raylib.DrawTextCodepoints",
+    "body": ["raylib.DrawTextCodepoints()"],
+    "description": "Draws multiple codepoints as text on the screen. ()"
+  },
+  "raylib.SetTextLineSpacing": {
+    "prefix": "raylib.SetTextLineSpacing",
+    "body": ["raylib.SetTextLineSpacing()"],
+    "description": "Sets the line spacing for text. ()"
+  },
+  "raylib.MeasureText": {
+    "prefix": "raylib.MeasureText",
+    "body": ["raylib.MeasureText()"],
+    "description": "Measures the width of the text. ()"
+  },
+  "raylib.MeasureTextEx": {
+    "prefix": "raylib.MeasureTextEx",
+    "body": ["raylib.MeasureTextEx()"],
+    "description": "Measures the size of the text with extended parameters. ()"
+  },
+  "raylib.GetGlyphIndex": {
+    "prefix": "raylib.GetGlyphIndex",
+    "body": ["raylib.GetGlyphIndex()"],
+    "description": "Gets the index of a glyph in the font. ()"
+  },
+  "raylib.GetGlyphInfo": {
+    "prefix": "raylib.GetGlyphInfo",
+    "body": ["raylib.GetGlyphInfo()"],
+    "description": "Gets information about a glyph in the font. ()"
+  },
+  "raylib.GetGlyphAtlasRec": {
+    "prefix": "raylib.GetGlyphAtlasRec",
+    "body": ["raylib.GetGlyphAtlasRec()"],
+    "description": "Gets the atlas rectangle of a glyph in the font. ()"
+  },
+  "raylib.LoadUTF8": {
+    "prefix": "raylib.LoadUTF8",
+    "body": ["raylib.LoadUTF8()"],
+    "description": "Loads a UTF-8 string. ()"
+  },
+  "raylib.UnloadUTF8": {
+    "prefix": "raylib.UnloadUTF8",
+    "body": ["raylib.UnloadUTF8()"],
+    "description": "Unloads a UTF-8 string from memory. ()"
+  },
+  "raylib.LoadCodepoints": {
+    "prefix": "raylib.LoadCodepoints",
+    "body": ["raylib.LoadCodepoints()"],
+    "description": "Loads codepoints from a UTF-8 string. ()"
+  },
+  "raylib.UnloadCodepoints": {
+    "prefix": "raylib.UnloadCodepoints",
+    "body": ["raylib.UnloadCodepoints()"],
+    "description": "Unloads codepoints from memory. ()"
+  },
+  "raylib.GetCodepointCount": {
+    "prefix": "raylib.GetCodepointCount",
+    "body": ["raylib.GetCodepointCount()"],
+    "description": "Gets the count of codepoints in a UTF-8 string. ()"
+  },
+  "raylib.GetCodepoint": {
+    "prefix": "raylib.GetCodepoint",
+    "body": ["raylib.GetCodepoint()"],
+    "description": "Gets a codepoint from a UTF-8 string. ()"
+  },
+  "raylib.GetCodepointNext": {
+    "prefix": "raylib.GetCodepointNext",
+    "body": ["raylib.GetCodepointNext()"],
+    "description": "Gets the next codepoint in a UTF-8 string. ()"
+  },
+  "raylib.GetCodepointPrevious": {
+    "prefix": "raylib.GetCodepointPrevious",
+    "body": ["raylib.GetCodepointPrevious()"],
+    "description": "Gets the previous codepoint in a UTF-8 string. ()"
+  },
+  "raylib.CodepointToUTF8": {
+    "prefix": "raylib.CodepointToUTF8",
+    "body": ["raylib.CodepointToUTF8()"],
+    "description": "Converts a codepoint to a UTF-8 string. ()"
+  },
+  "raylib.TextCopy": {
+    "prefix": "raylib.TextCopy",
+    "body": ["raylib.TextCopy()"],
+    "description": "Copies text from one string to another. ()"
+  },
+  "raylib.TextIsEqual": {
+    "prefix": "raylib.TextIsEqual",
+    "body": ["raylib.TextIsEqual()"],
+    "description": "Checks if two strings are equal. ()"
+  },
+  "raylib.TextLength": {
+    "prefix": "raylib.TextLength",
+    "body": ["raylib.TextLength()"],
+    "description": "Gets the length of a text string. ()"
+  },
+  "raylib.TextFormat": {
+    "prefix": "raylib.TextFormat",
+    "body": ["raylib.TextFormat()"],
+    "description": "Formats a text string. ()"
+  },
+  "raylib.TextSubtext": {
+    "prefix": "raylib.TextSubtext",
+    "body": ["raylib.TextSubtext()"],
+    "description": "Gets a subtext from a text string. ()"
+  },
+  "raylib.TextReplace": {
+    "prefix": "raylib.TextReplace",
+    "body": ["raylib.TextReplace()"],
+    "description": "Replaces text in a string. ()"
+  },
+  "raylib.TextInsert": {
+    "prefix": "raylib.TextInsert",
+    "body": ["raylib.TextInsert()"],
+    "description": "Inserts text into a string. ()"
+  },
+  "raylib.TextJoin": {
+    "prefix": "raylib.TextJoin",
+    "body": ["raylib.TextJoin()"],
+    "description": "Joins text strings. ()"
+  },
+  "raylib.TextSplit": {
+    "prefix": "raylib.TextSplit",
+    "body": ["raylib.TextSplit()"],
+    "description": "Splits a text string. ()"
+  },
+  "raylib.TextAppend": {
+    "prefix": "raylib.TextAppend",
+    "body": ["raylib.TextAppend()"],
+    "description": "Appends text to a string. ()"
+  },
+  "raylib.TextFindIndex": {
+    "prefix": "raylib.TextFindIndex",
+    "body": ["raylib.TextFindIndex()"],
+    "description": "Finds the index of a substring in a text string. ()"
+  },
+  "raylib.TextToUpper": {
+    "prefix": "raylib.TextToUpper",
+    "body": ["raylib.TextToUpper()"],
+    "description": "Converts a text string to uppercase. ()"
+  },
+  "raylib.TextToLower": {
+    "prefix": "raylib.TextToLower",
+    "body": ["raylib.TextToLower()"],
+    "description": "Converts a text string to lowercase. ()"
+  },
+  "raylib.TextToPascal": {
+    "prefix": "raylib.TextToPascal",
+    "body": ["raylib.TextToPascal()"],
+    "description": "Converts a text string to Pascal case. ()"
+  },
+  "raylib.TextToSnake": {
+    "prefix": "raylib.TextToSnake",
+    "body": ["raylib.TextToSnake()"],
+    "description": "Converts a text string to snake case. ()"
+  },
+  "raylib.TextToCamel": {
+    "prefix": "raylib.TextToCamel",
+    "body": ["raylib.TextToCamel()"],
+    "description": "Converts a text string to camel case. ()"
+  },
+  "raylib.TextToInteger": {
+    "prefix": "raylib.TextToInteger",
+    "body": ["raylib.TextToInteger()"],
+    "description": "Converts a text string to an integer. ()"
+  },
+  "raylib.TextToFloat": {
+    "prefix": "raylib.TextToFloat",
+    "body": ["raylib.TextToFloat()"],
+    "description": "Converts a text string to a float. ()"
+  },
+  "raylib.LoadImage": {
+    "prefix": "raylib.LoadImage",
+    "body": ["raylib.LoadImage()"],
+    "description": "Loads an image from a file. ()"
+  },
+  "raylib.UnloadImage": {
+    "prefix": "raylib.UnloadImage",
+    "body": ["raylib.UnloadImage()"],
+    "description": "Unloads an image from memory. ()"
+  },
+  "raylib.LoadTexture": {
+    "prefix": "raylib.LoadTexture",
+    "body": ["raylib.LoadTexture()"],
+    "description": "Loads a texture from a file. ()"
+  },
+  "raylib.LoadTextureFromImage": {
+    "prefix": "raylib.LoadTextureFromImage",
+    "body": ["raylib.LoadTextureFromImage()"],
+    "description": "Loads a texture from an existing image. ()"
+  },
+  "raylib.UnloadTexture": {
+    "prefix": "raylib.UnloadTexture",
+    "body": ["raylib.UnloadTexture()"],
+    "description": "Unloads a texture from GPU memory. ()"
+  },
+  "raylib.UpdateTexture": {
+    "prefix": "raylib.UpdateTexture",
+    "body": ["raylib.UpdateTexture()"],
+    "description": "Updates the contents of a texture with new data. ()"
+  },
+  "raylib.GenTextureMipmaps": {
+    "prefix": "raylib.GenTextureMipmaps",
+    "body": ["raylib.GenTextureMipmaps()"],
+    "description": "Generates mipmaps for a texture. ()"
+  },
+  "raylib.ImageResize": {
+    "prefix": "raylib.ImageResize",
+    "body": ["raylib.ImageResize()"],
+    "description": "Resizes an image to the specified dimensions. ()"
+  },
+  "raylib.ImageFlipHorizontal": {
+    "prefix": "raylib.ImageFlipHorizontal",
+    "body": ["raylib.ImageFlipHorizontal()"],
+    "description": "Flips an image horizontally. ()"
+  },
+  "raylib.ImageFlipVertical": {
+    "prefix": "raylib.ImageFlipVertical",
+    "body": ["raylib.ImageFlipVertical()"],
+    "description": "Flips an image vertically. ()"
+  },
+  "raylib.ImageCopy": {
+    "prefix": "raylib.ImageCopy",
+    "body": ["raylib.ImageCopy()"],
+    "description": "Creates a copy of an image. ()"
+  },
+  "raylib.ImageCrop": {
+    "prefix": "raylib.ImageCrop",
+    "body": ["raylib.ImageCrop()"],
+    "description": "Crops an image to the specified rectangle. ()"
+  },
+  "raylib.ImageColorTint": {
+    "prefix": "raylib.ImageColorTint",
+    "body": ["raylib.ImageColorTint()"],
+    "description": "Tints an image with a specified color. ()"
+  },
+  "raylib.ImageColorInvert": {
+    "prefix": "raylib.ImageColorInvert",
+    "body": ["raylib.ImageColorInvert()"],
+    "description": "Inverts the colors of an image. ()"
+  },
+  "raylib.ImageColorGrayscale": {
+    "prefix": "raylib.ImageColorGrayscale",
+    "body": ["raylib.ImageColorGrayscale()"],
+    "description": "Converts an image to grayscale. ()"
+  },
+  "raylib.ImageColorBrightness": {
+    "prefix": "raylib.ImageColorBrightness",
+    "body": ["raylib.ImageColorBrightness()"],
+    "description": "Adjusts the brightness of an image. ()"
+  },
+  "raylib.ImageColorContrast": {
+    "prefix": "raylib.ImageColorContrast",
+    "body": ["raylib.ImageColorContrast()"],
+    "description": "Adjusts the contrast of an image. ()"
+  },
+  "raylib.ImageColorReplace": {
+    "prefix": "raylib.ImageColorReplace",
+    "body": ["raylib.ImageColorReplace()"],
+    "description": "Replaces a color in an image with another color. ()"
+  },
+  "raylib.LoadTextureCubemap": {
+    "prefix": "raylib.LoadTextureCubemap",
+    "body": ["raylib.LoadTextureCubemap()"],
+    "description": "Loads a cubemap texture from an image. ()"
+  },
+  "raylib.UpdateTextureRec": {
+    "prefix": "raylib.UpdateTextureRec",
+    "body": ["raylib.UpdateTextureRec()"],
+    "description": "Updates a specific region of a texture with new data. ()"
+  },
+  "raylib.LoadImageRaw": {
+    "prefix": "raylib.LoadImageRaw",
+    "body": ["raylib.LoadImageRaw()"],
+    "description": "Loads an image from raw pixel data. ()"
+  },
+  "raylib.LoadImageAnim": {
+    "prefix": "raylib.LoadImageAnim",
+    "body": ["raylib.LoadImageAnim()"],
+    "description": "Loads an animated image (GIF) from a file. ()"
+  },
+  "raylib.LoadImageAnimFromMemory": {
+    "prefix": "raylib.LoadImageAnimFromMemory",
+    "body": ["raylib.LoadImageAnimFromMemory()"],
+    "description": "Loads an animated image (GIF) from memory. ()"
+  },
+  "raylib.LoadImageFromMemory": {
+    "prefix": "raylib.LoadImageFromMemory",
+    "body": ["raylib.LoadImageFromMemory()"],
+    "description": "Loads an image from memory data. ()"
+  },
+  "raylib.LoadImageFromTexture": {
+    "prefix": "raylib.LoadImageFromTexture",
+    "body": ["raylib.LoadImageFromTexture()"],
+    "description": "Loads an image from a texture. ()"
+  },
+  "raylib.LoadImageFromScreen": {
+    "prefix": "raylib.LoadImageFromScreen",
+    "body": ["raylib.LoadImageFromScreen()"],
+    "description": "Loads an image from the current screen content. ()"
+  },
+  "raylib.IsImageValid": {
+    "prefix": "raylib.IsImageValid",
+    "body": ["raylib.IsImageValid()"],
+    "description": "Checks if an image is valid. ()"
+  },
+  "raylib.ExportImage": {
+    "prefix": "raylib.ExportImage",
+    "body": ["raylib.ExportImage()"],
+    "description": "Exports an image to a file. ()"
+  },
+  "raylib.ExportImageToMemory": {
+    "prefix": "raylib.ExportImageToMemory",
+    "body": ["raylib.ExportImageToMemory()"],
+    "description": "Exports an image to memory. ()"
+  },
+  "raylib.ExportImageAsCode": {
+    "prefix": "raylib.ExportImageAsCode",
+    "body": ["raylib.ExportImageAsCode()"],
+    "description": "Exports an image as source code. ()"
+  },
+  "raylib.GenImageColor": {
+    "prefix": "raylib.GenImageColor",
+    "body": ["raylib.GenImageColor()"],
+    "description": "Generates an image filled with a specific color. ()"
+  },
+  "raylib.GenImageGradientLinear": {
+    "prefix": "raylib.GenImageGradientLinear",
+    "body": ["raylib.GenImageGradientLinear()"],
+    "description": "Generates a linear gradient image. ()"
+  },
+  "raylib.GenImageGradientRadial": {
+    "prefix": "raylib.GenImageGradientRadial",
+    "body": ["raylib.GenImageGradientRadial()"],
+    "description": "Generates a radial gradient image. ()"
+  },
+  "raylib.GenImageGradientSquare": {
+    "prefix": "raylib.GenImageGradientSquare",
+    "body": ["raylib.GenImageGradientSquare()"],
+    "description": "Generates a square gradient image. ()"
+  },
+  "raylib.GenImageChecked": {
+    "prefix": "raylib.GenImageChecked",
+    "body": ["raylib.GenImageChecked()"],
+    "description": "Generates an image with a checkered pattern. ()"
+  },
+  "raylib.GenImageWhiteNoise": {
+    "prefix": "raylib.GenImageWhiteNoise",
+    "body": ["raylib.GenImageWhiteNoise()"],
+    "description": "Generates an image with white noise. ()"
+  },
+  "raylib.GenImagePerlinNoise": {
+    "prefix": "raylib.GenImagePerlinNoise",
+    "body": ["raylib.GenImagePerlinNoise()"],
+    "description": "Generates an image with Perlin noise. ()"
+  },
+  "raylib.GenImageCellular": {
+    "prefix": "raylib.GenImageCellular",
+    "body": ["raylib.GenImageCellular()"],
+    "description": "Generates an image with a cellular pattern. ()"
+  },
+  "raylib.GenImageText": {
+    "prefix": "raylib.GenImageText",
+    "body": ["raylib.GenImageText()"],
+    "description": "Generates an image with text. ()"
+  },
+  "raylib.ImageFromImage": {
+    "prefix": "raylib.ImageFromImage",
+    "body": ["raylib.ImageFromImage()"],
+    "description": "Extracts a sub-image from an existing image. ()"
+  },
+  "raylib.ImageFromChannel": {
+    "prefix": "raylib.ImageFromChannel",
+    "body": ["raylib.ImageFromChannel()"],
+    "description": "Extracts a specific color channel from an image. ()"
+  },
+  "raylib.ImageText": {
+    "prefix": "raylib.ImageText",
+    "body": ["raylib.ImageText()"],
+    "description": "Generates an image with a text string. ()"
+  },
+  "raylib.ImageTextEx": {
+    "prefix": "raylib.ImageTextEx",
+    "body": ["raylib.ImageTextEx()"],
+    "description": "Generates an image with extended text options. ()"
+  },
+  "raylib.ImageFormat": {
+    "prefix": "raylib.ImageFormat",
+    "body": ["raylib.ImageFormat()"],
+    "description": "Converts the format of an image. ()"
+  },
+  "raylib.ImageToPOT": {
+    "prefix": "raylib.ImageToPOT",
+    "body": ["raylib.ImageToPOT()"],
+    "description": "Converts an image to power-of-two dimensions. ()"
+  },
+  "raylib.ImageAlphaCrop": {
+    "prefix": "raylib.ImageAlphaCrop",
+    "body": ["raylib.ImageAlphaCrop()"],
+    "description": "Crops the image by removing transparent pixels around it. ()"
+  },
+  "raylib.ImageAlphaClear": {
+    "prefix": "raylib.ImageAlphaClear",
+    "body": ["raylib.ImageAlphaClear()"],
+    "description": "Clears alpha values from an image. ()"
+  },
+  "raylib.ImageAlphaMask": {
+    "prefix": "raylib.ImageAlphaMask",
+    "body": ["raylib.ImageAlphaMask()"],
+    "description": "Applies an alpha mask to an image. ()"
+  },
+  "raylib.ImageAlphaPremultiply": {
+    "prefix": "raylib.ImageAlphaPremultiply",
+    "body": ["raylib.ImageAlphaPremultiply()"],
+    "description": "Premultiplies the alpha channel of an image. ()"
+  },
+  "raylib.ImageBlurGaussian": {
+    "prefix": "raylib.ImageBlurGaussian",
+    "body": ["raylib.ImageBlurGaussian()"],
+    "description": "Applies a Gaussian blur to an image. ()"
+  },
+  "raylib.ImageKernelConvolution": {
+    "prefix": "raylib.ImageKernelConvolution",
+    "body": ["raylib.ImageKernelConvolution()"],
+    "description": "Applies a kernel convolution to an image. ()"
+  },
+  "raylib.ImageResizeNN": {
+    "prefix": "raylib.ImageResizeNN",
+    "body": ["raylib.ImageResizeNN()"],
+    "description": "Resizes an image using nearest-neighbor scaling. ()"
+  },
+  "raylib.ImageResizeCanvas": {
+    "prefix": "raylib.ImageResizeCanvas",
+    "body": ["raylib.ImageResizeCanvas()"],
+    "description": "Resizes the image canvas while maintaining the image's position. ()"
+  },
+  "raylib.ImageMipmaps": {
+    "prefix": "raylib.ImageMipmaps",
+    "body": ["raylib.ImageMipmaps()"],
+    "description": "Generates mipmaps for the image. ()"
+  },
+  "raylib.ImageDither": {
+    "prefix": "raylib.ImageDither",
+    "body": ["raylib.ImageDither()"],
+    "description": "Applies a dithering effect to the image. ()"
+  },
+  "raylib.ImageRotate": {
+    "prefix": "raylib.ImageRotate",
+    "body": ["raylib.ImageRotate()"],
+    "description": "Rotates the image by a specified angle. ()"
+  },
+  "raylib.ImageRotateCW": {
+    "prefix": "raylib.ImageRotateCW",
+    "body": ["raylib.ImageRotateCW()"],
+    "description": "Rotates the image 90 degrees clockwise. ()"
+  },
+  "raylib.ImageRotateCCW": {
+    "prefix": "raylib.ImageRotateCCW",
+    "body": ["raylib.ImageRotateCCW()"],
+    "description": "Rotates the image 90 degrees counterclockwise. ()"
+  },
+  "raylib.LoadImageColors": {
+    "prefix": "raylib.LoadImageColors",
+    "body": ["raylib.LoadImageColors()"],
+    "description": "Loads the color data from an image. ()"
+  },
+  "raylib.LoadImagePalette": {
+    "prefix": "raylib.LoadImagePalette",
+    "body": ["raylib.LoadImagePalette()"],
+    "description": "Loads the palette from an image. ()"
+  },
+  "raylib.UnloadImageColors": {
+    "prefix": "raylib.UnloadImageColors",
+    "body": ["raylib.UnloadImageColors()"],
+    "description": "Unloads the color data from memory. ()"
+  },
+  "raylib.UnloadImagePalette": {
+    "prefix": "raylib.UnloadImagePalette",
+    "body": ["raylib.UnloadImagePalette()"],
+    "description": "Unloads the image palette from memory. ()"
+  },
+  "raylib.GetImageAlphaBorder": {
+    "prefix": "raylib.GetImageAlphaBorder",
+    "body": ["raylib.GetImageAlphaBorder()"],
+    "description": "Gets the alpha border rectangle of an image. ()"
+  },
+  "raylib.GetImageColor": {
+    "prefix": "raylib.GetImageColor",
+    "body": ["raylib.GetImageColor()"],
+    "description": "Gets the color of a specific pixel in an image. ()"
+  },
+  "raylib.ImageClearBackground": {
+    "prefix": "raylib.ImageClearBackground",
+    "body": ["raylib.ImageClearBackground()"],
+    "description": "Clears the background of an image with a specified color. ()"
+  },
+  "raylib.ImageDrawPixel": {
+    "prefix": "raylib.ImageDrawPixel",
+    "body": ["raylib.ImageDrawPixel()"],
+    "description": "Draws a pixel at the specified position in an image. ()"
+  },
+  "raylib.ImageDrawPixelV": {
+    "prefix": "raylib.ImageDrawPixelV",
+    "body": ["raylib.ImageDrawPixelV()"],
+    "description": "Draws a pixel at the specified position (Vector2) in an image. ()"
+  },
+  "raylib.ImageDrawLine": {
+    "prefix": "raylib.ImageDrawLine",
+    "body": ["raylib.ImageDrawLine()"],
+    "description": "Draws a line between two points in an image. ()"
+  },
+  "raylib.ImageDrawLineV": {
+    "prefix": "raylib.ImageDrawLineV",
+    "body": ["raylib.ImageDrawLineV()"],
+    "description": "Draws a line between two points (Vector2) in an image. ()"
+  },
+  "raylib.ImageDrawLineEx": {
+    "prefix": "raylib.ImageDrawLineEx",
+    "body": ["raylib.ImageDrawLineEx()"],
+    "description": "Draws a line between two points with extended parameters in an image. ()"
+  },
+  "raylib.ImageDrawCircle": {
+    "prefix": "raylib.ImageDrawCircle",
+    "body": ["raylib.ImageDrawCircle()"],
+    "description": "Draws a circle in an image at a specified position. ()"
+  },
+  "raylib.ImageDrawCircleV": {
+    "prefix": "raylib.ImageDrawCircleV",
+    "body": ["raylib.ImageDrawCircleV()"],
+    "description": "Draws a circle in an image at a specified position (Vector2). ()"
+  },
+  "raylib.ImageDrawCircleLines": {
+    "prefix": "raylib.ImageDrawCircleLines",
+    "body": ["raylib.ImageDrawCircleLines()"],
+    "description": "Draws the outline of a circle in an image at a specified position. ()"
+  },
+  "raylib.ImageDrawCircleLinesV": {
+    "prefix": "raylib.ImageDrawCircleLinesV",
+    "body": ["raylib.ImageDrawCircleLinesV()"],
+    "description": "Draws the outline of a circle in an image at a specified position (Vector2). ()"
+  },
+  "raylib.ImageDrawRectangle": {
+    "prefix": "raylib.ImageDrawRectangle",
+    "body": ["raylib.ImageDrawRectangle()"],
+    "description": "Draws a rectangle in an image at a specified position. ()"
+  },
+  "raylib.ImageDrawRectangleV": {
+    "prefix": "raylib.ImageDrawRectangleV",
+    "body": ["raylib.ImageDrawRectangleV()"],
+    "description": "Draws a rectangle in an image at a specified position (Vector2). ()"
+  },
+  "raylib.ImageDrawRectangleRec": {
+    "prefix": "raylib.ImageDrawRectangleRec",
+    "body": ["raylib.ImageDrawRectangleRec()"],
+    "description": "Draws a rectangle in an image using a Rectangle structure. ()"
+  },
+  "raylib.ImageDrawRectangleLines": {
+    "prefix": "raylib.ImageDrawRectangleLines",
+    "body": ["raylib.ImageDrawRectangleLines()"],
+    "description": "Draws the outline of a rectangle in an image. ()"
+  },
+  "raylib.ImageDrawTriangle": {
+    "prefix": "raylib.ImageDrawTriangle",
+    "body": ["raylib.ImageDrawTriangle()"],
+    "description": "Draws a triangle in an image using three points. ()"
+  },
+  "raylib.ImageDrawTriangleEx": {
+    "prefix": "raylib.ImageDrawTriangleEx",
+    "body": ["raylib.ImageDrawTriangleEx()"],
+    "description": "Draws a triangle in an image using extended parameters. ()"
+  },
+  "raylib.ImageDrawTriangleLines": {
+    "prefix": "raylib.ImageDrawTriangleLines",
+    "body": ["raylib.ImageDrawTriangleLines()"],
+    "description": "Draws the outline of a triangle in an image. ()"
+  },
+  "raylib.ImageDrawTriangleFan": {
+    "prefix": "raylib.ImageDrawTriangleFan",
+    "body": ["raylib.ImageDrawTriangleFan()"],
+    "description": "Draws a triangle fan in an image. ()"
+  },
+  "raylib.ImageDrawTriangleStrip": {
+    "prefix": "raylib.ImageDrawTriangleStrip",
+    "body": ["raylib.ImageDrawTriangleStrip()"],
+    "description": "Draws a triangle strip in an image. ()"
+  },
+  "raylib.ImageDraw": {
+    "prefix": "raylib.ImageDraw",
+    "body": ["raylib.ImageDraw()"],
+    "description": "Draws an image onto another image. ()"
+  },
+  "raylib.ImageDrawText": {
+    "prefix": "raylib.ImageDrawText",
+    "body": ["raylib.ImageDrawText()"],
+    "description": "Draws text on an image. ()"
+  },
+  "raylib.ImageDrawTextEx": {
+    "prefix": "raylib.ImageDrawTextEx",
+    "body": ["raylib.ImageDrawTextEx()"],
+    "description": "Draws text on an image using extended parameters. ()"
+  },
+  "raylib.LoadRenderTexture": {
+    "prefix": "raylib.LoadRenderTexture",
+    "body": ["raylib.LoadRenderTexture()"],
+    "description": "Loads a render texture. ()"
+  },
+  "raylib.IsTextureValid": {
+    "prefix": "raylib.IsTextureValid",
+    "body": ["raylib.IsTextureValid()"],
+    "description": "Checks if a texture is valid. ()"
+  },
+  "raylib.IsRenderTextureValid": {
+    "prefix": "raylib.IsRenderTextureValid",
+    "body": ["raylib.IsRenderTextureValid()"],
+    "description": "Checks if a render texture is valid. ()"
+  },
+  "raylib.UnloadRenderTexture": {
+    "prefix": "raylib.UnloadRenderTexture",
+    "body": ["raylib.UnloadRenderTexture()"],
+    "description": "Unloads a render texture from memory. ()"
+  },
+  "raylib.SetTextureFilter": {
+    "prefix": "raylib.SetTextureFilter",
+    "body": ["raylib.SetTextureFilter()"],
+    "description": "Sets the filter mode for a texture. ()"
+  },
+  "raylib.SetTextureWrap": {
+    "prefix": "raylib.SetTextureWrap",
+    "body": ["raylib.SetTextureWrap()"],
+    "description": "Sets the wrap mode for a texture. ()"
+  },
+  "raylib.DrawTexture": {
+    "prefix": "raylib.DrawTexture",
+    "body": ["raylib.DrawTexture()"],
+    "description": "Draws a texture at a specified position. ()"
+  },
+  "raylib.DrawTextureV": {
+    "prefix": "raylib.DrawTextureV",
+    "body": ["raylib.DrawTextureV()"],
+    "description": "Draws a texture at a specified position using a Vector2. ()"
+  },
+  "raylib.DrawTextureEx": {
+    "prefix": "raylib.DrawTextureEx",
+    "body": ["raylib.DrawTextureEx()"],
+    "description": "Draws a texture with extended parameters. ()"
+  },
+  "raylib.DrawTextureRec": {
+    "prefix": "raylib.DrawTextureRec",
+    "body": ["raylib.DrawTextureRec()"],
+    "description": "Draws a part of a texture. ()"
+  },
+  "raylib.DrawTexturePro": {
+    "prefix": "raylib.DrawTexturePro",
+    "body": ["raylib.DrawTexturePro()"],
+    "description": "Draws a texture with extended parameters. ()"
+  },
+  "raylib.DrawTextureNPatch": {
+    "prefix": "raylib.DrawTextureNPatch",
+    "body": ["raylib.DrawTextureNPatch()"],
+    "description": "Draws a texture using N-patch information. ()"
+  },
+  "raylib.ColorIsEqual": {
+    "prefix": "raylib.ColorIsEqual",
+    "body": ["raylib.ColorIsEqual()"],
+    "description": "Checks if two colors are equal. ()"
+  },
+  "raylib.Fade": {
+    "prefix": "raylib.Fade",
+    "body": ["raylib.Fade()"],
+    "description": "Applies fade effect to a color. ()"
+  },
+  "raylib.ColorToInt": {
+    "prefix": "raylib.ColorToInt",
+    "body": ["raylib.ColorToInt()"],
+    "description": "Converts a Color to an integer representation. ()"
+  },
+  "raylib.ColorNormalize": {
+    "prefix": "raylib.ColorNormalize",
+    "body": ["raylib.ColorNormalize()"],
+    "description": "Normalizes a Color to a Vector4. ()"
+  },
+  "raylib.ColorFromNormalized": {
+    "prefix": "raylib.ColorFromNormalized",
+    "body": ["raylib.ColorFromNormalized()"],
+    "description": "Converts a normalized Vector4 to a Color. ()"
+  },
+  "raylib.ColorToHSV": {
+    "prefix": "raylib.ColorToHSV",
+    "body": ["raylib.ColorToHSV()"],
+    "description": "Converts a Color to HSV. ()"
+  },
+  "raylib.ColorFromHSV": {
+    "prefix": "raylib.ColorFromHSV",
+    "body": ["raylib.ColorFromHSV()"],
+    "description": "Converts HSV (Hue, Saturation, Value) to a Color. ()"
+  },
+  "raylib.ColorTint": {
+    "prefix": "raylib.ColorTint",
+    "body": ["raylib.ColorTint()"],
+    "description": "Tints a Color with another Color. ()"
+  },
+  "raylib.ColorBrightness": {
+    "prefix": "raylib.ColorBrightness",
+    "body": ["raylib.ColorBrightness()"],
+    "description": "Adjusts the brightness of a Color. ()"
+  },
+  "raylib.ColorContrast": {
+    "prefix": "raylib.ColorContrast",
+    "body": ["raylib.ColorContrast()"],
+    "description": "Adjusts the contrast of a Color. ()"
+  },
+  "raylib.ColorAlpha": {
+    "prefix": "raylib.ColorAlpha",
+    "body": ["raylib.ColorAlpha()"],
+    "description": "Adjusts the alpha (transparency) of a Color. ()"
+  },
+  "raylib.ColorAlphaBlend": {
+    "prefix": "raylib.ColorAlphaBlend",
+    "body": ["raylib.ColorAlphaBlend()"],
+    "description": "Blends two Colors based on alpha blending. ()"
+  },
+  "raylib.ColorLerp": {
+    "prefix": "raylib.ColorLerp",
+    "body": ["raylib.ColorLerp()"],
+    "description": "Linearly interpolates between two Colors. ()"
+  },
+  "raylib.GetColor": {
+    "prefix": "raylib.GetColor",
+    "body": ["raylib.GetColor()"],
+    "description": "Gets the integer representation of a Color. ()"
+  },
+  "raylib.GetPixelColor": {
+    "prefix": "raylib.GetPixelColor",
+    "body": ["raylib.GetPixelColor()"],
+    "description": "Gets the color of a pixel from the screen at a given position. ()"
+  },
+  "raylib.SetPixelColor": {
+    "prefix": "raylib.SetPixelColor",
+    "body": ["raylib.SetPixelColor()"],
+    "description": "Sets the color of a specific pixel on the screen or render target. ()"
+  },
+  "raylib.GetPixelDataSize": {
+    "prefix": "raylib.GetPixelDataSize",
+    "body": ["raylib.GetPixelDataSize()"],
+    "description": "Gets the size of the pixel data in memory for an image or texture. ()"
+  },
+  "raylib.LoadModel": {
+    "prefix": "raylib.LoadModel",
+    "body": ["raylib.LoadModel()"],
+    "description": "Loads a model from a file. ()"
+  },
+  "raylib.DrawModel": {
+    "prefix": "raylib.DrawModel",
+    "body": ["raylib.DrawModel()"],
+    "description": "Draws a model with default parameters. ()"
+  },
+  "raylib.DrawModelEx": {
+    "prefix": "raylib.DrawModelEx",
+    "body": ["raylib.DrawModelEx()"],
+    "description": "Draws a model with extended parameters. ()"
+  },
+  "raylib.UnloadModel": {
+    "prefix": "raylib.UnloadModel",
+    "body": ["raylib.UnloadModel()"],
+    "description": "Unloads a model from memory. ()"
+  },
+  "raylib.UpdateModelAnimation": {
+    "prefix": "raylib.UpdateModelAnimation",
+    "body": ["raylib.UpdateModelAnimation()"],
+    "description": "Updates a model animation. ()"
+  },
+  "raylib.DrawMesh": {
+    "prefix": "raylib.DrawMesh",
+    "body": ["raylib.DrawMesh()"],
+    "description": "Draws a mesh with default parameters. ()"
+  },
+  "raylib.UnloadMesh": {
+    "prefix": "raylib.UnloadMesh",
+    "body": ["raylib.UnloadMesh()"],
+    "description": "Unloads a mesh from memory. ()"
+  },
+  "raylib.GenMeshCube": {
+    "prefix": "raylib.GenMeshCube",
+    "body": ["raylib.GenMeshCube()"],
+    "description": "Generates a cube mesh. ()"
+  },
+  "raylib.GenMeshSphere": {
+    "prefix": "raylib.GenMeshSphere",
+    "body": ["raylib.GenMeshSphere()"],
+    "description": "Generates a sphere mesh. ()"
+  },
+  "raylib.GenMeshPlane": {
+    "prefix": "raylib.GenMeshPlane",
+    "body": ["raylib.GenMeshPlane()"],
+    "description": "Generates a plane mesh. ()"
+  },
+  "raylib.DrawLine3D": {
+    "prefix": "raylib.DrawLine3D",
+    "body": ["raylib.DrawLine3D()"],
+    "description": "Draws a 3D line with specified parameters. ()"
+  },
+  "raylib.DrawPoint3D": {
+    "prefix": "raylib.DrawPoint3D",
+    "body": ["raylib.DrawPoint3D()"],
+    "description": "Draws a 3D point with specified parameters. ()"
+  },
+  "raylib.DrawCircle3D": {
+    "prefix": "raylib.DrawCircle3D",
+    "body": ["raylib.DrawCircle3D()"],
+    "description": "Draws a 3D circle with specified parameters. ()"
+  },
+  "raylib.DrawTriangle3D": {
+    "prefix": "raylib.DrawTriangle3D",
+    "body": ["raylib.DrawTriangle3D()"],
+    "description": "Draws a 3D triangle with specified parameters. ()"
+  },
+  "raylib.DrawTriangleStrip3D": {
+    "prefix": "raylib.DrawTriangleStrip3D",
+    "body": ["raylib.DrawTriangleStrip3D()"],
+    "description": "Draws a 3D triangle strip with specified parameters. ()"
+  },
+  "raylib.DrawCube": {
+    "prefix": "raylib.DrawCube",
+    "body": ["raylib.DrawCube()"],
+    "description": "Draws a 3D cube with specified parameters. ()"
+  },
+  "raylib.DrawCubeV": {
+    "prefix": "raylib.DrawCubeV",
+    "body": ["raylib.DrawCubeV()"],
+    "description": "Draws a 3D cube with specified parameters using a Vector3. ()"
+  },
+  "raylib.DrawCubeWires": {
+    "prefix": "raylib.DrawCubeWires",
+    "body": ["raylib.DrawCubeWires()"],
+    "description": "Draws the wireframe of a cube with specified parameters. ()"
+  },
+  "raylib.DrawCubeWiresV": {
+    "prefix": "raylib.DrawCubeWiresV",
+    "body": ["raylib.DrawCubeWiresV()"],
+    "description": "Draws the wireframe of a cube with specified parameters using a Vector3. ()"
+  },
+  "raylib.DrawSphereWires": {
+    "prefix": "raylib.DrawSphereWires",
+    "body": ["raylib.DrawSphereWires()"],
+    "description": "Draws the wireframe of a sphere with specified parameters. ()"
+  },
+  "raylib.DrawCylinder": {
+    "prefix": "raylib.DrawCylinder",
+    "body": ["raylib.DrawCylinder()"],
+    "description": "Draws a cylinder with specified parameters. ()"
+  },
+  "raylib.DrawCylinderEx": {
+    "prefix": "raylib.DrawCylinderEx",
+    "body": ["raylib.DrawCylinderEx()"],
+    "description": "Draws a cylinder with extended parameters. ()"
+  },
+  "raylib.DrawCylinderWires": {
+    "prefix": "raylib.DrawCylinderWires",
+    "body": ["raylib.DrawCylinderWires()"],
+    "description": "Draws the wireframe of a cylinder with specified parameters. ()"
+  },
+  "raylib.DrawCylinderWiresEx": {
+    "prefix": "raylib.DrawCylinderWiresEx",
+    "body": ["raylib.DrawCylinderWiresEx()"],
+    "description": "Draws the wireframe of a cylinder with extended parameters. ()"
+  },
+  "raylib.DrawCapsule": {
+    "prefix": "raylib.DrawCapsule",
+    "body": ["raylib.DrawCapsule()"],
+    "description": "Draws a capsule with specified parameters. ()"
+  },
+  "raylib.DrawCapsuleWires": {
+    "prefix": "raylib.DrawCapsuleWires",
+    "body": ["raylib.DrawCapsuleWires()"],
+    "description": "Draws the wireframe of a capsule with specified parameters. ()"
+  },
+  "raylib.DrawPlane": {
+    "prefix": "raylib.DrawPlane",
+    "body": ["raylib.DrawPlane()"],
+    "description": "Draws a plane with specified parameters. ()"
+  },
+  "raylib.DrawRay": {
+    "prefix": "raylib.DrawRay",
+    "body": ["raylib.DrawRay()"],
+    "description": "Draws a ray with specified parameters. ()"
+  },
+  "raylib.LoadModelFromMesh": {
+    "prefix": "raylib.LoadModelFromMesh",
+    "body": ["raylib.LoadModelFromMesh()"],
+    "description": "Loads a model from a mesh. ()"
+  },
+  "raylib.IsModelValid": {
+    "prefix": "raylib.IsModelValid",
+    "body": ["raylib.IsModelValid()"],
+    "description": "Checks if a model is valid. ()"
+  },
+  "raylib.GetModelBoundingBox": {
+    "prefix": "raylib.GetModelBoundingBox",
+    "body": ["raylib.GetModelBoundingBox()"],
+    "description": "Gets the bounding box of a model. ()"
+  },
+  "raylib.DrawBoundingBox": {
+    "prefix": "raylib.DrawBoundingBox",
+    "body": ["raylib.DrawBoundingBox()"],
+    "description": "Draws a bounding box with specified parameters. ()"
+  },
+  "raylib.DrawBillboard": {
+    "prefix": "raylib.DrawBillboard",
+    "body": ["raylib.DrawBillboard()"],
+    "description": "Draws a billboard with specified parameters. ()"
+  },
+  "raylib.DrawBillboardRec": {
+    "prefix": "raylib.DrawBillboardRec",
+    "body": ["raylib.DrawBillboardRec()"],
+    "description": "Draws a billboard with a specified rectangle. ()"
+  },
+  "raylib.DrawBillboardPro": {
+    "prefix": "raylib.DrawBillboardPro",
+    "body": ["raylib.DrawBillboardPro()"],
+    "description": "Draws a billboard with extended parameters. ()"
+  },
+  "raylib.UploadMesh": {
+    "prefix": "raylib.UploadMesh",
+    "body": ["raylib.UploadMesh()"],
+    "description": "Uploads a mesh to the GPU. ()"
+  },
+  "raylib.UpdateMeshBuffer": {
+    "prefix": "raylib.UpdateMeshBuffer",
+    "body": ["raylib.UpdateMeshBuffer()"],
+    "description": "Updates a mesh buffer with new data. ()"
+  },
+  "raylib.GetMeshBoundingBox": {
+    "prefix": "raylib.GetMeshBoundingBox",
+    "body": ["raylib.GetMeshBoundingBox()"],
+    "description": "Gets the bounding box of a mesh. ()"
+  },
+  "raylib.GenMeshTangents": {
+    "prefix": "raylib.GenMeshTangents",
+    "body": ["raylib.GenMeshTangents()"],
+    "description": "Generates tangents for a mesh. ()"
+  },
+  "raylib.ExportMesh": {
+    "prefix": "raylib.ExportMesh",
+    "body": ["raylib.ExportMesh()"],
+    "description": "Exports a mesh to a file. ()"
+  },
+  "raylib.ExportMeshAsCode": {
+    "prefix": "raylib.ExportMeshAsCode",
+    "body": ["raylib.ExportMeshAsCode()"],
+    "description": "Exports a mesh as C code. ()"
+  },
+  "raylib.GenMeshPoly": {
+    "prefix": "raylib.GenMeshPoly",
+    "body": ["raylib.GenMeshPoly()"],
+    "description": "Generates a polygon mesh. ()"
+  },
+  "raylib.GenMeshHemiSphere": {
+    "prefix": "raylib.GenMeshHemiSphere",
+    "body": ["raylib.GenMeshHemiSphere()"],
+    "description": "Generates a hemisphere mesh. ()"
+  },
+  "raylib.GenMeshCylinder": {
+    "prefix": "raylib.GenMeshCylinder",
+    "body": ["raylib.GenMeshCylinder()"],
+    "description": "Generates a cylinder mesh. ()"
+  },
+  "raylib.GenMeshCone": {
+    "prefix": "raylib.GenMeshCone",
+    "body": ["raylib.GenMeshCone()"],
+    "description": "Generates a cone mesh. ()"
+  },
+  "raylib.GenMeshTorus": {
+    "prefix": "raylib.GenMeshTorus",
+    "body": ["raylib.GenMeshTorus()"],
+    "description": "Generates a torus mesh. ()"
+  },
+  "raylib.GenMeshKnot": {
+    "prefix": "raylib.GenMeshKnot",
+    "body": ["raylib.GenMeshKnot()"],
+    "description": "Generates a knot mesh. ()"
+  },
+  "raylib.GenMeshHeightmap": {
+    "prefix": "raylib.GenMeshHeightmap",
+    "body": ["raylib.GenMeshHeightmap()"],
+    "description": "Generates a heightmap mesh. ()"
+  },
+  "raylib.GenMeshCubicmap": {
+    "prefix": "raylib.GenMeshCubicmap",
+    "body": ["raylib.GenMeshCubicmap()"],
+    "description": "Generates a cubicmap mesh. ()"
+  },
+  "raylib.LoadMaterials": {
+    "prefix": "raylib.LoadMaterials",
+    "body": ["raylib.LoadMaterials()"],
+    "description": "Loads materials from a file. ()"
+  },
+  "raylib.LoadMaterialDefault": {
+    "prefix": "raylib.LoadMaterialDefault",
+    "body": ["raylib.LoadMaterialDefault()"],
+    "description": "Loads the default material. ()"
+  },
+  "raylib.IsMaterialValid": {
+    "prefix": "raylib.IsMaterialValid",
+    "body": ["raylib.IsMaterialValid()"],
+    "description": "Checks if a material is valid. ()"
+  },
+  "raylib.UnloadMaterial": {
+    "prefix": "raylib.UnloadMaterial",
+    "body": ["raylib.UnloadMaterial()"],
+    "description": "Unloads a material from memory. ()"
+  },
+  "raylib.SetMaterialTexture": {
+    "prefix": "raylib.SetMaterialTexture",
+    "body": ["raylib.SetMaterialTexture()"],
+    "description": "Sets a texture for a material. ()"
+  },
+  "raylib.SetModelMeshMaterial": {
+    "prefix": "raylib.SetModelMeshMaterial",
+    "body": ["raylib.SetModelMeshMaterial()"],
+    "description": "Sets the material for a model mesh. ()"
+  },
+  "raylib.LoadModelAnimations": {
+    "prefix": "raylib.LoadModelAnimations",
+    "body": ["raylib.LoadModelAnimations()"],
+    "description": "Loads model animations from a file. ()"
+  },
+  "raylib.UnloadModelAnimation": {
+    "prefix": "raylib.UnloadModelAnimation",
+    "body": ["raylib.UnloadModelAnimation()"],
+    "description": "Unloads a model animation from memory. ()"
+  },
+  "raylib.UnloadModelAnimations": {
+    "prefix": "raylib.UnloadModelAnimations",
+    "body": ["raylib.UnloadModelAnimations()"],
+    "description": "Unloads model animations from memory. ()"
+  },
+  "raylib.IsModelAnimationValid": {
+    "prefix": "raylib.IsModelAnimationValid",
+    "body": ["raylib.IsModelAnimationValid()"],
+    "description": "Checks if a model animation is valid. ()"
+  },
+  "raylib.CheckCollisionSpheres": {
+    "prefix": "raylib.CheckCollisionSpheres",
+    "body": ["raylib.CheckCollisionSpheres()"],
+    "description": "Checks collision between two spheres. ()"
+  },
+  "raylib.CheckCollisionBoxes": {
+    "prefix": "raylib.CheckCollisionBoxes",
+    "body": ["raylib.CheckCollisionBoxes()"],
+    "description": "Checks collision between two boxes. ()"
+  },
+  "raylib.CheckCollisionBoxSphere": {
+    "prefix": "raylib.CheckCollisionBoxSphere",
+    "body": ["raylib.CheckCollisionBoxSphere()"],
+    "description": "Checks collision between a box and a sphere. ()"
+  },
+  "raylib.GetRayCollisionSphere": {
+    "prefix": "raylib.GetRayCollisionSphere",
+    "body": ["raylib.GetRayCollisionSphere()"],
+    "description": "Gets the collision information between a ray and a sphere. ()"
+  },
+  "raylib.GetRayCollisionBox": {
+    "prefix": "raylib.GetRayCollisionBox",
+    "body": ["raylib.GetRayCollisionBox()"],
+    "description": "Gets the collision information between a ray and a box. ()"
+  },
+  "raylib.GetRayCollisionMesh": {
+    "prefix": "raylib.GetRayCollisionMesh",
+    "body": ["raylib.GetRayCollisionMesh()"],
+    "description": "Gets the collision information between a ray and a mesh. ()"
+  },
+  "raylib.GetRayCollisionTriangle": {
+    "prefix": "raylib.GetRayCollisionTriangle",
+    "body": ["raylib.GetRayCollisionTriangle()"],
+    "description": "Gets the collision information between a ray and a triangle. ()"
+  },
+  "raylib.GetRayCollisionQuad": {
+    "prefix": "raylib.GetRayCollisionQuad",
+    "body": ["raylib.GetRayCollisionQuad()"],
+    "description": "Gets the collision information between a ray and a quad. ()"
+  }
+}
