@@ -2,6 +2,7 @@
   "name": "raylib-lua-bindings-autocomplete",
   "displayName": "raylib-lua-bindings-autocomplete",
   "description": "Autocomplete for raylib-lua-bindings",
+  "repository": "https://github.com/legendaryredfox/raylib-lua-bindings-vscode",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.95.0"
