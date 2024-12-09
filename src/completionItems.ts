@@ -565,7 +565,7 @@ export function getCompletionItems(vscode: typeof import("vscode")) {
   raylib_InitWindow.detail =
     "Initializes a window with specified width, height, and title.";
   raylib_InitWindow.documentation = new vscode.MarkdownString(
-    "**raylib.InitWindow(width: int, height: int, title: string)**\n\nInitializes a window with specified width, height, and title.\n\n**Parameters:**\n- `width` (int): The width of the window in pixels.\n- `height` (int): The height of the window in pixels.\n- `title` (string): The title displayed in the windows title bar.\n\n**Usage Example:**\n```lua\nNo usage example available.\n```"
+    "**raylib.InitWindow(width: int, height: int, title: string)**\n\nInitializes a window with specified width, height, and title.\n\n**Parameters:**\n- `width` (int): The width of the window in pixels.\n- `height` (int): The height of the window in pixels.\n- `title` (string): The title displayed in the window's title bar.\n\n**Usage Example:**\n```lua\nNo usage example available.\n```"
   );
   raylib_InitWindow.insertText = new vscode.SnippetString(
     "raylib.InitWindow(${1:width}, ${2:height}, ${3:title})"
