@@ -1,10 +1,11 @@
 {
   "name": "raylib-lua-bindings-autocomplete",
-  "displayName": "raylib-lua-bindings-autocomplete",
+  "displayName": "Autocomplete for raylib-lua-bindings",
   "description": "Autocomplete for raylib-lua-bindings",
   "publisher": "LegendaryRedfox",
   "repository": "https://github.com/legendaryredfox/raylib-lua-bindings-vscode",
   "version": "0.0.1",
+  "icon": "assets/icon.png",
   "engines": {
     "vscode": "^1.95.0"
   },
