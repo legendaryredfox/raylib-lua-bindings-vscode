@@ -49,7 +49,7 @@ If you'd like to contribute or modify this extension:
 
 🔄 Changelog
 
-`v0.0.1: Initial release with autocomplete for Raylib Lua bindings.`
+`v0.0.1: Initial release with autocomplete for Raylib Lua bindings.`  
 `v0.0.11: Corrected some typos, naming and added icon.`
 
 ⚖️ License
