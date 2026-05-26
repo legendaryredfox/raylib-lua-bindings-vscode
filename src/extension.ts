@@ -1,22 +1,21 @@
 import * as vscode from "vscode";
-import { getCompletionItems } from "./completionItems"; // Import the function from completionItems.ts
+import { getCompletionItems } from "./completionItems";
 
 export function activate(context: vscode.ExtensionContext) {
-  // Get the pre-generated completion items from completionItems.ts
-  const completionItems: vscode.CompletionItem[] = getCompletionItems(vscode);
+  const completionItems = getCompletionItems(vscode);
 
-  // Register a completion item provider for Lua files
   const provider = vscode.languages.registerCompletionItemProvider(
     { language: "lua", scheme: "file" },
     {
-      provideCompletionItems(
-        document: vscode.TextDocument,
-        position: vscode.Position
-      ) {
-        return completionItems; // Return the pre-generated completion items
+      provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
+        const linePrefix = document.lineAt(position).text.slice(0, position.character);
+        if (!linePrefix.endsWith("raylib.")) {
+          return undefined;
+        }
+        return completionItems;
       },
     },
-    "." // Trigger autocomplete after typing '.'
+    "."
   );
 
   context.subscriptions.push(provider);
