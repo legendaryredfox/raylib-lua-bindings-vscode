@@ -4,7 +4,7 @@
   "description": "Autocomplete for raylib-lua-bindings",
   "publisher": "LegendaryRedfox",
   "repository": "https://github.com/legendaryredfox/raylib-lua-bindings-vscode",
-  "version": "0.5.0",
+  "version": "0.8.0",
   "icon": "assets/icon.png",
   "engines": {
     "vscode": "^1.95.0"
