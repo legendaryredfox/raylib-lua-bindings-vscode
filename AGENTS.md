@@ -5,7 +5,7 @@
 A VS Code extension that provides IntelliSense for [raylib-lua-bindings](https://github.com/legendaryredfox/raylib-lua-bindings) — a C library that embeds Raylib 5.x into Lua 5.4. When a user opens a `.lua` file and types `raylib.`, the extension shows autocomplete suggestions, parameter snippets, and inline documentation for all **464** exposed Raylib API functions.
 
 **Publisher:** LegendaryRedfox  
-**Version:** 0.5.0  
+**Version:** 0.8.0  
 **Language:** TypeScript (compiled to JS, loaded by VS Code Extension Host)
 
 ---

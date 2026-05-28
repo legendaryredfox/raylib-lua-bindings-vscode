@@ -7,7 +7,7 @@ This extension provides IntelliSense for all 464 exposed functions: autocomplete
 ## Features
 
 - **464 functions** covering the full raylib-lua-bindings API: window/input, drawing, shapes, text, textures, audio, 3D models, and more
-- **Parameter snippets** for 81 common functions with named tab stops (e.g. `raylib.InitWindow(width, height, title)`)
+- **Parameter snippets** for 112 common functions with named tab stops (e.g. `raylib.InitWindow(width, height, title)`)
 - **Inline documentation** — hover or select a completion to see a description
 - **Smart trigger** — completions appear only after `raylib.`, not on every keystroke
 
