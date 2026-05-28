@@ -4,7 +4,7 @@
   "description": "Autocomplete for raylib-lua-bindings",
   "publisher": "LegendaryRedfox",
   "repository": "https://github.com/legendaryredfox/raylib-lua-bindings-vscode",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "icon": "assets/icon.png",
   "engines": {
     "vscode": "^1.95.0"
@@ -15,6 +15,16 @@
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
+    "configuration": {
+      "title": "Raylib Lua Bindings",
+      "properties": {
+        "raylib-lua.namespace": {
+          "type": "string",
+          "default": "raylib",
+          "description": "Namespace prefix used to trigger autocomplete (e.g. 'raylib' or 'rl')."
+        }
+      }
+    },
     "languages": [
       {
         "id": "lua",

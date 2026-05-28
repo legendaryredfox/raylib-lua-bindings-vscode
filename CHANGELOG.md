@@ -4,6 +4,12 @@ All notable changes to the "raylib-lua-bindings-autocomplete" extension will be 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.8.1] - 2026-05-28
+
+### Added
+
+- **Configurable namespace** (`raylib-lua.namespace` setting): change the trigger prefix from `raylib.` to any other value, such as `rl.` for users of the [tsnake41/raylib-lua](https://github.com/tsnake41/raylib-lua) binding. The setting can be changed at any time without reloading VS Code.
+
 ## [0.5.0] - 2026-05-26
 
 ### Added

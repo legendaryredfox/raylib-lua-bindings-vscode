@@ -1,4 +1,4 @@
-export function getCompletionItems(vscode: typeof import("vscode")): import("vscode").CompletionItem[] {
+export function getCompletionItems(vscode: typeof import("vscode"), namespace = "raylib"): import("vscode").CompletionItem[] {
   type Entry = [name: string, detail: string, snippet?: string];
   const fns: Entry[] = [
     ["SetShapesTexture", "Sets the texture to be used for shapes."],
@@ -474,12 +474,15 @@ export function getCompletionItems(vscode: typeof import("vscode")): import("vsc
   ];
 
   return fns.map(([name, detail, snippet]) => {
-    const item = new vscode.CompletionItem(`raylib.${name}`, vscode.CompletionItemKind.Function);
+    const item = new vscode.CompletionItem(`${namespace}.${name}`, vscode.CompletionItemKind.Function);
     item.detail = detail;
     item.documentation = new vscode.MarkdownString(
-      `**raylib.${name}()**\n\n${detail}\n\n**Usage Example:**\n\`\`\`lua\nraylib.${name}()\n\`\`\``
+      `**${namespace}.${name}()**\n\n${detail}\n\n**Usage Example:**\n\`\`\`lua\n${namespace}.${name}()\n\`\`\``
     );
-    item.insertText = new vscode.SnippetString(snippet ?? `raylib.${name}()`);
+    const resolvedSnippet = snippet
+      ? snippet.replace(/^raylib\./, `${namespace}.`)
+      : `${namespace}.${name}()`;
+    item.insertText = new vscode.SnippetString(resolvedSnippet);
     return item;
   });
 }
