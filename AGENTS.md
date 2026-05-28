@@ -5,7 +5,7 @@
 A VS Code extension that provides IntelliSense for [raylib-lua-bindings](https://github.com/legendaryredfox/raylib-lua-bindings) — a C library that embeds Raylib 5.x into Lua 5.4. When a user opens a `.lua` file and types `raylib.`, the extension shows autocomplete suggestions, parameter snippets, and inline documentation for all **464** exposed Raylib API functions.
 
 **Publisher:** LegendaryRedfox  
-**Version:** 0.8.0  
+**Version:** 0.8.1  
 **Language:** TypeScript (compiled to JS, loaded by VS Code Extension Host)
 
 ---
@@ -43,7 +43,7 @@ A VS Code extension that provides IntelliSense for [raylib-lua-bindings](https:/
 
 ### Extension entry point (`src/extension.ts`)
 
-`activate()` calls `getCompletionItems(vscode)` once at startup to build the item list, then registers a `CompletionItemProvider` for `{ language: "lua", scheme: "file" }` triggered by the `.` character. The provider checks that the line prefix ends with `"raylib."` before returning items — this avoids polluting unrelated Lua completions.
+`activate()` reads the `raylib-lua.namespace` setting (default `"raylib"`), calls `getCompletionItems(vscode, namespace)` to build the item list, then registers a `CompletionItemProvider` for `{ language: "lua", scheme: "file" }` triggered by the `.` character. The provider checks that the line prefix ends with `"${namespace}."` before returning items — this avoids polluting unrelated Lua completions. A `onDidChangeConfiguration` listener re-registers the provider automatically when the setting changes.
 
 ### Completion item data (`src/completionItems.ts`)
 
@@ -58,10 +58,10 @@ const fns: Entry[] = [
 ];
 ```
 
-The third element (snippet) is only present for the ~81 functions that have named parameter placeholders. Functions without it default to `raylib.FunctionName()`.
+The third element (snippet) is only present for the 112 functions that have named parameter placeholders. Snippet strings in the data array always use the `raylib.` prefix as written — `getCompletionItems()` rewrites them at build time via `.replace(/^raylib\./, \`${namespace}.\`)`. Functions without a snippet default to `${namespace}.FunctionName()`.
 
-`getCompletionItems()` maps this array to `vscode.CompletionItem` objects with:
-- `label` — `"raylib.FunctionName"`
+`getCompletionItems(vscode, namespace)` maps this array to `vscode.CompletionItem` objects with:
+- `label` — `"${namespace}.FunctionName"`
 - `kind` — `Function`
 - `detail` — short description (shown in the completion list)
 - `documentation` — `MarkdownString` with description and usage example
@@ -73,7 +73,7 @@ Defines VS Code code snippets for the same functions. These are **independent of
 
 ---
 
-## API coverage (v0.5.0 — 464 functions)
+## API coverage (v0.8.1 — 464 functions)
 
 | Category | Count | Notes |
 |---|---|---|
@@ -109,7 +109,7 @@ The debug config in `.vscode/launch.json` opens a new Extension Development Host
 ## Key design decisions
 
 - **Completion items are pre-built at activation time**, not on each keystroke — the list is static and building 464 items once is cheaper than rebuilding repeatedly.
-- **The provider checks for `raylib.` prefix** before returning items; VS Code's fuzzy-match then narrows the list further. The `.` trigger character is the primary gate.
+- **The provider checks for `${namespace}.` prefix** before returning items; VS Code's fuzzy-match then narrows the list further. The `.` trigger character is the primary gate.
 - **Data-driven:** a single compact tuple array drives all 464 items. Adding a function means one line in the array. The documentation template is shared across all items.
 - **No language server** — no LSP, no semantic analysis. Purely syntactic autocomplete.
 - **`snippets/lua.json` and `completionItems.ts` overlap** — snippets are for the snippet picker; completionItems are for the inline completion popup.
