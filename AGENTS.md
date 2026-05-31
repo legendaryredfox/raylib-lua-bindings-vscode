@@ -2,10 +2,10 @@
 
 ## Project overview
 
-A VS Code extension that provides IntelliSense for [raylib-lua-bindings](https://github.com/legendaryredfox/raylib-lua-bindings) — a C library that embeds Raylib 5.x into Lua 5.4. When a user opens a `.lua` file and types `raylib.`, the extension shows autocomplete suggestions, parameter snippets, and inline documentation for all **464** exposed Raylib API functions.
+A VS Code extension that provides IntelliSense for [raylib-lua-bindings](https://github.com/legendaryredfox/raylib-lua-bindings) — a C library that embeds Raylib 6.0 into Lua 5.5. When a user opens a `.lua` file and types `raylib.`, the extension shows autocomplete suggestions, parameter snippets, and inline documentation for all **606** exposed Raylib API functions.
 
 **Publisher:** LegendaryRedfox  
-**Version:** 0.8.1  
+**Version:** 0.9.0  
 **Language:** TypeScript (compiled to JS, loaded by VS Code Extension Host)
 
 ---
@@ -16,7 +16,7 @@ A VS Code extension that provides IntelliSense for [raylib-lua-bindings](https:/
 .
 ├── src/
 │   ├── extension.ts          # Extension entry point — registers the CompletionItemProvider
-│   ├── completionItems.ts    # All 464 CompletionItem definitions (data-driven, ~37 KB)
+│   ├── completionItems.ts    # All 606 CompletionItem definitions (data-driven)
 │   └── test/
 │       └── extension.test.ts # Minimal test suite (boilerplate only)
 ├── snippets/
@@ -54,11 +54,11 @@ type Entry = [name: string, detail: string, snippet?: string];
 const fns: Entry[] = [
   ["InitWindow", "Initializes a window with specified width, height, and title.", "raylib.InitWindow(${1:width}, ${2:height}, ${3:title})"],
   ["CloseWindow", "Closes the current window..."],
-  // ...464 entries total
+  // ...606 entries total
 ];
 ```
 
-The third element (snippet) is only present for the 112 functions that have named parameter placeholders. Snippet strings in the data array always use the `raylib.` prefix as written — `getCompletionItems()` rewrites them at build time via `.replace(/^raylib\./, \`${namespace}.\`)`. Functions without a snippet default to `${namespace}.FunctionName()`.
+The third element (snippet) is only present for the 235 functions that have named parameter placeholders. Snippet strings in the data array always use the `raylib.` prefix as written — `getCompletionItems()` rewrites them at build time via `.replace(/^raylib\./, \`${namespace}.\`)`. Functions without a snippet default to `${namespace}.FunctionName()`.
 
 `getCompletionItems(vscode, namespace)` maps this array to `vscode.CompletionItem` objects with:
 - `label` — `"${namespace}.FunctionName"`
@@ -73,19 +73,25 @@ Defines VS Code code snippets for the same functions. These are **independent of
 
 ---
 
-## API coverage (v0.8.1 — 464 functions)
+## API coverage (v0.9.0 — 606 functions)
+
+Full coverage of raylib-lua-bindings: every function the binding exposes (all
+public `RLAPI` functions in raylib 6.0's `raylib.h`) has a completion entry.
+Counts below are approximate groupings.
 
 | Category | Count | Notes |
 |---|---|---|
-| Window & input | ~70 | InitWindow, keyboard, mouse, clipboard, DPI, monitors |
-| Drawing | ~30 | BeginDrawing, shapes, lines, splines, 3D primitives |
-| Shapes | ~65 | Ellipses, circles, rectangles, triangles, splines, collision |
+| Window, system & input | ~100 | InitWindow, keyboard/mouse, gamepad, gesture, touch, clipboard, DPI, monitors |
+| Drawing & render modes | ~45 | BeginDrawing, 2D/3D/texture/shader/blend/scissor mode pairs, shapes, splines |
+| Shapes & collision | ~65 | Ellipses, circles, rectangles, triangles, splines, collision |
 | Textures & images | ~80 | Load/draw/transform images and textures |
-| Text & fonts | ~50 | Load fonts, draw text, text utilities, codepoints |
-| Audio | ~45 | Sound, music, audio streams, processors |
-| 3D models | ~40 | Load/draw/animate models, meshes, materials |
+| Text & fonts | ~55 | Load fonts, draw text, text utilities, codepoints, font-atlas internals |
+| Audio | ~50 | Sound, music, audio streams, processors, playback control |
+| 3D models & camera | ~55 | Load/draw/animate models, meshes, materials, cameras, coordinate transforms |
+| Shaders | 10 | Load, uniforms, attributes, sampler textures |
+| Filesystem & data | ~35 | File/dir helpers, compression, base64, drag-and-drop, ExportDataAsCode |
 | Hashing | 4 | CRC32, MD5, SHA1, SHA256 |
-| File system | 10 | Copy, move, rename, remove, count files |
+| VR & automation events | ~15 | Stereo config, event record/replay |
 
 ---
 
@@ -108,9 +114,9 @@ The debug config in `.vscode/launch.json` opens a new Extension Development Host
 
 ## Key design decisions
 
-- **Completion items are pre-built at activation time**, not on each keystroke — the list is static and building 464 items once is cheaper than rebuilding repeatedly.
+- **Completion items are pre-built at activation time**, not on each keystroke — the list is static and building 606 items once is cheaper than rebuilding repeatedly.
 - **The provider checks for `${namespace}.` prefix** before returning items; VS Code's fuzzy-match then narrows the list further. The `.` trigger character is the primary gate.
-- **Data-driven:** a single compact tuple array drives all 464 items. Adding a function means one line in the array. The documentation template is shared across all items.
+- **Data-driven:** a single compact tuple array drives all 606 items. Adding a function means one line in the array. The documentation template is shared across all items.
 - **No language server** — no LSP, no semantic analysis. Purely syntactic autocomplete.
 - **`snippets/lua.json` and `completionItems.ts` overlap** — snippets are for the snippet picker; completionItems are for the inline completion popup.
 
@@ -142,7 +148,7 @@ Run `yarn compile` then press F5 to test.
 
 ### Changing the documentation format
 
-Edit the MarkdownString template in `getCompletionItems()` inside `src/completionItems.ts`. All 464 items share the same template.
+Edit the MarkdownString template in `getCompletionItems()` inside `src/completionItems.ts`. All 606 items share the same template.
 
 ---
 

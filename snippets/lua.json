@@ -1,4 +1,879 @@
 {
+  "raylib.IsKeyPressed": {
+    "prefix": "raylib.IsKeyPressed",
+    "body": ["raylib.IsKeyPressed(${1:key})"],
+    "description": "Checks if a specific key was pressed during the current frame."
+  },
+  "raylib.IsKeyPressedRepeat": {
+    "prefix": "raylib.IsKeyPressedRepeat",
+    "body": ["raylib.IsKeyPressedRepeat(${1:key})"],
+    "description": "Checks if a key is being pressed with auto-repeat active."
+  },
+  "raylib.GetKeyPressed": {
+    "prefix": "raylib.GetKeyPressed",
+    "body": ["raylib.GetKeyPressed()"],
+    "description": "Gets the key pressed as an integer key code (0 if none)."
+  },
+  "raylib.GetCharPressed": {
+    "prefix": "raylib.GetCharPressed",
+    "body": ["raylib.GetCharPressed()"],
+    "description": "Gets the last Unicode character pressed (0 if none)."
+  },
+  "raylib.GetKeyName": {
+    "prefix": "raylib.GetKeyName",
+    "body": ["raylib.GetKeyName(${1:key})"],
+    "description": "Gets the human-readable name of a key code."
+  },
+  "raylib.IsMouseButtonPressed": {
+    "prefix": "raylib.IsMouseButtonPressed",
+    "body": ["raylib.IsMouseButtonPressed(${1:button})"],
+    "description": "Checks if a mouse button was pressed during the current frame."
+  },
+  "raylib.IsMouseButtonReleased": {
+    "prefix": "raylib.IsMouseButtonReleased",
+    "body": ["raylib.IsMouseButtonReleased(${1:button})"],
+    "description": "Checks if a mouse button was released during the current frame."
+  },
+  "raylib.DrawEllipseV": {
+    "prefix": "raylib.DrawEllipseV",
+    "body": ["raylib.DrawEllipseV(${1:center}, ${2:radiusH}, ${3:radiusV}, ${4:color})"],
+    "description": "Draws a color-filled ellipse at the specified position (Vector2)."
+  },
+  "raylib.DrawEllipseLinesV": {
+    "prefix": "raylib.DrawEllipseLinesV",
+    "body": ["raylib.DrawEllipseLinesV(${1:center}, ${2:radiusH}, ${3:radiusV}, ${4:color})"],
+    "description": "Draws the outline of an ellipse at the specified position (Vector2)."
+  },
+  "raylib.DrawLineDashed": {
+    "prefix": "raylib.DrawLineDashed",
+    "body": ["raylib.DrawLineDashed(${1:startPos}, ${2:endPos}, ${3:dashSize}, ${4:spaceSize}, ${5:color})"],
+    "description": "Draws a dashed line between two points."
+  },
+  "raylib.MakeDirectory": {
+    "prefix": "raylib.MakeDirectory",
+    "body": ["raylib.MakeDirectory(${1:dirPath})"],
+    "description": "Creates a directory at the specified path. Returns 0 on success."
+  },
+  "raylib.IsFileNameValid": {
+    "prefix": "raylib.IsFileNameValid",
+    "body": ["raylib.IsFileNameValid(${1:fileName})"],
+    "description": "Checks if a filename string is valid (no illegal characters)."
+  },
+  "raylib.FileCopy": {
+    "prefix": "raylib.FileCopy",
+    "body": ["raylib.FileCopy(${1:srcPath}, ${2:dstPath})"],
+    "description": "Copies a file from srcPath to dstPath. Returns 0 on success."
+  },
+  "raylib.FileMove": {
+    "prefix": "raylib.FileMove",
+    "body": ["raylib.FileMove(${1:srcPath}, ${2:dstPath})"],
+    "description": "Moves a file from srcPath to dstPath. Returns 0 on success."
+  },
+  "raylib.FileRemove": {
+    "prefix": "raylib.FileRemove",
+    "body": ["raylib.FileRemove(${1:fileName})"],
+    "description": "Deletes the specified file. Returns 0 on success."
+  },
+  "raylib.FileRename": {
+    "prefix": "raylib.FileRename",
+    "body": ["raylib.FileRename(${1:fileName}, ${2:newName})"],
+    "description": "Renames a file. Returns 0 on success."
+  },
+  "raylib.FileTextFindIndex": {
+    "prefix": "raylib.FileTextFindIndex",
+    "body": ["raylib.FileTextFindIndex(${1:fileName}, ${2:search})"],
+    "description": "Returns the byte offset of the first occurrence of search string in the file."
+  },
+  "raylib.FileTextReplace": {
+    "prefix": "raylib.FileTextReplace",
+    "body": ["raylib.FileTextReplace(${1:fileName}, ${2:search}, ${3:replacement})"],
+    "description": "Replaces all occurrences of search string with replacement in a file."
+  },
+  "raylib.GetDirectoryFileCount": {
+    "prefix": "raylib.GetDirectoryFileCount",
+    "body": ["raylib.GetDirectoryFileCount(${1:dirPath})"],
+    "description": "Returns the number of files in the specified directory."
+  },
+  "raylib.GetDirectoryFileCountEx": {
+    "prefix": "raylib.GetDirectoryFileCountEx",
+    "body": ["raylib.GetDirectoryFileCountEx(${1:basePath}, ${2:filter}, ${3:scanSubdirs})"],
+    "description": "Returns the number of files in a directory with optional filter and subdirectory scan."
+  },
+  "raylib.ComputeCRC32": {
+    "prefix": "raylib.ComputeCRC32",
+    "body": ["raylib.ComputeCRC32(${1:data})"],
+    "description": "Computes the CRC32 checksum of binary data. Returns an integer."
+  },
+  "raylib.ComputeMD5": {
+    "prefix": "raylib.ComputeMD5",
+    "body": ["raylib.ComputeMD5(${1:data})"],
+    "description": "Computes the MD5 hash of binary data. Returns a table of 4 unsigned integers."
+  },
+  "raylib.ComputeSHA1": {
+    "prefix": "raylib.ComputeSHA1",
+    "body": ["raylib.ComputeSHA1(${1:data})"],
+    "description": "Computes the SHA1 hash of binary data. Returns a table of 5 unsigned integers."
+  },
+  "raylib.ComputeSHA256": {
+    "prefix": "raylib.ComputeSHA256",
+    "body": ["raylib.ComputeSHA256(${1:data})"],
+    "description": "Computes the SHA256 hash of binary data. Returns a table of 8 unsigned integers."
+  },
+  "raylib.LoadTextLines": {
+    "prefix": "raylib.LoadTextLines",
+    "body": ["raylib.LoadTextLines(${1:text})"],
+    "description": "Splits a multi-line string into a Lua table of individual lines."
+  },
+  "raylib.GetTextBetween": {
+    "prefix": "raylib.GetTextBetween",
+    "body": ["raylib.GetTextBetween(${1:text}, ${2:begin}, ${3:end})"],
+    "description": "Extracts the substring found between two delimiter strings."
+  },
+  "raylib.TextRemoveSpaces": {
+    "prefix": "raylib.TextRemoveSpaces",
+    "body": ["raylib.TextRemoveSpaces(${1:text})"],
+    "description": "Returns a copy of the string with all spaces removed."
+  },
+  "raylib.TextReplaceAlloc": {
+    "prefix": "raylib.TextReplaceAlloc",
+    "body": ["raylib.TextReplaceAlloc(${1:text}, ${2:search}, ${3:replacement})"],
+    "description": "Replaces all occurrences of search with replacement. Returns a new string."
+  },
+  "raylib.TextReplaceBetween": {
+    "prefix": "raylib.TextReplaceBetween",
+    "body": ["raylib.TextReplaceBetween(${1:text}, ${2:begin}, ${3:end}, ${4:replacement})"],
+    "description": "Replaces the content between two delimiter strings with a replacement."
+  },
+  "raylib.TextReplaceBetweenAlloc": {
+    "prefix": "raylib.TextReplaceBetweenAlloc",
+    "body": ["raylib.TextReplaceBetweenAlloc(${1:text}, ${2:begin}, ${3:end}, ${4:replacement})"],
+    "description": "Replaces content between delimiters; returns a newly allocated string."
+  },
+  "raylib.TextInsertAlloc": {
+    "prefix": "raylib.TextInsertAlloc",
+    "body": ["raylib.TextInsertAlloc(${1:text}, ${2:insert}, ${3:position})"],
+    "description": "Inserts a string at a position and returns a newly allocated result."
+  },
+  "raylib.MeasureTextCodepoints": {
+    "prefix": "raylib.MeasureTextCodepoints",
+    "body": ["raylib.MeasureTextCodepoints(${1:font}, ${2:codepoints}, ${3:fontSize}, ${4:spacing})"],
+    "description": "Measures the pixel size of text given as a codepoint table."
+  },
+  "raylib.UpdateModelAnimationEx": {
+    "prefix": "raylib.UpdateModelAnimationEx",
+    "body": ["raylib.UpdateModelAnimationEx(${1:model}, ${2:animA}, ${3:frameA}, ${4:animB}, ${5:frameB}, ${6:blend})"],
+    "description": "Updates a model by blending two animations together."
+  },
+  "raylib.BeginBlendMode": {
+    "prefix": "raylib.BeginBlendMode",
+    "body": ["raylib.BeginBlendMode(${1:mode})"],
+    "description": "Begin blending mode (alpha, additive, multiplied, subtract, custom)."
+  },
+  "raylib.BeginMode2D": {
+    "prefix": "raylib.BeginMode2D",
+    "body": ["raylib.BeginMode2D(${1:camera})"],
+    "description": "Begin 2D mode with custom camera (2D)."
+  },
+  "raylib.BeginMode3D": {
+    "prefix": "raylib.BeginMode3D",
+    "body": ["raylib.BeginMode3D(${1:camera})"],
+    "description": "Begin 3D mode with custom camera (3D)."
+  },
+  "raylib.BeginScissorMode": {
+    "prefix": "raylib.BeginScissorMode",
+    "body": ["raylib.BeginScissorMode(${1:x}, ${2:y}, ${3:width}, ${4:height})"],
+    "description": "Begin scissor mode (define screen area for following drawing)."
+  },
+  "raylib.BeginShaderMode": {
+    "prefix": "raylib.BeginShaderMode",
+    "body": ["raylib.BeginShaderMode(${1:shader})"],
+    "description": "Begin custom shader drawing."
+  },
+  "raylib.BeginTextureMode": {
+    "prefix": "raylib.BeginTextureMode",
+    "body": ["raylib.BeginTextureMode(${1:target})"],
+    "description": "Begin drawing to render texture."
+  },
+  "raylib.BeginVrStereoMode": {
+    "prefix": "raylib.BeginVrStereoMode",
+    "body": ["raylib.BeginVrStereoMode(${1:config})"],
+    "description": "Begin stereo rendering (requires VR simulator)."
+  },
+  "raylib.ChangeDirectory": {
+    "prefix": "raylib.ChangeDirectory",
+    "body": ["raylib.ChangeDirectory(${1:dirPath})"],
+    "description": "Change working directory, return true on success."
+  },
+  "raylib.CompressData": {
+    "prefix": "raylib.CompressData",
+    "body": ["raylib.CompressData(${1:data})"],
+    "description": "Compresses a binary string with DEFLATE; returns the compressed string."
+  },
+  "raylib.CreateCamera3D": {
+    "prefix": "raylib.CreateCamera3D",
+    "body": ["raylib.CreateCamera3D(${1:position}, ${2:target}, ${3:up}, ${4:fovy}, ${5:projection})"],
+    "description": "Creates a 3D Camera userdata (position, target, up, fovy, projection) to pass to BeginMode3D / UpdateCamera."
+  },
+  "raylib.DecodeDataBase64": {
+    "prefix": "raylib.DecodeDataBase64",
+    "body": ["raylib.DecodeDataBase64(${1:data})"],
+    "description": "Decodes a Base64 string; returns the original binary string."
+  },
+  "raylib.DecompressData": {
+    "prefix": "raylib.DecompressData",
+    "body": ["raylib.DecompressData(${1:compData})"],
+    "description": "Decompresses a DEFLATE binary string; returns the original string."
+  },
+  "raylib.DirectoryExists": {
+    "prefix": "raylib.DirectoryExists",
+    "body": ["raylib.DirectoryExists(${1:dirPath})"],
+    "description": "Check if a directory path exists."
+  },
+  "raylib.DrawMeshInstanced": {
+    "prefix": "raylib.DrawMeshInstanced",
+    "body": ["raylib.DrawMeshInstanced(${1:mesh}, ${2:material}, ${3:transforms})"],
+    "description": "Draw multiple mesh instances with material and a Lua array of transform matrices."
+  },
+  "raylib.DrawModelWires": {
+    "prefix": "raylib.DrawModelWires",
+    "body": ["raylib.DrawModelWires(${1:model}, ${2:position}, ${3:scale}, ${4:tint})"],
+    "description": "Draw a model wires (with texture if set)."
+  },
+  "raylib.DrawModelWiresEx": {
+    "prefix": "raylib.DrawModelWiresEx",
+    "body": ["raylib.DrawModelWiresEx(${1:model}, ${2:position}, ${3:rotationAxis}, ${4:rotationAngle}, ${5:scale}, ${6:tint})"],
+    "description": "Draw a model wires (with texture if set) with extended parameters."
+  },
+  "raylib.DrawRectangleRoundedLines": {
+    "prefix": "raylib.DrawRectangleRoundedLines",
+    "body": ["raylib.DrawRectangleRoundedLines(${1:rec}, ${2:roundness}, ${3:segments}, ${4:color})"],
+    "description": "Draw rectangle lines with rounded edges."
+  },
+  "raylib.DrawRectangleRoundedLinesEx": {
+    "prefix": "raylib.DrawRectangleRoundedLinesEx",
+    "body": ["raylib.DrawRectangleRoundedLinesEx(${1:rec}, ${2:roundness}, ${3:segments}, ${4:lineThick}, ${5:color})"],
+    "description": "Draw rectangle with rounded edges outline."
+  },
+  "raylib.DrawSphere": {
+    "prefix": "raylib.DrawSphere",
+    "body": ["raylib.DrawSphere(${1:centerPos}, ${2:radius}, ${3:color})"],
+    "description": "Draw sphere."
+  },
+  "raylib.DrawSphereEx": {
+    "prefix": "raylib.DrawSphereEx",
+    "body": ["raylib.DrawSphereEx(${1:centerPos}, ${2:radius}, ${3:rings}, ${4:slices}, ${5:color})"],
+    "description": "Draw sphere with extended parameters."
+  },
+  "raylib.DrawTriangleFan": {
+    "prefix": "raylib.DrawTriangleFan",
+    "body": ["raylib.DrawTriangleFan(${1:points}, ${2:color})"],
+    "description": "Draw a triangle fan from a Lua array of Vector2 points (first point is the center)."
+  },
+  "raylib.EncodeDataBase64": {
+    "prefix": "raylib.EncodeDataBase64",
+    "body": ["raylib.EncodeDataBase64(${1:data})"],
+    "description": "Encodes a binary string as Base64; returns the encoded string."
+  },
+  "raylib.EndBlendMode": {
+    "prefix": "raylib.EndBlendMode",
+    "body": ["raylib.EndBlendMode()"],
+    "description": "End blending mode (reset to default: alpha blending)."
+  },
+  "raylib.EndMode2D": {
+    "prefix": "raylib.EndMode2D",
+    "body": ["raylib.EndMode2D()"],
+    "description": "Ends 2D mode with custom camera."
+  },
+  "raylib.EndMode3D": {
+    "prefix": "raylib.EndMode3D",
+    "body": ["raylib.EndMode3D()"],
+    "description": "Ends 3D mode and returns to default 2D orthographic mode."
+  },
+  "raylib.EndScissorMode": {
+    "prefix": "raylib.EndScissorMode",
+    "body": ["raylib.EndScissorMode()"],
+    "description": "End scissor mode."
+  },
+  "raylib.EndShaderMode": {
+    "prefix": "raylib.EndShaderMode",
+    "body": ["raylib.EndShaderMode()"],
+    "description": "End custom shader drawing (use default shader)."
+  },
+  "raylib.EndTextureMode": {
+    "prefix": "raylib.EndTextureMode",
+    "body": ["raylib.EndTextureMode()"],
+    "description": "Ends drawing to render texture."
+  },
+  "raylib.EndVrStereoMode": {
+    "prefix": "raylib.EndVrStereoMode",
+    "body": ["raylib.EndVrStereoMode()"],
+    "description": "End stereo rendering (requires VR simulator)."
+  },
+  "raylib.ExportAutomationEventList": {
+    "prefix": "raylib.ExportAutomationEventList",
+    "body": ["raylib.ExportAutomationEventList(${1:list}, ${2:fileName})"],
+    "description": "Export automation events list as text file."
+  },
+  "raylib.ExportDataAsCode": {
+    "prefix": "raylib.ExportDataAsCode",
+    "body": ["raylib.ExportDataAsCode(${1:data}, ${2:fileName})"],
+    "description": "Exports a binary string as a C byte-array source file. Returns true on success."
+  },
+  "raylib.FileExists": {
+    "prefix": "raylib.FileExists",
+    "body": ["raylib.FileExists(${1:fileName})"],
+    "description": "Check if file exists."
+  },
+  "raylib.GenImageFontAtlas": {
+    "prefix": "raylib.GenImageFontAtlas",
+    "body": ["raylib.GenImageFontAtlas(${1:glyphs}, ${2:fontSize}, ${3:padding}, ${4:packMethod})"],
+    "description": "Generates a font atlas Image from a GlyphInfoArray; returns the image and a table of glyph rectangles."
+  },
+  "raylib.GetApplicationDirectory": {
+    "prefix": "raylib.GetApplicationDirectory",
+    "body": ["raylib.GetApplicationDirectory()"],
+    "description": "Get the directory of the running application (uses static string)."
+  },
+  "raylib.GetAutomationEventCount": {
+    "prefix": "raylib.GetAutomationEventCount",
+    "body": ["raylib.GetAutomationEventCount(${1:list})"],
+    "description": "Returns the number of recorded events in an AutomationEventList."
+  },
+  "raylib.GetCameraMatrix": {
+    "prefix": "raylib.GetCameraMatrix",
+    "body": ["raylib.GetCameraMatrix(${1:camera})"],
+    "description": "Get camera transform matrix (view matrix)."
+  },
+  "raylib.GetCameraMatrix2D": {
+    "prefix": "raylib.GetCameraMatrix2D",
+    "body": ["raylib.GetCameraMatrix2D(${1:camera})"],
+    "description": "Get camera 2d transform matrix."
+  },
+  "raylib.GetDirectoryPath": {
+    "prefix": "raylib.GetDirectoryPath",
+    "body": ["raylib.GetDirectoryPath(${1:filePath})"],
+    "description": "Get full path for a given fileName with path (uses static string)."
+  },
+  "raylib.GetFileExtension": {
+    "prefix": "raylib.GetFileExtension",
+    "body": ["raylib.GetFileExtension(${1:fileName})"],
+    "description": "Get pointer to extension for a filename string (includes dot: '.png')."
+  },
+  "raylib.GetFileLength": {
+    "prefix": "raylib.GetFileLength",
+    "body": ["raylib.GetFileLength(${1:fileName})"],
+    "description": "Get file length in bytes (NOTE: GetFileSize() conflicts with windows.h)."
+  },
+  "raylib.GetFileModTime": {
+    "prefix": "raylib.GetFileModTime",
+    "body": ["raylib.GetFileModTime(${1:fileName})"],
+    "description": "Get file modification time (last write time)."
+  },
+  "raylib.GetFileName": {
+    "prefix": "raylib.GetFileName",
+    "body": ["raylib.GetFileName(${1:filePath})"],
+    "description": "Get pointer to filename for a path string."
+  },
+  "raylib.GetFileNameWithoutExt": {
+    "prefix": "raylib.GetFileNameWithoutExt",
+    "body": ["raylib.GetFileNameWithoutExt(${1:filePath})"],
+    "description": "Get filename string without extension (uses static string)."
+  },
+  "raylib.GetGamepadAxisCount": {
+    "prefix": "raylib.GetGamepadAxisCount",
+    "body": ["raylib.GetGamepadAxisCount(${1:gamepad})"],
+    "description": "Get axis count for a gamepad."
+  },
+  "raylib.GetGamepadAxisMovement": {
+    "prefix": "raylib.GetGamepadAxisMovement",
+    "body": ["raylib.GetGamepadAxisMovement(${1:gamepad}, ${2:axis})"],
+    "description": "Get movement value for a gamepad axis."
+  },
+  "raylib.GetGamepadButtonPressed": {
+    "prefix": "raylib.GetGamepadButtonPressed",
+    "body": ["raylib.GetGamepadButtonPressed()"],
+    "description": "Get the last gamepad button pressed."
+  },
+  "raylib.GetGamepadName": {
+    "prefix": "raylib.GetGamepadName",
+    "body": ["raylib.GetGamepadName(${1:gamepad})"],
+    "description": "Get gamepad internal name id."
+  },
+  "raylib.GetGestureDetected": {
+    "prefix": "raylib.GetGestureDetected",
+    "body": ["raylib.GetGestureDetected()"],
+    "description": "Get latest detected gesture."
+  },
+  "raylib.GetGestureDragAngle": {
+    "prefix": "raylib.GetGestureDragAngle",
+    "body": ["raylib.GetGestureDragAngle()"],
+    "description": "Get gesture drag angle."
+  },
+  "raylib.GetGestureDragVector": {
+    "prefix": "raylib.GetGestureDragVector",
+    "body": ["raylib.GetGestureDragVector()"],
+    "description": "Get gesture drag vector."
+  },
+  "raylib.GetGestureHoldDuration": {
+    "prefix": "raylib.GetGestureHoldDuration",
+    "body": ["raylib.GetGestureHoldDuration()"],
+    "description": "Get gesture hold time in seconds."
+  },
+  "raylib.GetGesturePinchAngle": {
+    "prefix": "raylib.GetGesturePinchAngle",
+    "body": ["raylib.GetGesturePinchAngle()"],
+    "description": "Get gesture pinch angle."
+  },
+  "raylib.GetGesturePinchVector": {
+    "prefix": "raylib.GetGesturePinchVector",
+    "body": ["raylib.GetGesturePinchVector()"],
+    "description": "Get gesture pinch delta."
+  },
+  "raylib.GetMouseDelta": {
+    "prefix": "raylib.GetMouseDelta",
+    "body": ["raylib.GetMouseDelta()"],
+    "description": "Get mouse delta between frames."
+  },
+  "raylib.GetMouseWheelMoveV": {
+    "prefix": "raylib.GetMouseWheelMoveV",
+    "body": ["raylib.GetMouseWheelMoveV()"],
+    "description": "Get mouse wheel movement for both X and Y."
+  },
+  "raylib.GetPrevDirectoryPath": {
+    "prefix": "raylib.GetPrevDirectoryPath",
+    "body": ["raylib.GetPrevDirectoryPath(${1:dirPath})"],
+    "description": "Get previous directory path for a given path (uses static string)."
+  },
+  "raylib.GetRenderHeight": {
+    "prefix": "raylib.GetRenderHeight",
+    "body": ["raylib.GetRenderHeight()"],
+    "description": "Get current render height (it considers HiDPI)."
+  },
+  "raylib.GetRenderWidth": {
+    "prefix": "raylib.GetRenderWidth",
+    "body": ["raylib.GetRenderWidth()"],
+    "description": "Get current render width (it considers HiDPI)."
+  },
+  "raylib.GetScreenToWorld2D": {
+    "prefix": "raylib.GetScreenToWorld2D",
+    "body": ["raylib.GetScreenToWorld2D(${1:position}, ${2:camera})"],
+    "description": "Get the world space position for a 2d camera screen space position."
+  },
+  "raylib.GetScreenToWorldRay": {
+    "prefix": "raylib.GetScreenToWorldRay",
+    "body": ["raylib.GetScreenToWorldRay(${1:position}, ${2:camera})"],
+    "description": "Get a ray trace from screen position (i.e mouse)."
+  },
+  "raylib.GetScreenToWorldRayEx": {
+    "prefix": "raylib.GetScreenToWorldRayEx",
+    "body": ["raylib.GetScreenToWorldRayEx(${1:position}, ${2:camera}, ${3:width}, ${4:height})"],
+    "description": "Get a ray trace from screen position (i.e mouse) in a viewport."
+  },
+  "raylib.GetShaderLocation": {
+    "prefix": "raylib.GetShaderLocation",
+    "body": ["raylib.GetShaderLocation(${1:shader}, ${2:uniformName})"],
+    "description": "Get shader uniform location."
+  },
+  "raylib.GetShaderLocationAttrib": {
+    "prefix": "raylib.GetShaderLocationAttrib",
+    "body": ["raylib.GetShaderLocationAttrib(${1:shader}, ${2:attribName})"],
+    "description": "Get shader attribute location."
+  },
+  "raylib.GetTouchPointCount": {
+    "prefix": "raylib.GetTouchPointCount",
+    "body": ["raylib.GetTouchPointCount()"],
+    "description": "Get number of touch points."
+  },
+  "raylib.GetTouchPointId": {
+    "prefix": "raylib.GetTouchPointId",
+    "body": ["raylib.GetTouchPointId(${1:index})"],
+    "description": "Get touch point identifier for given index."
+  },
+  "raylib.GetTouchX": {
+    "prefix": "raylib.GetTouchX",
+    "body": ["raylib.GetTouchX()"],
+    "description": "Get touch position X for touch point 0 (relative to screen size)."
+  },
+  "raylib.GetTouchY": {
+    "prefix": "raylib.GetTouchY",
+    "body": ["raylib.GetTouchY()"],
+    "description": "Get touch position Y for touch point 0 (relative to screen size)."
+  },
+  "raylib.GetWindowPosition": {
+    "prefix": "raylib.GetWindowPosition",
+    "body": ["raylib.GetWindowPosition()"],
+    "description": "Get window position XY on monitor."
+  },
+  "raylib.GetWorkingDirectory": {
+    "prefix": "raylib.GetWorkingDirectory",
+    "body": ["raylib.GetWorkingDirectory()"],
+    "description": "Get current working directory (uses static string)."
+  },
+  "raylib.GetWorldToScreen": {
+    "prefix": "raylib.GetWorldToScreen",
+    "body": ["raylib.GetWorldToScreen(${1:position}, ${2:camera})"],
+    "description": "Get the screen space position for a 3d world space position."
+  },
+  "raylib.GetWorldToScreen2D": {
+    "prefix": "raylib.GetWorldToScreen2D",
+    "body": ["raylib.GetWorldToScreen2D(${1:position}, ${2:camera})"],
+    "description": "Get the screen space position for a 2d camera world space position."
+  },
+  "raylib.GetWorldToScreenEx": {
+    "prefix": "raylib.GetWorldToScreenEx",
+    "body": ["raylib.GetWorldToScreenEx(${1:position}, ${2:camera}, ${3:width}, ${4:height})"],
+    "description": "Get size position for a 3d world space position."
+  },
+  "raylib.IsFileDropped": {
+    "prefix": "raylib.IsFileDropped",
+    "body": ["raylib.IsFileDropped()"],
+    "description": "Check if a file has been dropped into window."
+  },
+  "raylib.IsFileExtension": {
+    "prefix": "raylib.IsFileExtension",
+    "body": ["raylib.IsFileExtension(${1:fileName}, ${2:ext})"],
+    "description": "Check file extension (recommended include point: .png, .wav)."
+  },
+  "raylib.IsGamepadAvailable": {
+    "prefix": "raylib.IsGamepadAvailable",
+    "body": ["raylib.IsGamepadAvailable(${1:gamepad})"],
+    "description": "Check if a gamepad is available."
+  },
+  "raylib.IsGamepadButtonDown": {
+    "prefix": "raylib.IsGamepadButtonDown",
+    "body": ["raylib.IsGamepadButtonDown(${1:gamepad}, ${2:button})"],
+    "description": "Check if a gamepad button is being pressed."
+  },
+  "raylib.IsGamepadButtonPressed": {
+    "prefix": "raylib.IsGamepadButtonPressed",
+    "body": ["raylib.IsGamepadButtonPressed(${1:gamepad}, ${2:button})"],
+    "description": "Check if a gamepad button has been pressed once."
+  },
+  "raylib.IsGamepadButtonReleased": {
+    "prefix": "raylib.IsGamepadButtonReleased",
+    "body": ["raylib.IsGamepadButtonReleased(${1:gamepad}, ${2:button})"],
+    "description": "Check if a gamepad button has been released once."
+  },
+  "raylib.IsGamepadButtonUp": {
+    "prefix": "raylib.IsGamepadButtonUp",
+    "body": ["raylib.IsGamepadButtonUp(${1:gamepad}, ${2:button})"],
+    "description": "Check if a gamepad button is NOT being pressed."
+  },
+  "raylib.IsGestureDetected": {
+    "prefix": "raylib.IsGestureDetected",
+    "body": ["raylib.IsGestureDetected(${1:gesture})"],
+    "description": "Check if a gesture have been detected."
+  },
+  "raylib.IsPathFile": {
+    "prefix": "raylib.IsPathFile",
+    "body": ["raylib.IsPathFile(${1:path})"],
+    "description": "Check if a given path is a file or a directory."
+  },
+  "raylib.IsShaderValid": {
+    "prefix": "raylib.IsShaderValid",
+    "body": ["raylib.IsShaderValid(${1:shader})"],
+    "description": "Check if a shader is valid (loaded on GPU)."
+  },
+  "raylib.LoadAutomationEventList": {
+    "prefix": "raylib.LoadAutomationEventList",
+    "body": ["raylib.LoadAutomationEventList(${1:fileName})"],
+    "description": "Load automation events list from file, NULL for empty list, capacity = MAX_AUTOMATION_EVENTS."
+  },
+  "raylib.LoadDirectoryFiles": {
+    "prefix": "raylib.LoadDirectoryFiles",
+    "body": ["raylib.LoadDirectoryFiles(${1:dirPath})"],
+    "description": "Load directory filepaths, files and directories, no subdirs scan."
+  },
+  "raylib.LoadDirectoryFilesEx": {
+    "prefix": "raylib.LoadDirectoryFilesEx",
+    "body": ["raylib.LoadDirectoryFilesEx(${1:basePath}, ${2:filter}, ${3:scanSubdirs})"],
+    "description": "Load directory filepaths with extension filtering and subdir scan; some filters available: \"*.*\", \"FILES*\", \"DIRS*\"."
+  },
+  "raylib.LoadDroppedFiles": {
+    "prefix": "raylib.LoadDroppedFiles",
+    "body": ["raylib.LoadDroppedFiles()"],
+    "description": "Returns a Lua array of file paths dropped onto the window this frame."
+  },
+  "raylib.LoadFileData": {
+    "prefix": "raylib.LoadFileData",
+    "body": ["raylib.LoadFileData(${1:fileName})"],
+    "description": "Loads a file's contents as a binary string."
+  },
+  "raylib.LoadFileText": {
+    "prefix": "raylib.LoadFileText",
+    "body": ["raylib.LoadFileText(${1:fileName})"],
+    "description": "Loads a text file's contents as a string."
+  },
+  "raylib.LoadFontData": {
+    "prefix": "raylib.LoadFontData",
+    "body": ["raylib.LoadFontData(${1:fileData}, ${2:fontSize}, ${3:codepoints}, ${4:type})"],
+    "description": "Loads font glyph data; returns a GlyphInfoArray userdata for GenImageFontAtlas."
+  },
+  "raylib.LoadMusicStreamFromMemory": {
+    "prefix": "raylib.LoadMusicStreamFromMemory",
+    "body": ["raylib.LoadMusicStreamFromMemory(${1:fileType}, ${2:data})"],
+    "description": "Load a music stream from an in-memory binary string (fileType e.g. \".ogg\")."
+  },
+  "raylib.LoadRandomSequence": {
+    "prefix": "raylib.LoadRandomSequence",
+    "body": ["raylib.LoadRandomSequence(${1:count}, ${2:min}, ${3:max})"],
+    "description": "Load random values sequence, no values repeated."
+  },
+  "raylib.LoadShader": {
+    "prefix": "raylib.LoadShader",
+    "body": ["raylib.LoadShader(${1:vsFileName}, ${2:fsFileName})"],
+    "description": "Load shader from files and bind default locations."
+  },
+  "raylib.LoadShaderFromMemory": {
+    "prefix": "raylib.LoadShaderFromMemory",
+    "body": ["raylib.LoadShaderFromMemory(${1:vsCode}, ${2:fsCode})"],
+    "description": "Load shader from code strings and bind default locations."
+  },
+  "raylib.LoadVrStereoConfig": {
+    "prefix": "raylib.LoadVrStereoConfig",
+    "body": ["raylib.LoadVrStereoConfig(${1:device})"],
+    "description": "Load VR stereo config for VR simulator device parameters."
+  },
+  "raylib.MemAlloc": {
+    "prefix": "raylib.MemAlloc",
+    "body": ["raylib.MemAlloc(${1:size})"],
+    "description": "Allocates a raw memory block (returns a light-userdata pointer; advanced use)."
+  },
+  "raylib.MemFree": {
+    "prefix": "raylib.MemFree",
+    "body": ["raylib.MemFree(${1:ptr})"],
+    "description": "Frees a raw memory block previously allocated with MemAlloc."
+  },
+  "raylib.MemRealloc": {
+    "prefix": "raylib.MemRealloc",
+    "body": ["raylib.MemRealloc(${1:ptr}, ${2:size})"],
+    "description": "Reallocates a raw memory block (advanced use)."
+  },
+  "raylib.OpenURL": {
+    "prefix": "raylib.OpenURL",
+    "body": ["raylib.OpenURL(${1:url})"],
+    "description": "Open URL with default system browser (if available)."
+  },
+  "raylib.PauseSound": {
+    "prefix": "raylib.PauseSound",
+    "body": ["raylib.PauseSound(${1:sound})"],
+    "description": "Pause a sound."
+  },
+  "raylib.PlayAutomationEvent": {
+    "prefix": "raylib.PlayAutomationEvent",
+    "body": ["raylib.PlayAutomationEvent(${1:list}, ${2:index})"],
+    "description": "Plays a recorded automation event from a list by index."
+  },
+  "raylib.PollInputEvents": {
+    "prefix": "raylib.PollInputEvents",
+    "body": ["raylib.PollInputEvents()"],
+    "description": "Register all input events."
+  },
+  "raylib.ResumeSound": {
+    "prefix": "raylib.ResumeSound",
+    "body": ["raylib.ResumeSound(${1:sound})"],
+    "description": "Resume a paused sound."
+  },
+  "raylib.SaveFileData": {
+    "prefix": "raylib.SaveFileData",
+    "body": ["raylib.SaveFileData(${1:fileName}, ${2:data})"],
+    "description": "Writes a binary string to a file. Returns true on success."
+  },
+  "raylib.SaveFileText": {
+    "prefix": "raylib.SaveFileText",
+    "body": ["raylib.SaveFileText(${1:fileName}, ${2:text})"],
+    "description": "Writes a string to a text file. Returns true on success."
+  },
+  "raylib.SetAutomationEventBaseFrame": {
+    "prefix": "raylib.SetAutomationEventBaseFrame",
+    "body": ["raylib.SetAutomationEventBaseFrame(${1:frame})"],
+    "description": "Set automation event internal base frame to start recording."
+  },
+  "raylib.SetAutomationEventList": {
+    "prefix": "raylib.SetAutomationEventList",
+    "body": ["raylib.SetAutomationEventList(${1:list})"],
+    "description": "Sets the active AutomationEventList used for recording."
+  },
+  "raylib.SetExitKey": {
+    "prefix": "raylib.SetExitKey",
+    "body": ["raylib.SetExitKey(${1:key})"],
+    "description": "Set a custom key to exit program (default is ESC)."
+  },
+  "raylib.SetGamepadMappings": {
+    "prefix": "raylib.SetGamepadMappings",
+    "body": ["raylib.SetGamepadMappings(${1:mappings})"],
+    "description": "Set internal gamepad mappings (SDL_GameControllerDB)."
+  },
+  "raylib.SetGamepadVibration": {
+    "prefix": "raylib.SetGamepadVibration",
+    "body": ["raylib.SetGamepadVibration(${1:gamepad}, ${2:leftMotor}, ${3:rightMotor}, ${4:duration})"],
+    "description": "Set gamepad vibration for both motors (duration in seconds)."
+  },
+  "raylib.SetGesturesEnabled": {
+    "prefix": "raylib.SetGesturesEnabled",
+    "body": ["raylib.SetGesturesEnabled(${1:flags})"],
+    "description": "Enable a set of gestures using flags."
+  },
+  "raylib.SetLoadFileDataCallback": {
+    "prefix": "raylib.SetLoadFileDataCallback",
+    "body": ["raylib.SetLoadFileDataCallback(${1:callback})"],
+    "description": "Installs a Lua function to intercept binary file loads. Pass nil to restore the default."
+  },
+  "raylib.SetLoadFileTextCallback": {
+    "prefix": "raylib.SetLoadFileTextCallback",
+    "body": ["raylib.SetLoadFileTextCallback(${1:callback})"],
+    "description": "Installs a Lua function to intercept text file loads. Pass nil to restore the default."
+  },
+  "raylib.SetMouseCursor": {
+    "prefix": "raylib.SetMouseCursor",
+    "body": ["raylib.SetMouseCursor(${1:cursor})"],
+    "description": "Set mouse cursor."
+  },
+  "raylib.SetRandomSeed": {
+    "prefix": "raylib.SetRandomSeed",
+    "body": ["raylib.SetRandomSeed(${1:seed})"],
+    "description": "Set the seed for the random number generator."
+  },
+  "raylib.SetSaveFileDataCallback": {
+    "prefix": "raylib.SetSaveFileDataCallback",
+    "body": ["raylib.SetSaveFileDataCallback(${1:callback})"],
+    "description": "Installs a Lua function to intercept binary file saves. Pass nil to restore the default."
+  },
+  "raylib.SetSaveFileTextCallback": {
+    "prefix": "raylib.SetSaveFileTextCallback",
+    "body": ["raylib.SetSaveFileTextCallback(${1:callback})"],
+    "description": "Installs a Lua function to intercept text file saves. Pass nil to restore the default."
+  },
+  "raylib.SetShaderValue": {
+    "prefix": "raylib.SetShaderValue",
+    "body": ["raylib.SetShaderValue(${1:shader}, ${2:locIndex}, ${3:value}, ${4:uniformType})"],
+    "description": "Set shader uniform value."
+  },
+  "raylib.SetShaderValueMatrix": {
+    "prefix": "raylib.SetShaderValueMatrix",
+    "body": ["raylib.SetShaderValueMatrix(${1:shader}, ${2:locIndex}, ${3:mat})"],
+    "description": "Set shader uniform value (matrix 4x4)."
+  },
+  "raylib.SetShaderValueTexture": {
+    "prefix": "raylib.SetShaderValueTexture",
+    "body": ["raylib.SetShaderValueTexture(${1:shader}, ${2:locIndex}, ${3:texture})"],
+    "description": "Set shader uniform value and bind the texture (sampler2d)."
+  },
+  "raylib.SetShaderValueV": {
+    "prefix": "raylib.SetShaderValueV",
+    "body": ["raylib.SetShaderValueV(${1:shader}, ${2:locIndex}, ${3:value}, ${4:uniformType}, ${5:count})"],
+    "description": "Set shader uniform value vector."
+  },
+  "raylib.SetSoundPan": {
+    "prefix": "raylib.SetSoundPan",
+    "body": ["raylib.SetSoundPan(${1:sound}, ${2:pan})"],
+    "description": "Set pan for a sound (-1.0 left, 0.0 center, 1.0 right)."
+  },
+  "raylib.SetSoundPitch": {
+    "prefix": "raylib.SetSoundPitch",
+    "body": ["raylib.SetSoundPitch(${1:sound}, ${2:pitch})"],
+    "description": "Set pitch for a sound (1.0 is base level)."
+  },
+  "raylib.SetTraceLogCallback": {
+    "prefix": "raylib.SetTraceLogCallback",
+    "body": ["raylib.SetTraceLogCallback(${1:callback})"],
+    "description": "Installs a Lua function as the trace-log callback. Pass nil to restore the default."
+  },
+  "raylib.SetTraceLogLevel": {
+    "prefix": "raylib.SetTraceLogLevel",
+    "body": ["raylib.SetTraceLogLevel(${1:logLevel})"],
+    "description": "Set the current threshold (minimum) log level."
+  },
+  "raylib.SetWindowIcons": {
+    "prefix": "raylib.SetWindowIcons",
+    "body": ["raylib.SetWindowIcons(${1:images})"],
+    "description": "Set the window icons from a Lua array of Image userdata (RGBA 32bit)."
+  },
+  "raylib.StartAutomationEventRecording": {
+    "prefix": "raylib.StartAutomationEventRecording",
+    "body": ["raylib.StartAutomationEventRecording()"],
+    "description": "Start recording automation events (AutomationEventList must be set)."
+  },
+  "raylib.StopAutomationEventRecording": {
+    "prefix": "raylib.StopAutomationEventRecording",
+    "body": ["raylib.StopAutomationEventRecording()"],
+    "description": "Stop recording automation events."
+  },
+  "raylib.SwapScreenBuffer": {
+    "prefix": "raylib.SwapScreenBuffer",
+    "body": ["raylib.SwapScreenBuffer()"],
+    "description": "Swap back buffer with front buffer (screen drawing)."
+  },
+  "raylib.TraceLog": {
+    "prefix": "raylib.TraceLog",
+    "body": ["raylib.TraceLog(${1:logLevel}, ${2:text})"],
+    "description": "Write a trace-log message at the given level (LOG_INFO, LOG_WARNING, LOG_ERROR, ...)."
+  },
+  "raylib.UnloadAutomationEventList": {
+    "prefix": "raylib.UnloadAutomationEventList",
+    "body": ["raylib.UnloadAutomationEventList(${1:list})"],
+    "description": "Unload automation events list from file."
+  },
+  "raylib.UnloadDirectoryFiles": {
+    "prefix": "raylib.UnloadDirectoryFiles",
+    "body": ["raylib.UnloadDirectoryFiles(${1:files})"],
+    "description": "Unload filepaths."
+  },
+  "raylib.UnloadDroppedFiles": {
+    "prefix": "raylib.UnloadDroppedFiles",
+    "body": ["raylib.UnloadDroppedFiles()"],
+    "description": "No-op kept for API symmetry (LoadDroppedFiles already returns a Lua table)."
+  },
+  "raylib.UnloadFileData": {
+    "prefix": "raylib.UnloadFileData",
+    "body": ["raylib.UnloadFileData(${1:data})"],
+    "description": "Unload file data allocated by LoadFileData()."
+  },
+  "raylib.UnloadFileText": {
+    "prefix": "raylib.UnloadFileText",
+    "body": ["raylib.UnloadFileText(${1:text})"],
+    "description": "Unload file text data allocated by LoadFileText()."
+  },
+  "raylib.UnloadFontData": {
+    "prefix": "raylib.UnloadFontData",
+    "body": ["raylib.UnloadFontData(${1:glyphs})"],
+    "description": "Frees a GlyphInfoArray returned by LoadFontData."
+  },
+  "raylib.UnloadRandomSequence": {
+    "prefix": "raylib.UnloadRandomSequence",
+    "body": ["raylib.UnloadRandomSequence(${1:sequence})"],
+    "description": "Unload random values sequence."
+  },
+  "raylib.UnloadShader": {
+    "prefix": "raylib.UnloadShader",
+    "body": ["raylib.UnloadShader(${1:shader})"],
+    "description": "Unload shader from GPU memory (VRAM)."
+  },
+  "raylib.UnloadTextLines": {
+    "prefix": "raylib.UnloadTextLines",
+    "body": ["raylib.UnloadTextLines(${1:lines})"],
+    "description": "No-op kept for API symmetry (LoadTextLines already returns a Lua table)."
+  },
+  "raylib.UnloadVrStereoConfig": {
+    "prefix": "raylib.UnloadVrStereoConfig",
+    "body": ["raylib.UnloadVrStereoConfig(${1:config})"],
+    "description": "Unload VR stereo config."
+  },
+  "raylib.UpdateCamera": {
+    "prefix": "raylib.UpdateCamera",
+    "body": ["raylib.UpdateCamera(${1:camera}, ${2:mode})"],
+    "description": "Update camera position for selected mode."
+  },
+  "raylib.UpdateCameraPro": {
+    "prefix": "raylib.UpdateCameraPro",
+    "body": ["raylib.UpdateCameraPro(${1:camera}, ${2:movement}, ${3:rotation}, ${4:zoom})"],
+    "description": "Update camera movement/rotation."
+  },
+  "raylib.WaitTime": {
+    "prefix": "raylib.WaitTime",
+    "body": ["raylib.WaitTime(${1:seconds})"],
+    "description": "Wait for some time (halt program execution)."
+  },
   "raylib.SetShapesTexture": {
     "prefix": "raylib.SetShapesTexture",
     "body": ["raylib.SetShapesTexture()"],

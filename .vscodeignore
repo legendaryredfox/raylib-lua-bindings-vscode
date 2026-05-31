@@ -9,3 +9,9 @@ vsc-extension-quickstart.md
 **/*.map
 **/*.ts
 **/.vscode-test.*
+# Agent / dev / session files — not part of the shipped extension
+.claude/**
+AGENTS.md
+last_session.txt
+compile.txt
+*.vsix

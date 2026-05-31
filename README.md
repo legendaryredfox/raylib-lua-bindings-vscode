@@ -1,13 +1,13 @@
 # Raylib Lua Bindings Autocomplete
 
-Autocomplete for [raylib-lua-bindings](https://github.com/legendaryredfox/raylib-lua-bindings) — a C library that embeds Raylib into Lua 5.4.
+Autocomplete for [raylib-lua-bindings](https://github.com/legendaryredfox/raylib-lua-bindings) — a C library that embeds Raylib 6.0 into Lua 5.5.
 
-This extension provides IntelliSense for all 464 exposed functions: autocomplete suggestions, tab-stop parameter snippets, and inline documentation — triggered automatically when you type `raylib.` (or your configured namespace) in any `.lua` file.
+This extension provides IntelliSense for all 606 exposed functions: autocomplete suggestions, tab-stop parameter snippets, and inline documentation — triggered automatically when you type `raylib.` (or your configured namespace) in any `.lua` file.
 
 ## Features
 
-- **464 functions** covering the full raylib-lua-bindings API: window/input, drawing, shapes, text, textures, audio, 3D models, and more
-- **Parameter snippets** for 112 common functions with named tab stops (e.g. `raylib.InitWindow(width, height, title)`)
+- **606 functions** — the complete raylib-lua-bindings API: window/system, keyboard/mouse/gamepad/gesture/touch input, drawing, render modes, shapes, text & fonts, textures, audio, 3D models & cameras, shaders, filesystem & data utilities, VR, and automation events
+- **Parameter snippets** for 235 functions with named tab stops (e.g. `raylib.InitWindow(width, height, title)`)
 - **Inline documentation** — hover or select a completion to see a description
 - **Smart trigger** — completions appear only after the namespace prefix, not on every keystroke
 - **Configurable namespace** — use `rl.` or any other prefix via the `raylib-lua.namespace` setting
