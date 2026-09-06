@@ -5,7 +5,7 @@
 A VS Code extension that provides IntelliSense for [raylib-lua-bindings](https://github.com/legendaryredfox/raylib-lua-bindings) — a C library that embeds Raylib 6.0 into Lua 5.5. When a user opens a `.lua` file and types `raylib.`, the extension shows autocomplete suggestions, parameter snippets, and inline documentation for all **606** exposed Raylib API functions.
 
 **Publisher:** LegendaryRedfox  
-**Version:** 0.9.0  
+**Version:** 0.10.0  
 **Language:** TypeScript (compiled to JS, loaded by VS Code Extension Host)
 
 ---
@@ -18,13 +18,12 @@ A VS Code extension that provides IntelliSense for [raylib-lua-bindings](https:/
 │   ├── extension.ts          # Extension entry point — registers the CompletionItemProvider
 │   ├── completionItems.ts    # All 606 CompletionItem definitions (data-driven)
 │   └── test/
-│       └── extension.test.ts # Minimal test suite (boilerplate only)
-├── snippets/
-│   └── lua.json              # VS Code snippet definitions (overlaps with completionItems)
+│       └── extension.test.ts # Test suite covering getCompletionItems + namespace behavior
 ├── assets/
 │   └── icon.png              # Extension marketplace icon
 ├── package.json              # Extension manifest (name, version, activationEvents, contributes)
 ├── tsconfig.json             # TypeScript config (ES2022, Node16 modules, strict)
+├── eslint.config.mjs         # ESLint v9 flat config (must live at repo root)
 ├── .vscode/
 │   ├── launch.json           # "Run Extension" debug config
 │   ├── tasks.json            # Default build task (tsc --watch)
@@ -39,7 +38,7 @@ A VS Code extension that provides IntelliSense for [raylib-lua-bindings](https:/
 
 ### Activation
 
-`package.json` sets `"activationEvents": []`, which means VS Code activates the extension lazily on first use. The `contributes.languages` block registers the extension as applicable to `.lua` files.
+`package.json` sets `"activationEvents": ["onLanguage:lua"]`, so VS Code activates the extension the first time a `.lua` file is opened. This is required: the completion provider is registered programmatically in `activate()`, so without an activation event it would never register.
 
 ### Extension entry point (`src/extension.ts`)
 
@@ -58,18 +57,14 @@ const fns: Entry[] = [
 ];
 ```
 
-The third element (snippet) is only present for the 235 functions that have named parameter placeholders. Snippet strings in the data array always use the `raylib.` prefix as written — `getCompletionItems()` rewrites them at build time via `.replace(/^raylib\./, \`${namespace}.\`)`. Functions without a snippet default to `${namespace}.FunctionName()`.
+The third element (snippet) is only present for the 522 functions that have named parameter placeholders (every function that takes arguments; the other 84 are argument-less). Snippet strings in the data array use a literal prefix as written — `getCompletionItems()` rewrites it at build time via `.replace(/^[A-Za-z_]\w*\./, \`${namespace}.\`)`. Functions without a snippet default to `${namespace}.FunctionName()`.
 
 `getCompletionItems(vscode, namespace)` maps this array to `vscode.CompletionItem` objects with:
 - `label` — `"${namespace}.FunctionName"`
 - `kind` — `Function`
 - `detail` — short description (shown in the completion list)
-- `documentation` — `MarkdownString` with description and usage example
+- `documentation` — `MarkdownString` with description and a usage example (tab-stop syntax stripped to a readable signature)
 - `insertText` — `SnippetString` with tab-stop placeholders where available
-
-### Snippets (`snippets/lua.json`)
-
-Defines VS Code code snippets for the same functions. These are **independent of the completion provider** — they surface in the snippet picker (`Ctrl+Space` then filter by prefix) and support the same prefix/body/description pattern.
 
 ---
 
@@ -104,8 +99,8 @@ yarn install         # install dev dependencies
 yarn compile         # one-shot tsc build → out/
 yarn watch           # incremental tsc watch (used by the VS Code debug task)
 yarn lint            # eslint src/
-yarn test            # compile + run vscode-test suite
-yarn package         # vsce package → produces .vsix
+yarn test            # compile + lint + run vscode-test suite
+npx @vscode/vsce package   # produces .vsix
 ```
 
 The debug config in `.vscode/launch.json` opens a new Extension Development Host window. Press **F5** in VS Code to launch it.
@@ -118,7 +113,7 @@ The debug config in `.vscode/launch.json` opens a new Extension Development Host
 - **The provider checks for `${namespace}.` prefix** before returning items; VS Code's fuzzy-match then narrows the list further. The `.` trigger character is the primary gate.
 - **Data-driven:** a single compact tuple array drives all 606 items. Adding a function means one line in the array. The documentation template is shared across all items.
 - **No language server** — no LSP, no semantic analysis. Purely syntactic autocomplete.
-- **`snippets/lua.json` and `completionItems.ts` overlap** — snippets are for the snippet picker; completionItems are for the inline completion popup.
+- **Single source of truth** — the completion provider is the only completion surface. A previously shipped static `snippets/lua.json` duplicated the data and ignored the configurable namespace, so it was removed.
 
 ---
 
@@ -157,6 +152,4 @@ Edit the MarkdownString template in `getCompletionItems()` inside `src/completio
 - Parameter documentation is not structured — the `documentation` MarkdownString shows the function description but no detailed parameter table.
 - No hover provider — hovering over `raylib.DrawCircle` in existing code shows nothing.
 - No signature help provider — there is no parameter-hint popup while typing inside parentheses.
-- Tests are boilerplate only (from the VS Code extension generator); no real coverage.
-- `snippets/lua.json` may diverge from `completionItems.ts` as functions are added to one but not the other.
-- `language-configuration.json` is referenced in `package.json` but does not exist in the repo.
+- 84 of the 606 functions insert a plain `name()` — these are argument-less by nature, so no tab stops are needed.

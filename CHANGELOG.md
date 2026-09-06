@@ -4,6 +4,39 @@ All notable changes to the "raylib-lua-bindings-autocomplete" extension will be 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.10.0] - 2026-09-06
+
+### Added
+
+- **Parameter snippets expanded from 223 to 522 functions** — every function that takes
+  arguments now inserts named tab stops. Parameter names are sourced from the
+  raylib 6.x API definition and reconciled against the Lua binding's actual
+  signatures (pointer+count arguments folded into Lua tables, output parameters
+  dropped). The 84 remaining functions are argument-less and insert a plain call.
+- **Test suite** — unit tests for `getCompletionItems`, integration tests for
+  extension activation, and end-to-end tests that drive the real completion
+  provider through VS Code.
+
+### Fixed
+
+- **Extension now activates** — added the `onLanguage:lua` activation event. The
+  completion provider is registered programmatically in `activate()`; without an
+  activation event it never ran, so the configurable namespace never took effect.
+- **Autocomplete works in unsaved buffers** — the provider dropped the
+  `scheme: "file"` restriction, so a brand-new untitled `.lua` document now gets
+  completions.
+- **Lint runs again** — `eslint.config.mjs` was in `src/` where ESLint v9 could
+  not find it; moved to the repository root. This unblocks the `pretest` gate.
+- **Empty/whitespace namespace** now falls back to `raylib` instead of matching
+  every `.` keystroke.
+
+### Removed
+
+- **`snippets/lua.json`** — the static snippet file duplicated the completion
+  provider's data and ignored the configurable namespace. The provider is now the
+  single source of truth.
+- Stale `compile.txt` build log (now git-ignored).
+
 ## [0.9.0] - 2026-05-31
 
 ### Added
@@ -19,8 +52,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
   - 3D/2D draw extras, window/system helpers, random sequences, and logging
   - VR (`LoadVrStereoConfig`, …) and automation events (`LoadAutomationEventList`, …)
   - Advanced: file/log `Set*Callback` hooks, `MemAlloc`/`MemRealloc`/`MemFree`, font-atlas internals (`LoadFontData`/`GenImageFontAtlas`/`UnloadFontData`)
-- **Parameter snippets** expanded from 112 to **235** functions with named tab stops.
-- `snippets/lua.json` synced to the same 606 functions as the completion provider.
+- **Parameter snippets** expanded from 112 to **223** functions with named tab stops.
 
 ### Changed
 

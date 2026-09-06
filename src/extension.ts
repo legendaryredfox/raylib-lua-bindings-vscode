@@ -7,11 +7,12 @@ export function activate(context: vscode.ExtensionContext) {
   function registerProvider() {
     completionProvider?.dispose();
 
-    const namespace = vscode.workspace.getConfiguration("raylib-lua").get<string>("namespace", "raylib");
+    const configured = vscode.workspace.getConfiguration("raylib-lua").get<string>("namespace", "raylib");
+    const namespace = configured?.trim() || "raylib";
     const completionItems = getCompletionItems(vscode, namespace);
 
     completionProvider = vscode.languages.registerCompletionItemProvider(
-      { language: "lua", scheme: "file" },
+      { language: "lua" },
       {
         provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
           const linePrefix = document.lineAt(position).text.slice(0, position.character);

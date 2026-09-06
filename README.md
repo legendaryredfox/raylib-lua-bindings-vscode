@@ -7,7 +7,7 @@ This extension provides IntelliSense for all 606 exposed functions: autocomplete
 ## Features
 
 - **606 functions** — the complete raylib-lua-bindings API: window/system, keyboard/mouse/gamepad/gesture/touch input, drawing, render modes, shapes, text & fonts, textures, audio, 3D models & cameras, shaders, filesystem & data utilities, VR, and automation events
-- **Parameter snippets** for 235 functions with named tab stops (e.g. `raylib.InitWindow(width, height, title)`)
+- **Parameter snippets** for 522 functions with named tab stops (e.g. `raylib.InitWindow(width, height, title)`) — every function that takes arguments; the remaining 84 are argument-less calls
 - **Inline documentation** — hover or select a completion to see a description
 - **Smart trigger** — completions appear only after the namespace prefix, not on every keystroke
 - **Configurable namespace** — use `rl.` or any other prefix via the `raylib-lua.namespace` setting
@@ -59,9 +59,11 @@ raylib.CloseWindow()
 git clone https://github.com/legendaryredfox/raylib-lua-bindings-vscode
 cd raylib-lua-bindings-vscode
 yarn install
-yarn compile     # one-shot build
-yarn watch       # incremental watch
-yarn package     # produce .vsix
+yarn compile              # one-shot build
+yarn watch                # incremental watch
+yarn lint                 # run eslint
+yarn test                 # compile, lint, run the test suite
+npx @vscode/vsce package  # produce .vsix
 ```
 
 Press **F5** in VS Code to open an Extension Development Host for live testing.
