@@ -1,6 +1,6 @@
 import * as assert from 'assert';
 import * as vscode from 'vscode';
-import { getCompletionItems } from '../completionItems';
+import { getCompletionItems, getRaylibFunctions } from '../completionItems';
 
 const EXT_ID = 'LegendaryRedfox.raylib-lua-bindings-autocomplete';
 
@@ -71,6 +71,39 @@ suite('unit: getCompletionItems', () => {
 });
 
 // ---------------------------------------------------------------------------
+// Unit tests — the structured API surface shared by all providers.
+// ---------------------------------------------------------------------------
+suite('unit: getRaylibFunctions', () => {
+	test('returns the full API surface', () => {
+		assert.strictEqual(getRaylibFunctions('raylib').length, 606);
+	});
+
+	test('extracts ordered parameter names and a readable signature', () => {
+		const initWindow = getRaylibFunctions('raylib').find(f => f.name === 'InitWindow');
+		assert.ok(initWindow);
+		assert.deepStrictEqual(initWindow!.params, ['width', 'height', 'title']);
+		assert.strictEqual(initWindow!.signature, 'raylib.InitWindow(width, height, title)');
+		assert.strictEqual(initWindow!.qualified, 'raylib.InitWindow');
+	});
+
+	test('argument-less functions carry no parameters', () => {
+		const closeWindow = getRaylibFunctions('raylib').find(f => f.name === 'CloseWindow');
+		assert.ok(closeWindow);
+		assert.deepStrictEqual(closeWindow!.params, []);
+		assert.strictEqual(closeWindow!.signature, 'raylib.CloseWindow()');
+	});
+
+	test('a custom namespace flows through name, signature, and snippet', () => {
+		const initWindow = getRaylibFunctions('rl').find(f => f.name === 'InitWindow');
+		assert.ok(initWindow);
+		assert.strictEqual(initWindow!.qualified, 'rl.InitWindow');
+		assert.ok(initWindow!.signature.startsWith('rl.InitWindow('));
+		assert.ok(initWindow!.snippet.startsWith('rl.InitWindow('));
+		assert.ok(!initWindow!.snippet.includes('raylib.'));
+	});
+});
+
+// ---------------------------------------------------------------------------
 // Integration tests — the extension is loaded into the Extension Host.
 // ---------------------------------------------------------------------------
 suite('integration: extension host', () => {
@@ -133,5 +166,66 @@ suite('e2e: completion provider', () => {
 		} finally {
 			await config.update('namespace', undefined, vscode.ConfigurationTarget.Global);
 		}
+	});
+});
+
+// ---------------------------------------------------------------------------
+// End-to-end tests — hover and signature help through the real providers.
+// ---------------------------------------------------------------------------
+suite('e2e: hover provider', () => {
+	suiteSetup(async () => {
+		await vscode.extensions.getExtension(EXT_ID)!.activate();
+	});
+
+	async function hoverIn(content: string, offset: number): Promise<vscode.Hover[]> {
+		const doc = await vscode.workspace.openTextDocument({ language: 'lua', content });
+		await vscode.window.showTextDocument(doc);
+		return vscode.commands.executeCommand<vscode.Hover[]>(
+			'vscode.executeHoverProvider',
+			doc.uri,
+			doc.positionAt(offset)
+		);
+	}
+
+	test('shows documentation when hovering a raylib call', async () => {
+		const content = 'raylib.InitWindow(800, 450, "x")';
+		const hovers = await hoverIn(content, content.indexOf('InitWindow') + 2);
+		assert.ok(hovers.length > 0, 'a hover is returned');
+		const text = (hovers[0].contents[0] as vscode.MarkdownString).value;
+		assert.ok(text.includes('raylib.InitWindow(width, height, title)'), 'hover shows the signature');
+	});
+
+	test('does not hover non-raylib identifiers', async () => {
+		const content = 'local foo = other.InitWindow';
+		const hovers = await hoverIn(content, content.indexOf('InitWindow') + 2);
+		assert.strictEqual(hovers.length, 0, 'no hover outside the namespace');
+	});
+});
+
+suite('e2e: signature help provider', () => {
+	suiteSetup(async () => {
+		await vscode.extensions.getExtension(EXT_ID)!.activate();
+	});
+
+	async function signatureAt(content: string): Promise<vscode.SignatureHelp> {
+		const doc = await vscode.workspace.openTextDocument({ language: 'lua', content });
+		await vscode.window.showTextDocument(doc);
+		return vscode.commands.executeCommand<vscode.SignatureHelp>(
+			'vscode.executeSignatureHelpProvider',
+			doc.uri,
+			doc.positionAt(content.length)
+		);
+	}
+
+	test('offers a signature and tracks the active parameter', async () => {
+		const help = await signatureAt('raylib.InitWindow(800, ');
+		assert.ok(help && help.signatures.length > 0, 'a signature is returned');
+		assert.strictEqual(help.signatures[0].label, 'raylib.InitWindow(width, height, title)');
+		assert.strictEqual(help.activeParameter, 1, 'second parameter is active after one comma');
+	});
+
+	test('returns nothing outside a raylib call', async () => {
+		const help = await signatureAt('local x = 1 + ');
+		assert.ok(!help || help.signatures.length === 0, 'no signature outside a call');
 	});
 });

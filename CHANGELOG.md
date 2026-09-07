@@ -4,6 +4,28 @@ All notable changes to the "raylib-lua-bindings-autocomplete" extension will be 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.11.0] - 2026-09-06
+
+### Added
+
+- **Hover provider** — hovering a `raylib.*` call in existing code now shows its
+  description, usage signature, and parameter list. Previously hovering showed
+  nothing.
+- **Signature help** — a parameter-hint popup appears while typing inside a
+  `raylib.*(` call, highlighting the argument being entered (tracked across
+  nested calls and commas). Triggered by `(` and `,`.
+- **Structured parameter documentation** — completion, hover, and signature-help
+  docs now list each parameter by name.
+- Tests for the structured API surface (`getRaylibFunctions`) and end-to-end
+  coverage of the hover and signature-help providers.
+
+### Changed
+
+- `completionItems.ts` now exposes a single namespace-aware API builder
+  (`getRaylibFunctions`) that the completion, hover, and signature-help providers
+  all consume — one source of truth across every surface. All three providers
+  re-register automatically when the `raylib-lua.namespace` setting changes.
+
 ## [0.10.0] - 2026-09-06
 
 ### Added

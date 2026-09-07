@@ -143,13 +143,21 @@ Run `yarn compile` then press F5 to test.
 
 ### Changing the documentation format
 
-Edit the MarkdownString template in `getCompletionItems()` inside `src/completionItems.ts`. All 606 items share the same template.
+Edit the `renderDocumentation()` helper in `src/completionItems.ts`. The completion, hover, and signature-help providers all render through it, so one edit updates every surface.
+
+---
+
+## Providers
+
+Three providers share the same namespace-aware data from `getRaylibFunctions()` in `completionItems.ts`, and all re-register when the `raylib-lua.namespace` setting changes:
+
+- **Completion** (`src/extension.ts`) — triggered by `.`; offers items after the `${namespace}.` prefix.
+- **Hover** — shows description, signature, and parameter list when hovering a `${namespace}.*` call.
+- **Signature help** — triggered by `(` and `,`; shows a parameter-hint popup and tracks the active argument across nested calls via `findEnclosingCall()`.
 
 ---
 
 ## Known limitations / TODO
 
-- Parameter documentation is not structured — the `documentation` MarkdownString shows the function description but no detailed parameter table.
-- No hover provider — hovering over `raylib.DrawCircle` in existing code shows nothing.
-- No signature help provider — there is no parameter-hint popup while typing inside parentheses.
-- 84 of the 606 functions insert a plain `name()` — these are argument-less by nature, so no tab stops are needed.
+- Parameter documentation lists names only — there is no per-parameter type or description (the binding data does not carry them).
+- 84 of the 606 functions insert a plain `name()` — these are argument-less by nature, so no tab stops are needed and signature help is suppressed for them.

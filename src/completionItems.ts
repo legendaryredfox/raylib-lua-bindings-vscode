@@ -1,6 +1,6 @@
-export function getCompletionItems(vscode: typeof import("vscode"), namespace = "raylib"): import("vscode").CompletionItem[] {
-  type Entry = [name: string, detail: string, snippet?: string];
-  const fns: Entry[] = [
+type Entry = [name: string, detail: string, snippet?: string];
+
+const fns: Entry[] = [
     ["SetShapesTexture", "Sets the texture to be used for shapes.", "raylib.SetShapesTexture(${1:texture}, ${2:rec})"],
     ["GetShapesTexture", "Gets the current texture used for shapes."],
     ["GetShapesTextureRectangle", "Gets the source rectangle of the current shapes texture."],
@@ -615,23 +615,67 @@ export function getCompletionItems(vscode: typeof import("vscode"), namespace = 
     ["UpdateCameraPro", "Update camera movement/rotation.", "raylib.UpdateCameraPro(${1:camera}, ${2:movement}, ${3:rotation}, ${4:zoom})"],
     ["WaitTime", "Wait for some time (halt program execution).", "raylib.WaitTime(${1:seconds})"],
     // <<< AUTO-GENERATED
-  ];
+];
 
+/** A single raylib function resolved for the configured namespace. */
+export interface RaylibFunction {
+  /** Bare function name, e.g. `InitWindow`. */
+  name: string;
+  /** Namespace-qualified name, e.g. `raylib.InitWindow`. */
+  qualified: string;
+  /** Short one-line description. */
+  detail: string;
+  /** Ordered parameter names (empty for argument-less functions). */
+  params: string[];
+  /** Human-readable call signature, e.g. `raylib.InitWindow(width, height, title)`. */
+  signature: string;
+  /** Snippet string with tab stops, e.g. `raylib.InitWindow(${1:width}, ...)`. */
+  snippet: string;
+}
+
+const TAB_STOP = /\$\{\d+:([^}]*)\}/g;
+
+/**
+ * Resolve the raw data array into structured, namespace-aware records. Shared by
+ * the completion, hover, and signature-help providers so every surface stays in
+ * sync with a single source of truth.
+ */
+export function getRaylibFunctions(namespace = "raylib"): RaylibFunction[] {
   return fns.map(([name, detail, snippet]) => {
-    const item = new vscode.CompletionItem(`${namespace}.${name}`, vscode.CompletionItemKind.Function);
-    item.detail = detail;
-
     // Rewrite the hardcoded prefix in the data to the configured namespace.
     const resolvedSnippet = snippet
       ? snippet.replace(/^[A-Za-z_]\w*\./, `${namespace}.`)
       : `${namespace}.${name}()`;
-    item.insertText = new vscode.SnippetString(resolvedSnippet);
+    // Human-readable signature: strip tab-stop syntax (${1:width} -> width).
+    const signature = resolvedSnippet.replace(TAB_STOP, "$1");
+    const params = snippet ? [...snippet.matchAll(TAB_STOP)].map(m => m[1]) : [];
+    return { name, qualified: `${namespace}.${name}`, detail, params, signature, snippet: resolvedSnippet };
+  });
+}
 
-    // Human-readable signature for the docs: strip tab-stop syntax (${1:width} -> width).
-    const signature = resolvedSnippet.replace(/\$\{\d+:([^}]*)\}/g, "$1");
-    item.documentation = new vscode.MarkdownString(
-      `${detail}\n\n**Usage Example:**\n\`\`\`lua\n${signature}\n\`\`\``
-    );
+/** Build the shared MarkdownString shown in completion docs, hovers, and signature help. */
+export function renderDocumentation(
+  vscode: typeof import("vscode"),
+  fn: RaylibFunction
+): import("vscode").MarkdownString {
+  const md = new vscode.MarkdownString(
+    `${fn.detail}\n\n**Usage Example:**\n\`\`\`lua\n${fn.signature}\n\`\`\``
+  );
+  if (fn.params.length > 0) {
+    md.appendMarkdown(`\n\n**Parameters:**\n${fn.params.map(p => `- \`${p}\``).join("\n")}`);
+  }
+  return md;
+}
+
+export function getCompletionItems(
+  vscode: typeof import("vscode"),
+  namespace = "raylib"
+): import("vscode").CompletionItem[] {
+  return getRaylibFunctions(namespace).map(fn => {
+    const item = new vscode.CompletionItem(fn.qualified, vscode.CompletionItemKind.Function);
+    item.detail = fn.detail;
+    item.insertText = new vscode.SnippetString(fn.snippet);
+    item.documentation = renderDocumentation(vscode, fn);
     return item;
   });
 }
