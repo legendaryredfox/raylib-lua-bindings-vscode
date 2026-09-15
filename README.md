@@ -79,3 +79,9 @@ MIT — see [LICENSE](LICENSE) for details.
 ## Contributing
 
 Issues and pull requests are welcome. To add a new function, add a single entry to the `fns` array in `src/completionItems.ts`.
+
+## ☕ Support
+
+If you find this project useful, consider supporting its development:
+
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-legendaryredfox-FFDD00?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/legendaryredfox)
