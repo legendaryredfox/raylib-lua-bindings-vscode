@@ -4,6 +4,19 @@ All notable changes to the "raylib-lua-bindings-autocomplete" extension will be 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [Unreleased]
+
+### Fixed
+
+- Signatures synced with the bindings: `DrawLineEx` (start/end as Vector2),
+  `DrawCircleGradient` (center as Vector2), `DrawRectangleGradientEx` (raylib 6.0
+  corner order), `DrawCapsule`/`DrawCapsuleWires` (`slices` before `rings`),
+  `ImageCrop` and `UpdateTextureRec` (Rectangle argument), `LoadSoundAlias(source)`,
+  `GetCodepointPrevious(text, pos)`.
+- Audio processor/callback descriptions now give the handler signature
+  `(samples, frames, channels)` and say that handlers run in a separate Lua state.
+- `GetTargetFPS` is described as an alias of `GetFPS`.
+
 ## [0.11.0] - 2026-09-06
 
 ### Added
