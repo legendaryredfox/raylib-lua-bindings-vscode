@@ -1,3 +1,5 @@
+import { constants } from "./constants";
+
 type Entry = [name: string, detail: string, snippet?: string];
 
 const fns: Entry[] = [
@@ -636,6 +638,153 @@ const fns: Entry[] = [
     ["UpdateCamera", "Update camera position for selected mode.", "raylib.UpdateCamera(${1:camera}, ${2:mode})"],
     ["UpdateCameraPro", "Update camera movement/rotation.", "raylib.UpdateCameraPro(${1:camera}, ${2:movement}, ${3:rotation}, ${4:zoom})"],
     ["WaitTime", "Wait for some time (halt program execution).", "raylib.WaitTime(${1:seconds})"],
+    ["Clamp", "Clamp float value.", "raylib.Clamp(${1:value}, ${2:min}, ${3:max})"],
+    ["FloatEquals", "Check whether two given floats are almost equal.", "raylib.FloatEquals(${1:x}, ${2:y})"],
+    ["GetRenderTextureTexture", "Gets the Texture2D of a render texture so it can be drawn. Shares the GL texture: release with UnloadRenderTexture, never UnloadTexture.", "raylib.GetRenderTextureTexture(${1:renderTexture})"],
+    ["Lerp", "Calculate linear interpolation between two floats.", "raylib.Lerp(${1:start}, ${2:end}, ${3:amount})"],
+    ["MatrixAdd", "Add two matrices.", "raylib.MatrixAdd(${1:left}, ${2:right})"],
+    ["MatrixCompose", "Compose a transformation matrix from rotational, translational and scaling components.", "raylib.MatrixCompose(${1:translation}, ${2:rotation}, ${3:scale})"],
+    ["MatrixDecompose", "Decomposes a transformation matrix; returns translation, rotation (quaternion), scale.", "raylib.MatrixDecompose(${1:mat})"],
+    ["MatrixDeterminant", "Compute matrix determinant.", "raylib.MatrixDeterminant(${1:mat})"],
+    ["MatrixFrustum", "Get perspective projection matrix.", "raylib.MatrixFrustum(${1:left}, ${2:right}, ${3:bottom}, ${4:top}, ${5:nearPlane}, ${6:farPlane})"],
+    ["MatrixIdentity", "Get identity matrix."],
+    ["MatrixInvert", "Invert provided matrix.", "raylib.MatrixInvert(${1:mat})"],
+    ["MatrixLookAt", "Get camera look-at matrix (view matrix).", "raylib.MatrixLookAt(${1:eye}, ${2:target}, ${3:up})"],
+    ["MatrixMultiply", "Get two matrix multiplication.", "raylib.MatrixMultiply(${1:left}, ${2:right})"],
+    ["MatrixMultiplyValue", "Multiply matrix components by value.", "raylib.MatrixMultiplyValue(${1:left}, ${2:value})"],
+    ["MatrixOrtho", "Get orthographic projection matrix.", "raylib.MatrixOrtho(${1:left}, ${2:right}, ${3:bottom}, ${4:top}, ${5:nearPlane}, ${6:farPlane})"],
+    ["MatrixPerspective", "Get perspective projection matrix.", "raylib.MatrixPerspective(${1:fovY}, ${2:aspect}, ${3:nearPlane}, ${4:farPlane})"],
+    ["MatrixRotate", "Create rotation matrix from axis and angle.", "raylib.MatrixRotate(${1:axis}, ${2:angle})"],
+    ["MatrixRotateX", "Get x-rotation matrix.", "raylib.MatrixRotateX(${1:angle})"],
+    ["MatrixRotateXYZ", "Get xyz-rotation matrix.", "raylib.MatrixRotateXYZ(${1:angle})"],
+    ["MatrixRotateY", "Get y-rotation matrix.", "raylib.MatrixRotateY(${1:angle})"],
+    ["MatrixRotateZ", "Get z-rotation matrix.", "raylib.MatrixRotateZ(${1:angle})"],
+    ["MatrixRotateZYX", "Get zyx-rotation matrix.", "raylib.MatrixRotateZYX(${1:angle})"],
+    ["MatrixScale", "Get scaling matrix.", "raylib.MatrixScale(${1:x}, ${2:y}, ${3:z})"],
+    ["MatrixSubtract", "Subtract two matrices (left - right).", "raylib.MatrixSubtract(${1:left}, ${2:right})"],
+    ["MatrixToFloatV", "Get float array of matrix data.", "raylib.MatrixToFloatV(${1:mat})"],
+    ["MatrixTrace", "Get the trace of the matrix (sum of the values along the diagonal).", "raylib.MatrixTrace(${1:mat})"],
+    ["MatrixTranslate", "Get translation matrix.", "raylib.MatrixTranslate(${1:x}, ${2:y}, ${3:z})"],
+    ["MatrixTranspose", "Transposes provided matrix.", "raylib.MatrixTranspose(${1:mat})"],
+    ["Normalize", "Normalize input value within input range.", "raylib.Normalize(${1:value}, ${2:start}, ${3:end})"],
+    ["QuaternionAdd", "Add two quaternions.", "raylib.QuaternionAdd(${1:q1}, ${2:q2})"],
+    ["QuaternionAddValue", "Add quaternion and float value.", "raylib.QuaternionAddValue(${1:q}, ${2:add})"],
+    ["QuaternionCubicHermiteSpline", "Calculate quaternion cubic spline interpolation using Cubic Hermite Spline algorithm.", "raylib.QuaternionCubicHermiteSpline(${1:q1}, ${2:outTangent1}, ${3:q2}, ${4:inTangent2}, ${5:t})"],
+    ["QuaternionDivide", "Divide two quaternions.", "raylib.QuaternionDivide(${1:q1}, ${2:q2})"],
+    ["QuaternionEquals", "Check whether two given quaternions are almost equal.", "raylib.QuaternionEquals(${1:p}, ${2:q})"],
+    ["QuaternionFromAxisAngle", "Get rotation quaternion for an angle and axis.", "raylib.QuaternionFromAxisAngle(${1:axis}, ${2:angle})"],
+    ["QuaternionFromEuler", "Get the quaternion equivalent to Euler angles.", "raylib.QuaternionFromEuler(${1:pitch}, ${2:yaw}, ${3:roll})"],
+    ["QuaternionFromMatrix", "Get a quaternion for a given rotation matrix.", "raylib.QuaternionFromMatrix(${1:mat})"],
+    ["QuaternionFromVector3ToVector3", "Calculate quaternion based on the rotation from one vector to another.", "raylib.QuaternionFromVector3ToVector3(${1:from}, ${2:to})"],
+    ["QuaternionIdentity", "Get identity quaternion."],
+    ["QuaternionInvert", "Invert provided quaternion.", "raylib.QuaternionInvert(${1:q})"],
+    ["QuaternionLength", "Computes the length of a quaternion.", "raylib.QuaternionLength(${1:q})"],
+    ["QuaternionLerp", "Calculate linear interpolation between two quaternions.", "raylib.QuaternionLerp(${1:q1}, ${2:q2}, ${3:amount})"],
+    ["QuaternionMultiply", "Calculate two quaternion multiplication.", "raylib.QuaternionMultiply(${1:q1}, ${2:q2})"],
+    ["QuaternionNlerp", "Calculate slerp-optimized interpolation between two quaternions.", "raylib.QuaternionNlerp(${1:q1}, ${2:q2}, ${3:amount})"],
+    ["QuaternionNormalize", "Normalize provided quaternion.", "raylib.QuaternionNormalize(${1:q})"],
+    ["QuaternionScale", "Scale quaternion by float value.", "raylib.QuaternionScale(${1:q}, ${2:mul})"],
+    ["QuaternionSlerp", "Calculates spherical linear interpolation between two quaternions.", "raylib.QuaternionSlerp(${1:q1}, ${2:q2}, ${3:amount})"],
+    ["QuaternionSubtract", "Subtract two quaternions.", "raylib.QuaternionSubtract(${1:q1}, ${2:q2})"],
+    ["QuaternionSubtractValue", "Subtract quaternion and float value.", "raylib.QuaternionSubtractValue(${1:q}, ${2:sub})"],
+    ["QuaternionToAxisAngle", "Gets the rotation axis (Vector3) and angle (radians) of a quaternion; returns axis, angle.", "raylib.QuaternionToAxisAngle(${1:q})"],
+    ["QuaternionToEuler", "Get the Euler angles equivalent to quaternion (roll, pitch, yaw).", "raylib.QuaternionToEuler(${1:q})"],
+    ["QuaternionToMatrix", "Get a matrix for a given quaternion.", "raylib.QuaternionToMatrix(${1:q})"],
+    ["QuaternionTransform", "Transform a quaternion given a transformation matrix.", "raylib.QuaternionTransform(${1:q}, ${2:mat})"],
+    ["Remap", "Remap input value within input range to output range.", "raylib.Remap(${1:value}, ${2:inputStart}, ${3:inputEnd}, ${4:outputStart}, ${5:outputEnd})"],
+    ["Vector2Add", "Add two vectors (v1 + v2).", "raylib.Vector2Add(${1:v1}, ${2:v2})"],
+    ["Vector2AddValue", "Add vector and float value.", "raylib.Vector2AddValue(${1:v}, ${2:add})"],
+    ["Vector2Angle", "Calculate the signed angle from v1 to v2, relative to the origin (0, 0).", "raylib.Vector2Angle(${1:v1}, ${2:v2})"],
+    ["Vector2Clamp", "Clamp the components of the vector between.", "raylib.Vector2Clamp(${1:v}, ${2:min}, ${3:max})"],
+    ["Vector2ClampValue", "Clamp the magnitude of the vector between two min and max values.", "raylib.Vector2ClampValue(${1:v}, ${2:min}, ${3:max})"],
+    ["Vector2CrossProduct", "Calculate two vectors cross product.", "raylib.Vector2CrossProduct(${1:v1}, ${2:v2})"],
+    ["Vector2Distance", "Calculate distance between two vectors.", "raylib.Vector2Distance(${1:v1}, ${2:v2})"],
+    ["Vector2DistanceSqr", "Calculate square distance between two vectors.", "raylib.Vector2DistanceSqr(${1:v1}, ${2:v2})"],
+    ["Vector2Divide", "Divide vector by vector.", "raylib.Vector2Divide(${1:v1}, ${2:v2})"],
+    ["Vector2DotProduct", "Calculate two vectors dot product.", "raylib.Vector2DotProduct(${1:v1}, ${2:v2})"],
+    ["Vector2Equals", "Check whether two given vectors are almost equal.", "raylib.Vector2Equals(${1:p}, ${2:q})"],
+    ["Vector2Invert", "Invert the given vector.", "raylib.Vector2Invert(${1:v})"],
+    ["Vector2Length", "Calculate vector length.", "raylib.Vector2Length(${1:v})"],
+    ["Vector2LengthSqr", "Calculate vector square length.", "raylib.Vector2LengthSqr(${1:v})"],
+    ["Vector2Lerp", "Calculate linear interpolation between two vectors.", "raylib.Vector2Lerp(${1:v1}, ${2:v2}, ${3:amount})"],
+    ["Vector2LineAngle", "Calculate angle defined by a two vectors line.", "raylib.Vector2LineAngle(${1:start}, ${2:end})"],
+    ["Vector2Max", "Get max value for each pair of components.", "raylib.Vector2Max(${1:v1}, ${2:v2})"],
+    ["Vector2Min", "Get min value for each pair of components.", "raylib.Vector2Min(${1:v1}, ${2:v2})"],
+    ["Vector2MoveTowards", "Move Vector towards target.", "raylib.Vector2MoveTowards(${1:v}, ${2:target}, ${3:maxDistance})"],
+    ["Vector2Multiply", "Multiply vector by vector.", "raylib.Vector2Multiply(${1:v1}, ${2:v2})"],
+    ["Vector2Negate", "Negate vector.", "raylib.Vector2Negate(${1:v})"],
+    ["Vector2Normalize", "Normalize provided vector.", "raylib.Vector2Normalize(${1:v})"],
+    ["Vector2One", "Vector with components value 1.0f."],
+    ["Vector2Reflect", "Calculate reflected vector to normal.", "raylib.Vector2Reflect(${1:v}, ${2:normal})"],
+    ["Vector2Refract", "Compute the direction of a refracted ray.", "raylib.Vector2Refract(${1:v}, ${2:n}, ${3:r})"],
+    ["Vector2Rotate", "Rotate vector by angle.", "raylib.Vector2Rotate(${1:v}, ${2:angle})"],
+    ["Vector2Scale", "Scale vector (multiply by value).", "raylib.Vector2Scale(${1:v}, ${2:scale})"],
+    ["Vector2Subtract", "Subtract two vectors (v1 - v2).", "raylib.Vector2Subtract(${1:v1}, ${2:v2})"],
+    ["Vector2SubtractValue", "Subtract vector by float value.", "raylib.Vector2SubtractValue(${1:v}, ${2:sub})"],
+    ["Vector2Transform", "Transforms a Vector2 by a given Matrix.", "raylib.Vector2Transform(${1:v}, ${2:mat})"],
+    ["Vector2Zero", "Vector with components value 0.0f."],
+    ["Vector3Add", "Add two vectors.", "raylib.Vector3Add(${1:v1}, ${2:v2})"],
+    ["Vector3AddValue", "Add vector and float value.", "raylib.Vector3AddValue(${1:v}, ${2:add})"],
+    ["Vector3Angle", "Calculate angle between two vectors.", "raylib.Vector3Angle(${1:v1}, ${2:v2})"],
+    ["Vector3Barycenter", "Compute barycenter coordinates (u, v, w) for point p with respect to triangle (a, b, c).", "raylib.Vector3Barycenter(${1:p}, ${2:a}, ${3:b}, ${4:c})"],
+    ["Vector3Clamp", "Clamp the components of the vector between.", "raylib.Vector3Clamp(${1:v}, ${2:min}, ${3:max})"],
+    ["Vector3ClampValue", "Clamp the magnitude of the vector between two values.", "raylib.Vector3ClampValue(${1:v}, ${2:min}, ${3:max})"],
+    ["Vector3CrossProduct", "Calculate two vectors cross product.", "raylib.Vector3CrossProduct(${1:v1}, ${2:v2})"],
+    ["Vector3CubicHermite", "Calculate cubic hermite interpolation between two vectors and their tangents.", "raylib.Vector3CubicHermite(${1:v1}, ${2:tangent1}, ${3:v2}, ${4:tangent2}, ${5:amount})"],
+    ["Vector3Distance", "Calculate distance between two vectors.", "raylib.Vector3Distance(${1:v1}, ${2:v2})"],
+    ["Vector3DistanceSqr", "Calculate square distance between two vectors.", "raylib.Vector3DistanceSqr(${1:v1}, ${2:v2})"],
+    ["Vector3Divide", "Divide vector by vector.", "raylib.Vector3Divide(${1:v1}, ${2:v2})"],
+    ["Vector3DotProduct", "Calculate two vectors dot product.", "raylib.Vector3DotProduct(${1:v1}, ${2:v2})"],
+    ["Vector3Equals", "Check whether two given vectors are almost equal.", "raylib.Vector3Equals(${1:p}, ${2:q})"],
+    ["Vector3Invert", "Invert the given vector.", "raylib.Vector3Invert(${1:v})"],
+    ["Vector3Length", "Calculate vector length.", "raylib.Vector3Length(${1:v})"],
+    ["Vector3LengthSqr", "Calculate vector square length.", "raylib.Vector3LengthSqr(${1:v})"],
+    ["Vector3Lerp", "Calculate linear interpolation between two vectors.", "raylib.Vector3Lerp(${1:v1}, ${2:v2}, ${3:amount})"],
+    ["Vector3Max", "Get max value for each pair of components.", "raylib.Vector3Max(${1:v1}, ${2:v2})"],
+    ["Vector3Min", "Get min value for each pair of components.", "raylib.Vector3Min(${1:v1}, ${2:v2})"],
+    ["Vector3MoveTowards", "Move Vector towards target.", "raylib.Vector3MoveTowards(${1:v}, ${2:target}, ${3:maxDistance})"],
+    ["Vector3Multiply", "Multiply vector by vector.", "raylib.Vector3Multiply(${1:v1}, ${2:v2})"],
+    ["Vector3Negate", "Negate provided vector (invert direction).", "raylib.Vector3Negate(${1:v})"],
+    ["Vector3Normalize", "Normalize provided vector.", "raylib.Vector3Normalize(${1:v})"],
+    ["Vector3One", "Vector with components value 1.0f."],
+    ["Vector3OrthoNormalize", "Orthonormalizes two vectors; returns the two new vectors.", "raylib.Vector3OrthoNormalize(${1:v1}, ${2:v2})"],
+    ["Vector3Perpendicular", "Calculate one vector perpendicular vector.", "raylib.Vector3Perpendicular(${1:v})"],
+    ["Vector3Project", "Calculate the projection of the vector v1 on to v2.", "raylib.Vector3Project(${1:v1}, ${2:v2})"],
+    ["Vector3Reflect", "Calculate reflected vector to normal.", "raylib.Vector3Reflect(${1:v}, ${2:normal})"],
+    ["Vector3Refract", "Compute the direction of a refracted ray.", "raylib.Vector3Refract(${1:v}, ${2:n}, ${3:r})"],
+    ["Vector3Reject", "Calculate the rejection of the vector v1 on to v2.", "raylib.Vector3Reject(${1:v1}, ${2:v2})"],
+    ["Vector3RotateByAxisAngle", "Rotates a vector around an axis.", "raylib.Vector3RotateByAxisAngle(${1:v}, ${2:axis}, ${3:angle})"],
+    ["Vector3RotateByQuaternion", "Transform a vector by quaternion rotation.", "raylib.Vector3RotateByQuaternion(${1:v}, ${2:q})"],
+    ["Vector3Scale", "Multiply vector by scalar.", "raylib.Vector3Scale(${1:v}, ${2:scalar})"],
+    ["Vector3Subtract", "Subtract two vectors.", "raylib.Vector3Subtract(${1:v1}, ${2:v2})"],
+    ["Vector3SubtractValue", "Subtract vector by float value.", "raylib.Vector3SubtractValue(${1:v}, ${2:sub})"],
+    ["Vector3ToFloatV", "Get Vector3 as float array.", "raylib.Vector3ToFloatV(${1:v})"],
+    ["Vector3Transform", "Transforms a Vector3 by a given Matrix.", "raylib.Vector3Transform(${1:v}, ${2:mat})"],
+    ["Vector3Unproject", "Projects a Vector3 from screen space into object space.", "raylib.Vector3Unproject(${1:source}, ${2:projection}, ${3:view})"],
+    ["Vector3Zero", "Vector with components value 0.0f."],
+    ["Vector4Add", "Add two vectors.", "raylib.Vector4Add(${1:v1}, ${2:v2})"],
+    ["Vector4AddValue", "Add value to vector components.", "raylib.Vector4AddValue(${1:v}, ${2:add})"],
+    ["Vector4Distance", "Calculate distance between two vectors.", "raylib.Vector4Distance(${1:v1}, ${2:v2})"],
+    ["Vector4DistanceSqr", "Calculate square distance between two vectors.", "raylib.Vector4DistanceSqr(${1:v1}, ${2:v2})"],
+    ["Vector4Divide", "Divide vector by vector.", "raylib.Vector4Divide(${1:v1}, ${2:v2})"],
+    ["Vector4DotProduct", "Vectors dot product.", "raylib.Vector4DotProduct(${1:v1}, ${2:v2})"],
+    ["Vector4Equals", "Check whether two given vectors are almost equal.", "raylib.Vector4Equals(${1:p}, ${2:q})"],
+    ["Vector4Invert", "Invert the given vector.", "raylib.Vector4Invert(${1:v})"],
+    ["Vector4Length", "Vector length.", "raylib.Vector4Length(${1:v})"],
+    ["Vector4LengthSqr", "Vector square length.", "raylib.Vector4LengthSqr(${1:v})"],
+    ["Vector4Lerp", "Calculate linear interpolation between two vectors.", "raylib.Vector4Lerp(${1:v1}, ${2:v2}, ${3:amount})"],
+    ["Vector4Max", "Get max value for each pair of components.", "raylib.Vector4Max(${1:v1}, ${2:v2})"],
+    ["Vector4Min", "Get min value for each pair of components.", "raylib.Vector4Min(${1:v1}, ${2:v2})"],
+    ["Vector4MoveTowards", "Move Vector towards target.", "raylib.Vector4MoveTowards(${1:v}, ${2:target}, ${3:maxDistance})"],
+    ["Vector4Multiply", "Multiply vector by vector.", "raylib.Vector4Multiply(${1:v1}, ${2:v2})"],
+    ["Vector4Negate", "Negate vector.", "raylib.Vector4Negate(${1:v})"],
+    ["Vector4Normalize", "Normalize provided vector.", "raylib.Vector4Normalize(${1:v})"],
+    ["Vector4One", "Get vector one."],
+    ["Vector4Scale", "Scale vector components by value (multiply).", "raylib.Vector4Scale(${1:v}, ${2:scale})"],
+    ["Vector4Subtract", "Substract vectors.", "raylib.Vector4Subtract(${1:v1}, ${2:v2})"],
+    ["Vector4SubtractValue", "Substract value from vector components.", "raylib.Vector4SubtractValue(${1:v}, ${2:add})"],
+    ["Vector4Zero", "----------------------------------------------------------------------------------."],
+    ["Wrap", "Wrap input value from min to max.", "raylib.Wrap(${1:value}, ${2:min}, ${3:max})"],
     // <<< AUTO-GENERATED
 ];
 
@@ -698,6 +847,50 @@ export function getCompletionItems(
     item.detail = fn.detail;
     item.insertText = new vscode.SnippetString(fn.snippet);
     item.documentation = renderDocumentation(vscode, fn);
+    return item;
+  });
+}
+
+/** A raylib enum member or math/version constant, resolved for the configured namespace. */
+export interface RaylibConstant {
+  /** Bare name, e.g. `KEY_A`. */
+  name: string;
+  /** Namespace-qualified name, e.g. `raylib.KEY_A`. */
+  qualified: string;
+  /** Enum the constant belongs to (`KeyboardKey`), `Color`, `Math` or `Version`. */
+  group: string;
+  /** Integer/float value, or the color table / version string as text. */
+  value: number | string;
+  /** One-line description shown next to the completion. */
+  detail: string;
+}
+
+export function getRaylibConstants(namespace = "raylib"): RaylibConstant[] {
+  return constants.map(([name, group, value]) => ({
+    name,
+    qualified: `${namespace}.${name}`,
+    group,
+    value,
+    detail: `${group} = ${value}`,
+  }));
+}
+
+export function renderConstantDocumentation(
+  vscode: typeof import("vscode"),
+  c: RaylibConstant
+): import("vscode").MarkdownString {
+  return new vscode.MarkdownString(`**${c.group}**\n\n\`\`\`lua\n${c.qualified} --> ${c.value}\n\`\`\``);
+}
+
+export function getConstantCompletionItems(
+  vscode: typeof import("vscode"),
+  namespace = "raylib"
+): import("vscode").CompletionItem[] {
+  return getRaylibConstants(namespace).map(c => {
+    const item = new vscode.CompletionItem(c.qualified, vscode.CompletionItemKind.Constant);
+    item.detail = c.detail;
+    item.insertText = c.qualified;
+    item.documentation = renderConstantDocumentation(vscode, c);
     return item;
   });
 }

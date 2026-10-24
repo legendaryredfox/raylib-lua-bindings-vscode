@@ -4,7 +4,7 @@
   "description": "Autocomplete for raylib-lua-bindings",
   "publisher": "LegendaryRedfox",
   "repository": "https://github.com/legendaryredfox/raylib-lua-bindings-vscode",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "icon": "assets/icon.png",
   "engines": {
     "vscode": "^1.95.0"
@@ -24,6 +24,16 @@
           "type": "string",
           "default": "raylib",
           "description": "Namespace prefix used to trigger autocomplete (e.g. 'raylib' or 'rl')."
+        },
+        "raylib-lua.diagnostics": {
+          "type": "boolean",
+          "default": true,
+          "description": "Flag raylib calls that were renamed or changed in raylib 6.2 (with quick fixes where a rename is enough)."
+        },
+        "raylib-lua.inlayHints": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show parameter names before the arguments of raylib calls."
         }
       }
     }
@@ -35,6 +45,8 @@
     "pretest": "yarn run compile && yarn run lint",
     "lint": "eslint src",
     "test": "vscode-test",
+    "sync": "node scripts/sync.mjs --write",
+    "sync:check": "node scripts/sync.mjs",
     "package": "vsce package",
     "publish": "vsce publish"
   },

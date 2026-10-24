@@ -5,12 +5,14 @@
 
 Autocomplete for [raylib-lua-bindings](https://github.com/legendaryredfox/raylib-lua-bindings) — a C library that embeds Raylib 6.2 into Lua 5.5.
 
-This extension provides IntelliSense for all 628 exposed functions: autocomplete suggestions, tab-stop parameter snippets, and inline documentation — triggered automatically when you type `raylib.` (or your configured namespace) in any `.lua` file.
+This extension provides IntelliSense for all 775 exposed functions: autocomplete suggestions, tab-stop parameter snippets, and inline documentation — triggered automatically when you type `raylib.` (or your configured namespace) in any `.lua` file.
 
 ## Features
 
-- **628 functions** — the complete raylib-lua-bindings API: window/system, keyboard/mouse/gamepad/gesture/touch input, drawing, render modes, shapes, text & fonts, textures, audio, 3D models & cameras, shaders, filesystem & data utilities, VR, and automation events
-- **Parameter snippets** for 522 functions with named tab stops (e.g. `raylib.InitWindow(width, height, title)`) — every function that takes arguments; the remaining 84 are argument-less calls
+- **775 functions and 345 constants** (`raylib.KEY_A`, colors, …) — the complete raylib-lua-bindings API: window/system, keyboard/mouse/gamepad/gesture/touch input, drawing, render modes, shapes, text & fonts, textures, audio, 3D models & cameras, shaders, filesystem & data utilities, VR, and automation events
+- **Parameter snippets** for 683 functions with named tab stops (e.g. `raylib.InitWindow(width, height, title)`) — every function that takes arguments; the remaining 92 are argument-less calls
+- **Inlay hints** — parameter names shown before each argument (`raylib.DrawRectangle(posX: 10, posY: 20, …)`); disable with `raylib-lua.inlayHints`
+- **Migration diagnostics** — calls renamed or changed in raylib 6.2 are flagged (with a "Replace with …" quick fix where a rename is enough); disable with `raylib-lua.diagnostics`
 - **Inline documentation** — hover or select a completion to see a description
 - **Smart trigger** — completions appear only after the namespace prefix, not on every keystroke
 - **Configurable namespace** — use `rl.` or any other prefix via the `raylib-lua.namespace` setting

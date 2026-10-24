@@ -6,6 +6,23 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [0.13.0] - 2026-10-24
+
+### Added
+
+- **Constants** — `raylib.KEY_A`, `raylib.MOUSE_BUTTON_LEFT`, `raylib.FLAG_*`, `raylib.PIXELFORMAT_*`, named
+  colors, `PI`, `RAYLIB_VERSION`, … (345) in completion and hover, with their enum and value.
+- **raymath** — 146 functions (`Vector2Add`, `MatrixMultiply`, `QuaternionFromAxisAngle`, `Clamp`, `Lerp`, …)
+  plus `GetRenderTextureTexture`; 775 functions in total.
+- **Diagnostics** for API that changed in raylib 6.2: renamed functions are shown struck through with a
+  "Replace with …" quick fix (`GetSplinePointBezierQuad`, `ImageDrawTriangleEx`, `GetTargetFPS`), removed
+  `ImageDraw` is flagged, and behavior changes (`DrawCapsule` argument order, `FileCopy`/`FileMove` return
+  values, `ImageColorContrast`) show as hints. Turn off with `raylib-lua.diagnostics`.
+- **Inlay hints** — parameter names before call arguments (`raylib.DrawRectangle(posX: 10, …)`).
+  Turn off with `raylib-lua.inlayHints`.
+- `scripts/sync.mjs` (`yarn sync:check`, `yarn sync`): compares the extension with the live
+  `require("raylib")` module and `raylib.h`/`raymath.h`, adds missing functions and regenerates `src/constants.ts`.
+
 ## [0.12.0] - 2026-10-24
 
 ### Added
