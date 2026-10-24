@@ -6,6 +6,16 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [0.14.0] - 2026-10-24
+
+### Added
+
+- **rlgl** — 156 functions (`rlBegin`, `rlVertex2f`, `rlPushMatrix`, `rlLoadTexture`, `rlLoadShaderProgram`,
+  `rlSetUniform`, `rlLoadRenderBatch`, …) and the `RL_*` constants (200), for 931 functions and 545 constants
+  in total. Descriptions come from `rlgl.h`; functions whose Lua form differs from the C signature
+  (buffers returned as strings, out-parameters returned as values) have hand-written entries.
+- `scripts/sync.mjs` reads `rlgl.h` as well.
+
 ## [0.13.0] - 2026-10-24
 
 ### Added

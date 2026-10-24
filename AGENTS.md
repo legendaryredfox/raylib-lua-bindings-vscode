@@ -9,7 +9,7 @@ IntelliSense for [raylib-lua-bindings](https://github.com/legendaryredfox/raylib
 - `src/constants.ts`: GENERATED (`[name, group, value]`) by `scripts/sync.mjs`; never hand-edit. `getRaylibConstants()` / `getConstantCompletionItems()` in `completionItems.ts` consume it.
 - `src/calls.ts`: `scanCalls()` finds `ns.Name(...)` calls (skips comments/strings, parses top-level args); used by inlay hints and diagnostics.
 - `src/deprecations.ts`: functions renamed/changed in raylib 6.2 (`deprecated` = struck through + quick fix when `replacement` is set; `note` = hint).
-- `scripts/sync.mjs`: compares the extension with the live `require("raylib")` module and `raylib.h`/`raymath.h`.
+- `scripts/sync.mjs`: compares the extension with the live `require("raylib")` module and `raylib.h`/`raymath.h`/`rlgl.h`.
 - `src/test/extension.test.ts`, `src/test/features.test.ts`, `assets/icon.png`, `package.json` (`activationEvents: ["onLanguage:lua"]`, required because providers register in `activate()`), `tsconfig.json` (ES2022, Node16, strict), `eslint.config.mjs` (flat config, must stay at root), `.vscode/` (launch, build task), `.vscodeignore`, `yarn.lock`.
 
 ## Providers

@@ -31,6 +31,17 @@ const lua = opt("--lua") ?? (fs.existsSync(bundledLua) ? bundledLua : "lua");
 const OVERRIDES = {
   QuaternionToAxisAngle: { params: ["q"], detail: "Gets the rotation axis (Vector3) and angle (radians) of a quaternion; returns axis, angle." },
   MatrixDecompose: { params: ["mat"], detail: "Decomposes a transformation matrix; returns translation, rotation (quaternion), scale." },
+  // rlgl functions whose Lua form differs from the C signature (out-params become returns, buffers become strings)
+  rlGetGlTextureFormats: { params: ["format"], detail: "Gets the OpenGL formats of a pixel format; returns glInternalFormat, glFormat, glType." },
+  rlGenTextureMipmaps: { params: ["id", "width", "height", "format"], detail: "Generates mipmaps for a texture; returns the mipmap count." },
+  rlCopyFramebuffer: { params: ["x", "y", "width", "height", "format"], detail: "Copies a framebuffer region; returns the pixel data as a string." },
+  rlReadShaderBuffer: { params: ["id", "count", "offset"], detail: "Reads bytes from a shader storage buffer; returns them as a string." },
+  rlSetUniformMatrices: { params: ["locIndex", "matrices"], detail: "Sets a shader uniform array of Matrix tables." },
+  rlReadTexturePixels: { params: ["id", "width", "height", "format"], detail: "Reads a texture's pixels; returns them as a string." },
+  rlReadScreenPixels: { params: ["width", "height"], detail: "Reads the screen's RGBA pixels (width*height*4 bytes); returns them as a string." },
+  rlSetUniform: { params: ["locIndex", "value", "uniformType", "count"], detail: "Sets a shader uniform from a number or a flat table of count*components numbers." },
+  rlSetVertexAttributeDefault: { params: ["locIndex", "value", "attribType", "count"], detail: "Sets a default vertex attribute value (table of 1 to 4 numbers)." },
+  rlMultMatrixf: { params: ["matf"], detail: "Multiplies the current matrix by a Matrix table or an array of 16 numbers." },
   Vector3OrthoNormalize: { params: ["v1", "v2"], detail: "Orthonormalizes two vectors; returns the two new vectors." },
   GetRenderTextureTexture: {
     params: ["renderTexture"],
@@ -75,6 +86,8 @@ for (const line of out.split("\n")) {
 const read = (p) => fs.readFileSync(path.join(bindings, p), "utf8");
 const raylibH = read("raylib/src/raylib.h");
 const raymathH = read("raylib/src/raymath.h");
+// rlgl.h: only the public declarations, not the implementation section
+const rlglH = read("raylib/src/rlgl.h").split("#if defined(RLGL_IMPLEMENTATION)")[0];
 
 function paramNames(list) {
   const names = [];
@@ -90,7 +103,7 @@ function paramNames(list) {
 const headerFns = new Map();   // name -> { params, detail }
 const sentence = (s) => { s = s.trim(); return s ? (/[.!?]$/.test(s) ? s : s + ".") : s; };
 
-for (const line of raylibH.split("\n")) {
+for (const line of [...raylibH.split("\n"), ...rlglH.split("\n")]) {
   const m = line.match(/^RLAPI\s+.*?\b([A-Za-z_]\w*)\(([^)]*)\)\s*;\s*(?:\/\/\s*(.*))?$/);
   if (m) headerFns.set(m[1], { params: paramNames(m[2]), detail: sentence(m[3] ?? "") });
 }
@@ -107,7 +120,7 @@ mathLines.forEach((line, i) => {
 });
 
 // enum members -> group, and #define aliases
-const stripped = raylibH.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\/\/[^\n]*/g, "");
+const stripped = (raylibH + "\n" + rlglH).replace(/\/\*[\s\S]*?\*\//g, "").replace(/\/\/[^\n]*/g, "");
 const groupOf = new Map();
 for (const m of stripped.matchAll(/(?:typedef\s+)?enum\s*(\w*)\s*\{([\s\S]*?)\}\s*(\w*)\s*;/g)) {
   const group = m[3] || m[1] || "enum";
@@ -115,6 +128,9 @@ for (const m of stripped.matchAll(/(?:typedef\s+)?enum\s*(\w*)\s*\{([\s\S]*?)\}\
     const id = item.trim().match(/^[A-Za-z_]\w*/);
     if (id && !groupOf.has(id[0])) groupOf.set(id[0], group);
   }
+}
+for (const m of stripped.matchAll(/^[ \t]*#define[ \t]+(RL_[A-Z0-9_]+)[ \t]+(?:0x[0-9A-Fa-f]+|[0-9]+)[ \t]*$/gm)) {
+  if (!groupOf.has(m[1])) groupOf.set(m[1], "rlgl define");
 }
 const aliasOf = new Map();
 for (const m of stripped.matchAll(/^\s*#define\s+([A-Z][A-Z0-9_]*)\s+([A-Z][A-Z0-9_]*)\s*$/gm)) {

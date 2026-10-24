@@ -121,6 +121,25 @@ suite('e2e: constants, diagnostics, quick fixes, inlay hints', () => {
 		assert.ok(labels.includes('raylib.Vector2Add'), 'raymath functions are offered');
 	});
 
+	test('offers rlgl functions and constants', async () => {
+		const doc = await openLua('raylib.');
+		const list = await vscode.commands.executeCommand<vscode.CompletionList>(
+			'vscode.executeCompletionItemProvider', doc.uri, doc.positionAt(7), '.');
+		const labels = list.items.map(i => i.label as string);
+		assert.ok(labels.includes('raylib.rlBegin'));
+		assert.ok(labels.includes('raylib.rlLoadRenderBatch'));
+		assert.ok(labels.includes('raylib.RL_TRIANGLES'));
+	});
+
+	test('inlay hints name rlgl parameters', async () => {
+		const content = 'raylib.rlUpdateTexture(id, 0, 0, 2, 2, fmt, data)';
+		const doc = await openLua(content);
+		const hints = await vscode.commands.executeCommand<vscode.InlayHint[]>(
+			'vscode.executeInlayHintProvider', doc.uri, new vscode.Range(0, 0, 0, content.length));
+		const labels = hints.map(h => h.label as string);
+		assert.ok(labels.includes('offsetX:') && labels.includes('format:'), labels.join(','));
+	});
+
 	test('hover shows a constant value', async () => {
 		const content = 'if raylib.IsKeyDown(raylib.KEY_A) then end';
 		const doc = await openLua(content);

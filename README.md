@@ -5,12 +5,12 @@
 
 Autocomplete for [raylib-lua-bindings](https://github.com/legendaryredfox/raylib-lua-bindings) — a C library that embeds Raylib 6.2 into Lua 5.5.
 
-This extension provides IntelliSense for all 775 exposed functions: autocomplete suggestions, tab-stop parameter snippets, and inline documentation — triggered automatically when you type `raylib.` (or your configured namespace) in any `.lua` file.
+This extension provides IntelliSense for all 931 exposed functions: autocomplete suggestions, tab-stop parameter snippets, and inline documentation — triggered automatically when you type `raylib.` (or your configured namespace) in any `.lua` file.
 
 ## Features
 
-- **775 functions and 345 constants** (`raylib.KEY_A`, colors, …) — the complete raylib-lua-bindings API: window/system, keyboard/mouse/gamepad/gesture/touch input, drawing, render modes, shapes, text & fonts, textures, audio, 3D models & cameras, shaders, filesystem & data utilities, VR, and automation events
-- **Parameter snippets** for 683 functions with named tab stops (e.g. `raylib.InitWindow(width, height, title)`) — every function that takes arguments; the remaining 92 are argument-less calls
+- **931 functions and 545 constants** (`raylib.KEY_A`, `raylib.RL_TRIANGLES`, colors, …), including raymath and rlgl — the complete raylib-lua-bindings API: window/system, keyboard/mouse/gamepad/gesture/touch input, drawing, render modes, shapes, text & fonts, textures, audio, 3D models & cameras, shaders, filesystem & data utilities, VR, and automation events
+- **Parameter snippets** for 789 functions with named tab stops (e.g. `raylib.InitWindow(width, height, title)`) — every function that takes arguments; the remaining 142 are argument-less calls
 - **Inlay hints** — parameter names shown before each argument (`raylib.DrawRectangle(posX: 10, posY: 20, …)`); disable with `raylib-lua.inlayHints`
 - **Migration diagnostics** — calls renamed or changed in raylib 6.2 are flagged (with a "Replace with …" quick fix where a rename is enough); disable with `raylib-lua.diagnostics`
 - **Inline documentation** — hover or select a completion to see a description
