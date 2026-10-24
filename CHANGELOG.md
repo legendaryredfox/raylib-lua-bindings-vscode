@@ -6,6 +6,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [0.12.0] - 2026-10-24
+
 ### Added
 
 - 22 functions for raylib 6.2 / Lua 5.5.1 bindings: `IsPathDirectory`, `IsPathAbsolute`,
