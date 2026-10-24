@@ -10,7 +10,7 @@ const EXT_ID = 'LegendaryRedfox.raylib-lua-bindings-autocomplete';
 suite('unit: getCompletionItems', () => {
 	test('returns the full raylib API surface', () => {
 		const items = getCompletionItems(vscode, 'raylib');
-		assert.strictEqual(items.length, 606);
+		assert.strictEqual(items.length, 628);
 	});
 
 	test('labels are prefixed with the namespace and typed as functions', () => {
@@ -44,7 +44,7 @@ suite('unit: getCompletionItems', () => {
 			const insert = i.insertText as vscode.SnippetString;
 			return /\$\{\d+:/.test(insert.value);
 		});
-		assert.strictEqual(withTabStops.length, 522);
+		assert.strictEqual(withTabStops.length, 544);
 	});
 
 	test('tab-stop indices are sequential starting at 1', () => {
@@ -75,7 +75,7 @@ suite('unit: getCompletionItems', () => {
 // ---------------------------------------------------------------------------
 suite('unit: getRaylibFunctions', () => {
 	test('returns the full API surface', () => {
-		assert.strictEqual(getRaylibFunctions('raylib').length, 606);
+		assert.strictEqual(getRaylibFunctions('raylib').length, 628);
 	});
 
 	test('extracts ordered parameter names and a readable signature', () => {

@@ -6,11 +6,27 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+### Added
+
+- 22 functions for raylib 6.2 / Lua 5.5.1 bindings: `IsPathDirectory`, `IsPathAbsolute`,
+  `IsFileHidden`, `LoadRenderTextureEx`, `Draw{Circle,CircleSector,Ellipse,Ring,Triangle}LinesEx`,
+  `DrawTriangleGradient`, `GetSplinePointBezierQuadratic`, and the new `ImageDraw*` family
+  (`ImageDrawImage`, `ImageDrawImageEx`, `ImageDrawImagePro`, `ImageDrawImageRec`,
+  `ImageDrawLineStrip`, `ImageDrawCircleGradient`, `ImageDrawRectangleGradientEx`,
+  `ImageDrawRectangleLinesEx`, `ImageDrawRectanglePro`, `ImageDrawTextPro`,
+  `ImageDrawTriangleGradient`). The extension now covers 628 functions.
+
+### Changed
+
+- `DrawCapsule`/`DrawCapsuleWires` take `rings` before `slices` (raylib 6.2 order).
+- `ImageColorContrast` takes an integer; `ImageDrawRectangleLines` documents both argument forms;
+  `ImageDrawTriangleEx` and `GetSplinePointBezierQuad` are described as aliases of their 6.2 names.
+
 ### Fixed
 
 - Signatures synced with the bindings: `DrawLineEx` (start/end as Vector2),
   `DrawCircleGradient` (center as Vector2), `DrawRectangleGradientEx` (raylib 6.0
-  corner order), `DrawCapsule`/`DrawCapsuleWires` (`slices` before `rings`),
+  corner order), `DrawCapsule`/`DrawCapsuleWires`,
   `ImageCrop` and `UpdateTextureRec` (Rectangle argument), `LoadSoundAlias(source)`,
   `GetCodepointPrevious(text, pos)`.
 - Audio processor/callback descriptions now give the handler signature

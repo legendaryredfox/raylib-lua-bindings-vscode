@@ -3,13 +3,13 @@
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-legendaryredfox-FFDD00?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/legendaryredfox)
 
 
-Autocomplete for [raylib-lua-bindings](https://github.com/legendaryredfox/raylib-lua-bindings) — a C library that embeds Raylib 6.0 into Lua 5.5.
+Autocomplete for [raylib-lua-bindings](https://github.com/legendaryredfox/raylib-lua-bindings) — a C library that embeds Raylib 6.2 into Lua 5.5.
 
-This extension provides IntelliSense for all 606 exposed functions: autocomplete suggestions, tab-stop parameter snippets, and inline documentation — triggered automatically when you type `raylib.` (or your configured namespace) in any `.lua` file.
+This extension provides IntelliSense for all 628 exposed functions: autocomplete suggestions, tab-stop parameter snippets, and inline documentation — triggered automatically when you type `raylib.` (or your configured namespace) in any `.lua` file.
 
 ## Features
 
-- **606 functions** — the complete raylib-lua-bindings API: window/system, keyboard/mouse/gamepad/gesture/touch input, drawing, render modes, shapes, text & fonts, textures, audio, 3D models & cameras, shaders, filesystem & data utilities, VR, and automation events
+- **628 functions** — the complete raylib-lua-bindings API: window/system, keyboard/mouse/gamepad/gesture/touch input, drawing, render modes, shapes, text & fonts, textures, audio, 3D models & cameras, shaders, filesystem & data utilities, VR, and automation events
 - **Parameter snippets** for 522 functions with named tab stops (e.g. `raylib.InitWindow(width, height, title)`) — every function that takes arguments; the remaining 84 are argument-less calls
 - **Inline documentation** — hover or select a completion to see a description
 - **Smart trigger** — completions appear only after the namespace prefix, not on every keystroke
