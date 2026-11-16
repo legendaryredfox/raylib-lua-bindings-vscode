@@ -1,7 +1,7 @@
 import * as assert from 'assert';
 import * as vscode from 'vscode';
 import { scanCalls } from '../calls';
-import { getConstantCompletionItems, getRaylibConstants } from '../completionItems';
+import { getConstantCompletionItems, getRaylibConstants, getRaylibFunctions, getCallbacks, getCallbackCompletionItems, renderDocumentation } from '../completionItems';
 
 const EXT_ID = 'LegendaryRedfox.raylib-lua-bindings-autocomplete';
 
@@ -226,5 +226,81 @@ suite('e2e: constants, diagnostics, quick fixes, inlay hints', () => {
 		} finally {
 			await config.update('inlayHints', undefined, vscode.ConfigurationTarget.Global);
 		}
+	});
+});
+
+suite('unit: ReiLua binding', () => {
+	test('exposes ReiLua functions with ReiLua signatures', () => {
+		const fns = getRaylibFunctions('RL', 'reilua');
+		assert.ok(fns.length > 1000);
+		const init = fns.find(f => f.name === 'InitWindow');
+		assert.deepStrictEqual(init?.params, ['size', 'title']);
+		assert.strictEqual(init?.signature, 'RL.InitWindow(size, title)');
+		assert.deepStrictEqual(init?.paramTypes, ['table', 'string']);
+		assert.ok(fns.some(f => f.name === 'GetScreenSize'));
+		assert.strictEqual(fns.find(f => f.name === 'GetScreenSize')?.returns, 'Success: Vector2');
+		assert.strictEqual(fns.find(f => f.name === 'LoadImage')?.returns, 'Failure: nil; Success: Image');
+		assert.ok(!fns.some(f => f.name === 'update'));
+	});
+
+	test('documentation shows parameter types and return values', () => {
+		const fn = getRaylibFunctions('RL', 'reilua').find(f => f.name === 'LoadImage')!;
+		const md = renderDocumentation(vscode, fn).value;
+		assert.ok(md.includes('- `fileName`: `string`'));
+		assert.ok(md.includes('**Returns:** Failure: nil; Success: Image'));
+	});
+
+	test('exposes ReiLua constants', () => {
+		const byName = new Map(getRaylibConstants('RL', 'reilua').map(c => [c.name, c]));
+		assert.strictEqual(byName.get('KEY_A')?.value, 65);
+		assert.ok(byName.has('RED'));
+	});
+
+	test('namespace override applies', () => {
+		const items = getConstantCompletionItems(vscode, 'rl', 'reilua');
+		assert.ok(items.every(i => String(i.label).startsWith('rl.')));
+	});
+
+	test('lifecycle callbacks are scaffolds, not regular functions', () => {
+		const cbs = getCallbacks('RL', 'reilua');
+		assert.deepStrictEqual(cbs.map(c => c.name).sort(), ['config', 'draw', 'event', 'exit', 'init', 'log', 'update']);
+		const update = cbs.find(c => c.name === 'update');
+		assert.deepStrictEqual(update?.params, ['delta']);
+		assert.strictEqual(update?.snippet, 'RL.update( ${1:delta} )\n\t$0\nend');
+		assert.strictEqual(getCallbackCompletionItems(vscode, 'RL', 'reilua').length, 7);
+		assert.deepStrictEqual(getCallbacks('raylib', 'raylib-lua-bindings'), []);
+		assert.ok(!getRaylibFunctions('RL', 'reilua').some(f => f.name === 'update'));
+	});
+});
+
+suite('e2e: ReiLua binding', () => {
+	suiteSetup(async () => {
+		await vscode.extensions.getExtension('LegendaryRedfox.raylib-lua-bindings-autocomplete')!.activate();
+		await vscode.workspace.getConfiguration('raylib-lua').update('binding', 'reilua', vscode.ConfigurationTarget.Global);
+		await new Promise(r => setTimeout(r, 300));
+	});
+	suiteTeardown(async () => {
+		await vscode.workspace.getConfiguration('raylib-lua').update('binding', undefined, vscode.ConfigurationTarget.Global);
+		await new Promise(r => setTimeout(r, 300));
+	});
+
+	async function labelsAt(content: string): Promise<string[]> {
+		const doc = await vscode.workspace.openTextDocument({ language: 'lua', content });
+		await vscode.window.showTextDocument(doc);
+		const list = await vscode.commands.executeCommand<vscode.CompletionList>(
+			'vscode.executeCompletionItemProvider', doc.uri, doc.positionAt(content.length), '.');
+		return list.items.map(i => i.label as string);
+	}
+
+	test('uses the RL namespace by default', async () => {
+		const labels = await labelsAt('RL.');
+		assert.ok(labels.includes('RL.GetScreenSize'));
+		assert.ok(!labels.includes('RL.update'));
+	});
+
+	test('offers callback scaffolds after "function RL."', async () => {
+		const labels = await labelsAt('function RL.');
+		assert.strictEqual(labels.length, 7);
+		assert.ok(labels.includes('RL.update'));
 	});
 });

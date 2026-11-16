@@ -15,6 +15,7 @@ This extension provides IntelliSense for all 931 exposed functions: autocomplete
 - **Migration diagnostics** — calls renamed or changed in raylib 6.2 are flagged (with a "Replace with …" quick fix where a rename is enough); disable with `raylib-lua.diagnostics`
 - **Inline documentation** — hover or select a completion to see a description
 - **Smart trigger** — completions appear only after the namespace prefix, not on every keystroke
+- **ReiLua support** — set `raylib-lua.binding` to `reilua` for [nullstare/ReiLua](https://github.com/nullstare/ReiLua) v1.0 (1112 functions, 869 constants, namespace `RL`), with its own signatures
 - **Configurable namespace** — use `rl.` or any other prefix via the `raylib-lua.namespace` setting
 
 ## Installation
@@ -28,7 +29,8 @@ This extension provides IntelliSense for all 931 exposed functions: autocomplete
 
 | Setting | Default | Description |
 |---|---|---|
-| `raylib-lua.namespace` | `"raylib"` | Trigger prefix for autocomplete. Set to `"rl"` for [tsnake41/raylib-lua](https://github.com/tsnake41/raylib-lua) users. |
+| `raylib-lua.binding` | `"raylib-lua-bindings"` | `"raylib-lua-bindings"` or `"reilua"`. Migration diagnostics apply only to raylib-lua-bindings. |
+| `raylib-lua.namespace` | `"raylib"` (`"RL"` for ReiLua) | Trigger prefix for autocomplete. Set to `"rl"` for [tsnake41/raylib-lua](https://github.com/tsnake41/raylib-lua) users. |
 
 Change it in VS Code Settings (`Ctrl+,`) or in `settings.json`:
 

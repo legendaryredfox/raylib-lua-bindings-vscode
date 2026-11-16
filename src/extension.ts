@@ -1,5 +1,9 @@
 import * as vscode from "vscode";
 import {
+  Binding,
+  getCallbackCompletionItems,
+  getCallbacks,
+  DEFAULT_NAMESPACE,
   getCompletionItems,
   getConstantCompletionItems,
   getRaylibConstants,
@@ -49,6 +53,18 @@ function findEnclosingCall(prefix: string, namespace: string): { name: string; a
   return undefined;
 }
 
+function currentBinding(): Binding {
+  const value = vscode.workspace.getConfiguration("raylib-lua").get<string>("binding", "raylib-lua-bindings");
+  return value === "reilua" ? "reilua" : "raylib-lua-bindings";
+}
+
+/** Explicit `raylib-lua.namespace` wins; otherwise the selected binding's default (`raylib` or `RL`). */
+function currentNamespace(): string {
+  const info = vscode.workspace.getConfiguration("raylib-lua").inspect<string>("namespace");
+  const explicit = (info?.workspaceFolderValue ?? info?.workspaceValue ?? info?.globalValue)?.trim();
+  return explicit || DEFAULT_NAMESPACE[currentBinding()];
+}
+
 export function activate(context: vscode.ExtensionContext) {
   let providers: vscode.Disposable[] = [];
 
@@ -58,12 +74,17 @@ export function activate(context: vscode.ExtensionContext) {
     }
     providers = [];
 
-    const configured = vscode.workspace.getConfiguration("raylib-lua").get<string>("namespace", "raylib");
-    const namespace = configured?.trim() || "raylib";
+    const namespace = currentNamespace();
+    const binding = currentBinding();
 
-    const completionItems = [...getCompletionItems(vscode, namespace), ...getConstantCompletionItems(vscode, namespace)];
-    const byName = new Map<string, RaylibFunction>(getRaylibFunctions(namespace).map(fn => [fn.name, fn]));
-    const constantsByName = new Map<string, RaylibConstant>(getRaylibConstants(namespace).map(c => [c.name, c]));
+    const completionItems = [
+      ...getCompletionItems(vscode, namespace, binding),
+      ...getConstantCompletionItems(vscode, namespace, binding),
+    ];
+    const callbackItems = getCallbackCompletionItems(vscode, namespace, binding);
+    const callbacksByName = new Map<string, RaylibFunction>(getCallbacks(namespace, binding).map(fn => [fn.name, fn]));
+    const byName = new Map<string, RaylibFunction>(getRaylibFunctions(namespace, binding).map(fn => [fn.name, fn]));
+    const constantsByName = new Map<string, RaylibConstant>(getRaylibConstants(namespace, binding).map(c => [c.name, c]));
 
     providers.push(
       vscode.languages.registerCompletionItemProvider(
@@ -73,6 +94,9 @@ export function activate(context: vscode.ExtensionContext) {
             const linePrefix = document.lineAt(position).text.slice(0, position.character);
             if (!linePrefix.endsWith(`${namespace}.`)) {
               return undefined;
+            }
+            if (callbackItems.length && /\bfunction\s+$/.test(linePrefix.slice(0, -(namespace.length + 1)))) {
+              return callbackItems;
             }
             return completionItems;
           },
@@ -94,7 +118,7 @@ export function activate(context: vscode.ExtensionContext) {
             return undefined;
           }
           const member = text.slice(dot + 1);
-          const fn = byName.get(member);
+          const fn = byName.get(member) ?? callbacksByName.get(member);
           if (fn) {
             return new vscode.Hover(renderDocumentation(vscode, fn), range);
           }
@@ -197,7 +221,7 @@ export function activate(context: vscode.ExtensionContext) {
   const diagnostics = vscode.languages.createDiagnosticCollection(DIAGNOSTIC_SOURCE);
 
   function refreshDiagnostics(document: vscode.TextDocument, namespace: string) {
-    if (document.languageId !== "lua" || !settingEnabled("diagnostics")) {
+    if (document.languageId !== "lua" || !settingEnabled("diagnostics") || currentBinding() !== "raylib-lua-bindings") {
       diagnostics.delete(document.uri);
       return;
     }
@@ -226,11 +250,6 @@ export function activate(context: vscode.ExtensionContext) {
     diagnostics.set(document.uri, found);
   }
 
-  function currentNamespace(): string {
-    const configured = vscode.workspace.getConfiguration("raylib-lua").get<string>("namespace", "raylib");
-    return configured?.trim() || "raylib";
-  }
-
   function refreshAllDiagnostics(namespace: string) {
     diagnostics.clear();
     vscode.workspace.textDocuments.forEach(doc => refreshDiagnostics(doc, namespace));
@@ -249,7 +268,7 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.workspace.onDidChangeTextDocument(e => refreshDiagnostics(e.document, currentNamespace())),
     vscode.workspace.onDidCloseTextDocument(doc => diagnostics.delete(doc.uri)),
     vscode.workspace.onDidChangeConfiguration(e => {
-      if (e.affectsConfiguration("raylib-lua.namespace")) {
+      if (e.affectsConfiguration("raylib-lua.namespace") || e.affectsConfiguration("raylib-lua.binding")) {
         registerProviders();
       } else if (e.affectsConfiguration("raylib-lua.diagnostics")) {
         refreshAllDiagnostics(currentNamespace());

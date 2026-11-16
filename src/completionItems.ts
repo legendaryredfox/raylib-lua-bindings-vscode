@@ -1,4 +1,11 @@
 import { constants } from "./constants";
+import { reiluaCallbacks, reiluaConstants, reiluaFunctions } from "./reilua";
+
+/** Which Lua binding the extension describes. */
+export type Binding = "raylib-lua-bindings" | "reilua";
+
+/** Namespace each binding exposes by default. */
+export const DEFAULT_NAMESPACE: Record<Binding, string> = { "raylib-lua-bindings": "raylib", reilua: "RL" };
 
 type Entry = [name: string, detail: string, snippet?: string];
 
@@ -954,6 +961,10 @@ export interface RaylibFunction {
   detail: string;
   /** Ordered parameter names (empty for argument-less functions). */
   params: string[];
+  /** Lua type of each parameter, when the binding documents it (ReiLua). */
+  paramTypes?: string[];
+  /** What the function returns, e.g. `Success: Vector2; Failure: nil` (ReiLua). */
+  returns?: string;
   /** Human-readable call signature, e.g. `raylib.InitWindow(width, height, title)`. */
   signature: string;
   /** Snippet string with tab stops, e.g. `raylib.InitWindow(${1:width}, ...)`. */
@@ -967,7 +978,14 @@ const TAB_STOP = /\$\{\d+:([^}]*)\}/g;
  * the completion, hover, and signature-help providers so every surface stays in
  * sync with a single source of truth.
  */
-export function getRaylibFunctions(namespace = "raylib"): RaylibFunction[] {
+export function getRaylibFunctions(namespace = "raylib", binding: Binding = "raylib-lua-bindings"): RaylibFunction[] {
+  if (binding === "reilua") {
+    return reiluaFunctions.map(([name, detail, params, paramTypes, returns]) => {
+      const signature = `${namespace}.${name}(${params.join(", ")})`;
+      const snippet = params.length ? `${namespace}.${name}(${params.map((p, i) => `\${${i + 1}:${p}}`).join(", ")})` : `${namespace}.${name}()`;
+      return { name, qualified: `${namespace}.${name}`, detail, params, paramTypes, returns: returns || undefined, signature, snippet };
+    });
+  }
   return fns.map(([name, detail, snippet]) => {
     // Rewrite the hardcoded prefix in the data to the configured namespace.
     const resolvedSnippet = snippet
@@ -980,6 +998,33 @@ export function getRaylibFunctions(namespace = "raylib"): RaylibFunction[] {
   });
 }
 
+/** ReiLua lifecycle callbacks (`RL.init`, `RL.update`, …) that the framework calls; empty for other bindings. */
+export function getCallbacks(namespace = "RL", binding: Binding = "raylib-lua-bindings"): RaylibFunction[] {
+  if (binding !== "reilua") {
+    return [];
+  }
+  return reiluaCallbacks.map(([name, detail, params, paramTypes]) => {
+    const signature = `function ${namespace}.${name}(${params.length ? ` ${params.join(", ")} ` : ""}) ... end`;
+    const args = params.length ? ` ${params.map((p, i) => `\${${i + 1}:${p}}`).join(", ")} ` : "";
+    return { name, qualified: `${namespace}.${name}`, detail, params, paramTypes, signature, snippet: `${namespace}.${name}(${args})\n\t$0\nend` };
+  });
+}
+
+/** Completion items that scaffold a callback body; offered only right after `function RL.`. */
+export function getCallbackCompletionItems(
+  vscode: typeof import("vscode"),
+  namespace = "RL",
+  binding: Binding = "raylib-lua-bindings"
+): import("vscode").CompletionItem[] {
+  return getCallbacks(namespace, binding).map(fn => {
+    const item = new vscode.CompletionItem(fn.qualified, vscode.CompletionItemKind.Event);
+    item.detail = fn.detail;
+    item.insertText = new vscode.SnippetString(fn.snippet);
+    item.documentation = renderDocumentation(vscode, fn);
+    return item;
+  });
+}
+
 /** Build the shared MarkdownString shown in completion docs, hovers, and signature help. */
 export function renderDocumentation(
   vscode: typeof import("vscode"),
@@ -989,16 +1034,24 @@ export function renderDocumentation(
     `${fn.detail}\n\n**Usage Example:**\n\`\`\`lua\n${fn.signature}\n\`\`\``
   );
   if (fn.params.length > 0) {
-    md.appendMarkdown(`\n\n**Parameters:**\n${fn.params.map(p => `- \`${p}\``).join("\n")}`);
+    const lines = fn.params.map((p, i) => {
+      const type = fn.paramTypes?.[i];
+      return type ? `- \`${p}\`: \`${type}\`` : `- \`${p}\``;
+    });
+    md.appendMarkdown(`\n\n**Parameters:**\n${lines.join("\n")}`);
+  }
+  if (fn.returns) {
+    md.appendMarkdown(`\n\n**Returns:** ${fn.returns}`);
   }
   return md;
 }
 
 export function getCompletionItems(
   vscode: typeof import("vscode"),
-  namespace = "raylib"
+  namespace = "raylib",
+  binding: Binding = "raylib-lua-bindings"
 ): import("vscode").CompletionItem[] {
-  return getRaylibFunctions(namespace).map(fn => {
+  return getRaylibFunctions(namespace, binding).map(fn => {
     const item = new vscode.CompletionItem(fn.qualified, vscode.CompletionItemKind.Function);
     item.detail = fn.detail;
     item.insertText = new vscode.SnippetString(fn.snippet);
@@ -1021,8 +1074,8 @@ export interface RaylibConstant {
   detail: string;
 }
 
-export function getRaylibConstants(namespace = "raylib"): RaylibConstant[] {
-  return constants.map(([name, group, value]) => ({
+export function getRaylibConstants(namespace = "raylib", binding: Binding = "raylib-lua-bindings"): RaylibConstant[] {
+  return (binding === "reilua" ? reiluaConstants : constants).map(([name, group, value]) => ({
     name,
     qualified: `${namespace}.${name}`,
     group,
@@ -1040,9 +1093,10 @@ export function renderConstantDocumentation(
 
 export function getConstantCompletionItems(
   vscode: typeof import("vscode"),
-  namespace = "raylib"
+  namespace = "raylib",
+  binding: Binding = "raylib-lua-bindings"
 ): import("vscode").CompletionItem[] {
-  return getRaylibConstants(namespace).map(c => {
+  return getRaylibConstants(namespace, binding).map(c => {
     const item = new vscode.CompletionItem(c.qualified, vscode.CompletionItemKind.Constant);
     item.detail = c.detail;
     item.insertText = c.qualified;
